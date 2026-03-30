@@ -2,6 +2,33 @@
 
 ## 2026-03-30
 
+### AWS Plan Upgrade (230092c)
+Brought AWS plan to feature parity with Azure:
+
+**Added to all 18 weeks:**
+- ✅ Certification mapping (`cert: "SAA-C03"`, etc.)
+- ✅ Color coding per phase (`color: "#FF9900"`)
+- ✅ Renamed `prompts` → `askClaude` for consistency
+
+**Added to all resources:**
+- ✅ Resource type (`type: "doc"` or `type: "video"`)
+
+**Added constants:**
+- ✅ `CERT_COLORS` for visual certification styling
+
+**AWS Certification Mapping:**
+| Weeks | Certification |
+|-------|---------------|
+| 1-3 | CLF-C02 (Cloud Practitioner) |
+| 4-6 | SAA-C03 (Solutions Architect) |
+| 7-9 | DVA-C02 / DOP-C02 (Developer / DevOps) |
+| 10-12 | SAA-C03 / SCS-C02 (Architect / Security) |
+| 13-15 | DOP-C02 (DevOps Professional) |
+| 16 | AIF-C01 (AI Practitioner) |
+| 17-18 | ALL CERTS (Capstone + Exam Prep) |
+
+---
+
 ### Major Azure Plan Upgrade (2e8e829)
 Brought Azure plan to feature parity with AWS plan:
 
