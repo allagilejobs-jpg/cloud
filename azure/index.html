@@ -1,18 +1,539 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Azure Mastery Learning Plan v3 — 17 Weeks to Azure Guru</title>
-    <meta name="description" content="17-week Azure learning plan: 6 certifications, 11 projects, 70+ labs. Topics infused where they naturally belong." />
-    <meta name="theme-color" content="#0078D4" />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☁️</text></svg>" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure Administrator (AZ-104) Mastery Plan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0a1628 0%, #1a2744 100%);
+            color: #fff;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        .header {
+            background: linear-gradient(135deg, #0078d4 0%, #00bcf2 100%);
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .header h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 12px; }
+        .header p { font-size: 1.2rem; opacity: 0.95; max-width: 700px; margin: 0 auto; }
+        .back-link {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .back-link:hover { color: #fff; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+        .stat {
+            background: rgba(0,120,212,0.1);
+            border: 1px solid rgba(0,120,212,0.3);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+        }
+        .stat-value { font-size: 2.5rem; font-weight: 800; color: #00bcf2; }
+        .stat-label { font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-top: 4px; }
+        .phase {
+            margin-bottom: 50px;
+        }
+        .phase-header {
+            background: rgba(0,120,212,0.15);
+            border-left: 4px solid #0078d4;
+            padding: 16px 24px;
+            margin-bottom: 24px;
+            border-radius: 0 12px 12px 0;
+        }
+        .phase-title { font-size: 1.3rem; font-weight: 700; color: #00bcf2; }
+        .phase-weeks { font-size: 0.9rem; color: rgba(255,255,255,0.6); }
+        .week {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        .week:hover {
+            border-color: rgba(0,120,212,0.4);
+            transform: translateY(-2px);
+        }
+        .week-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        .week-num {
+            background: linear-gradient(135deg, #0078d4, #00bcf2);
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+        .week-title { font-size: 1.2rem; font-weight: 600; }
+        .cert-badge {
+            background: rgba(0,188,242,0.2);
+            border: 1px solid rgba(0,188,242,0.4);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: #00bcf2;
+            margin-left: auto;
+        }
+        .topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+        .topic {
+            background: rgba(0,120,212,0.1);
+            border: 1px solid rgba(0,120,212,0.3);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #00bcf2;
+        }
+        .objectives { margin-top: 16px; }
+        .objectives h4 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 10px;
+        }
+        .objectives ul {
+            list-style: none;
+            display: grid;
+            gap: 8px;
+        }
+        .objectives li {
+            padding-left: 20px;
+            position: relative;
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.8);
+        }
+        .objectives li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #00bcf2;
+        }
+        .cta {
+            background: linear-gradient(135deg, #0078d4, #00bcf2);
+            text-align: center;
+            padding: 50px 20px;
+            margin-top: 40px;
+            border-radius: 24px;
+        }
+        .cta h2 { font-size: 1.8rem; margin-bottom: 12px; }
+        .cta p { opacity: 0.9; margin-bottom: 24px; }
+        .cta-btn {
+            display: inline-block;
+            background: #fff;
+            color: #0078d4;
+            padding: 14px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: transform 0.3s ease;
+        }
+        .cta-btn:hover { transform: scale(1.05); }
+        @media (max-width: 600px) {
+            .header h1 { font-size: 2rem; }
+            .stat-value { font-size: 2rem; }
+            .week-header { flex-wrap: wrap; }
+            .cert-badge { margin-left: 0; margin-top: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header" style="position: relative;">
+        <a href="../" class="back-link">← Back to Hub</a>
+        <h1>🔵 Azure Administrator (AZ-104)</h1>
+        <p>12-week mastery plan covering identity, governance, compute, networking, storage, and monitoring</p>
+    </header>
+
+    <div class="container">
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-value">12</div>
+                <div class="stat-label">Weeks</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">40+</div>
+                <div class="stat-label">Hands-on Labs</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">25+</div>
+                <div class="stat-label">Azure Services</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">AZ-104</div>
+                <div class="stat-label">Certification</div>
+            </div>
+        </div>
+
+        <!-- Phase 1: Foundation -->
+        <div class="phase">
+            <div class="phase-header">
+                <div class="phase-title">PHASE 1: FOUNDATION</div>
+                <div class="phase-weeks">Weeks 1-2</div>
+            </div>
+
+            <div class="week">
+                <div class="week-header">
+                    <div class="week-num">1</div>
+                    <div class="week-title">Cloud Foundations, Azure Setup & Cost Awareness</div>
+                    <span class="cert-badge">AZ-900</span>
+                </div>
+                <div class="topics">
+                    <span class="topic">IaaS/PaaS/SaaS</span>
+                    <span class="topic">Regions & AZs</span>
+                    <span class="topic">Resource Groups</span>
+                    <span class="topic">Azure CLI</span>
+                    <span class="topic">Cost Management</span>
+                </div>
+                <div class="objectives">
+                    <h4>Topics Covered</h4>
+                    <ul>
+                        <li>Cloud computing overview (IaaS, PaaS, SaaS)</li>
+                        <li>Azure global infrastructure (Regions, Availability Zones)</li>
+                        <li>Azure account, subscriptions & resource groups</li>
+                        <li>Resource tagging strategy — tag everything from Day 1</li>
+                        <li>Azure Cost Management — budgets, billing alerts</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="week">
+                <div class="week-header">
+                    <div class="week-num">2</div>
+                    <div class="week-title">Entra ID, RBAC & Azure Policy Fundamentals</div>
+                    <span class="cert-badge">AZ-104 / AZ-500</span>
+                </div>
+                <div class="topics">
+                    <span class="topic">Entra ID</span>
+                    <span class="topic">RBAC</span>
+                    <span class="topic">Azure Policy</span>
+                    <span class="topic">Management Groups</span>
+                    <span class="topic">Conditional Access</span>
+                </div>
+                <div class="objectives">
+                    <h4>Topics Covered</h4>
+                    <ul>
+                        <li>Active Directory vs Microsoft Entra ID</li>
+                        <li>Tenants, subscriptions & management groups hierarchy</li>
+                        <li>Role-Based Access Control (RBAC) — built-in vs custom</li>
+                        <li>Privileged Identity Management (PIM)</li>
+                        <li>Azure Policy basics — built-in policies & assignments</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 2: Compute & Networking -->
+        <div class="phase">
+            <div class="phase-header">
+                <div class="phase-title">PHASE 2: COMPUTE & NETWORKING</div>
+                <div class="phase-weeks">Weeks 3-5</div>
+            </div>
+
+            <div class="week">
+                <div class="week-header">
+                    <div class="week-num">3</div>
+                    <div class="week-title">Virtual Machines & Availability</div>
+                    <span class="cert-badge">AZ-104</span>
+                </div>
+                <div class="topics">
+                    <span class="topic">VMs</span>
+                    <span class="topic">Availability Sets</span>
+                    <span class="topic">Scale Sets</span>
+                    <span class="topic">Managed Disks</span>
+                    <span class="topic">Azure Bastion</span>
+                </div>
+                <div class="objectives">
+                    <h4>Topics Covered</h4>
+                    <ul>
+                        <li>VM sizes, series, and pricing options</li>
+                        <li>Availability Sets vs Availability Zones</li>
+                        <li>Virtual Machine Scale Sets (VMSS)</li>
+                        <li>Managed Disks and disk encryption</li>
+                        <li>Azure Bastion for secure access</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="week">
+                <div class="week-header">
+                    <div class="week-num">4</div>
+                    <div class="week-title">Virtual Networks & Network Security</div>
+                    <span class="cert-badge">AZ-104</span>
+                </div>
+                <div class="topics">
+                    <span class="topic">VNet</span>
+                    <span class="topic">Subnets</span>
+                    <span class="topic">NSGs</span>
+                    <span class="topic">VNet Peering</span>
+                    <span class="topic">Azure Firewall</span>
+                </div>
+                <div class="objectives">
+                    <h4>Topics Covered</h4>
+                    <ul>
+                        <li>Virtual Networks (VNets) and subnets</li>
+                        <li>Network Security Groups (NSGs)</li>
+                        <li>VNet Peering and connectivity</li>
+                        <li>Azure Firewall and DDoS Protection</li>
+                        <li>Private endpoints and service endpoints</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="week">
+                <div class="week-header">
+                    <div class="week-num">5</div>
+                    <div class="week-title">Load Balancing & DNS</div>
+                    <span class="cert-badge">AZ-104</span>
+                </div>
+                <div class="topics">
+                    <span class="topic">Azure Load Balancer</span>
+                    <span class="topic">Application Gateway</span>
+                    <span class="topic">Traffic Manager</span>
+                    <span class="topic">Azure DNS</span>
+                    <span class="topic">Front Door</span>
+                </div>
+                <div class="objectives">
+                    <h4>Topics Covered</h4>
+                    <ul>
+                        <li>Azure Load Balancer (Layer 4)</li>
+                        <li>Application Gateway with WAF (Layer 7)</li>
+                        <li>Traffic Manager for global routing</li>
+                        <li>Azure DNS zones and records</li>
+                        <li>Azure Front Door for CDN + WAF</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 3: Storage & Data -->
+        <div class="phase">
+            <div class="phase-header">
+                <div class="phase-title">PHASE 3: STORAGE & DATA</div>
+                <div class="phase-weeks">Weeks 6-7</div>
+            </div>
+
+            <div class="week">
+                <div class="week-header">
+                    <div class="week-num">6</div>
+                    <div class="week-title">Azure Storage Deep Dive</div>
+                    <span class="cert-badge">AZ-104</span>
+                </div>
+                <div class="topics">
+                    <span class="topic">Blob Storage</span>
+                    <span class="topic">File Shares</span>
+                    <span class="topic">Storage Tiers</span>
+                    <span class="topic">Replication</span>
+                    <span class="topic">SAS Tokens</span>
+                </div>
+                <div class="objectives">
+                    <h4>Topics Covered</h4>
+                    <ul>
+                        <li>Storage account types and replication options</li>
+                        <li>Blob storage: hot, cool, cold, archive tiers</li>
+                        <li>Azure Files for SMB/NFS shares</li>
+                        <li>Lifecycle management policies</li>
+                        <li>Shared Access Signatures (SAS) and access keys</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="week">
+                <div class="week-header">
+                    <div class="week-num">7</div>
+                    <div class="week-title">Azure SQL & Database Services</div>
+                    <span class="cert-badge">AZ-104</span>
+                </div>
+                <div class="topics">
+                    <span class="topic">Azure SQL</span>
+                    <span class="topic">Cosmos DB</span>
+                    <span class="topic">MySQL/PostgreSQL</span>
+                    <span class="topic">Backup & Recovery</span>
+                </div>
+                <div class="objectives">
+                    <h4>Topics Covered</h4>
+                    <ul>
+                        <li>Azure SQL Database deployment options</li>
+                        <li>Cosmos DB for globally distributed apps</li>
+                        <li>Azure Database for MySQL/PostgreSQL</li>
+                        <li>Backup, restore, and geo-replication</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 4: Monitoring & Automation -->
+        <div class="phase">
+            <div class="phase-header">
+                <div class="phase-title">PHASE 4: MONITORING & AUTOMATION</div>
+                <div class="phase-weeks">Weeks 8-10</div>
+            </div>
+
+            <div class="week">
+                <div class="week-header">
+                    <div class="week-num">8</div>
+                    <div class="week-title">Azure Monitor & Log Analytics</div>
+                    <span class="cert-badge">AZ-104</span>
+                </div>
+                <div class="topics">
+                    <span class="topic">Azure Monitor</span>
+                    <span class="topic">Log Analytics</span>
+                    <span class="topic">Alerts</span>
+                    <span class="topic">Application Insights</span>
+                    <span class="topic">Workbooks</span>
+                </div>
+                <div class="objectives">
+                    <h4>Topics Covered</h4>
+                    <ul>
+                        <li>Azure Monitor metrics and logs</li>
+                        <li>Log Analytics workspace and KQL queries</li>
+                        <li>Alert rules and action groups</li>
+                        <li>Application Insights for APM</li>
+                        <li>Workbooks for custom dashboards</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="week">
+                <div class="week-header">
+                    <div class="week-num">9</div>
+                    <div class="week-title">Infrastructure as Code — ARM & Bicep</div>
+                    <span class="cert-badge">AZ-104</span>
+                </div>
+                <div class="topics">
+                    <span class="topic">ARM Templates</span>
+                    <span class="topic">Bicep</span>
+                    <span class="topic">Azure CLI</span>
+                    <span class="topic">PowerShell</span>
+                    <span class="topic">Terraform</span>
+                </div>
+                <div class="objectives">
+                    <h4>Topics Covered</h4>
+                    <ul>
+                        <li>ARM templates structure and deployment</li>
+                        <li>Bicep: simpler syntax for Azure IaC</li>
+                        <li>Azure CLI and PowerShell automation</li>
+                        <li>Terraform for Azure (comparison)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="week">
+                <div class="week-header">
+                    <div class="week-num">10</div>
+                    <div class="week-title">Azure Automation & DevOps</div>
+                    <span class="cert-badge">AZ-104</span>
+                </div>
+                <div class="topics">
+                    <span class="topic">Azure Automation</span>
+                    <span class="topic">Runbooks</span>
+                    <span class="topic">Azure DevOps</span>
+                    <span class="topic">GitHub Actions</span>
+                    <span class="topic">Update Management</span>
+                </div>
+                <div class="objectives">
+                    <h4>Topics Covered</h4>
+                    <ul>
+                        <li>Azure Automation accounts and runbooks</li>
+                        <li>Update Management for VMs</li>
+                        <li>Azure DevOps pipelines basics</li>
+                        <li>GitHub Actions for Azure deployments</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 5: Advanced & Exam Prep -->
+        <div class="phase">
+            <div class="phase-header">
+                <div class="phase-title">PHASE 5: ADVANCED & EXAM PREP</div>
+                <div class="phase-weeks">Weeks 11-12</div>
+            </div>
+
+            <div class="week">
+                <div class="week-header">
+                    <div class="week-num">11</div>
+                    <div class="week-title">Containers & App Services</div>
+                    <span class="cert-badge">AZ-104</span>
+                </div>
+                <div class="topics">
+                    <span class="topic">App Service</span>
+                    <span class="topic">Container Instances</span>
+                    <span class="topic">AKS</span>
+                    <span class="topic">Azure Functions</span>
+                    <span class="topic">ACR</span>
+                </div>
+                <div class="objectives">
+                    <h4>Topics Covered</h4>
+                    <ul>
+                        <li>Azure App Service plans and deployment</li>
+                        <li>Azure Container Instances (ACI)</li>
+                        <li>Azure Kubernetes Service (AKS) basics</li>
+                        <li>Azure Functions for serverless</li>
+                        <li>Azure Container Registry (ACR)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="week">
+                <div class="week-header">
+                    <div class="week-num">12</div>
+                    <div class="week-title">Backup, DR & Exam Preparation</div>
+                    <span class="cert-badge">AZ-104</span>
+                </div>
+                <div class="topics">
+                    <span class="topic">Azure Backup</span>
+                    <span class="topic">Site Recovery</span>
+                    <span class="topic">Exam Practice</span>
+                    <span class="topic">Review Labs</span>
+                </div>
+                <div class="objectives">
+                    <h4>Topics Covered</h4>
+                    <ul>
+                        <li>Azure Backup for VMs, files, SQL</li>
+                        <li>Azure Site Recovery for disaster recovery</li>
+                        <li>Full practice exams and review</li>
+                        <li>Hands-on lab review</li>
+                        <li>Exam tips and strategies</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta">
+            <h2>Ready to Master Azure?</h2>
+            <p>Start your journey to Azure Administrator (AZ-104) certification today!</p>
+            <a href="https://learn.microsoft.com/en-us/certifications/azure-administrator/" class="cta-btn">Learn More →</a>
+        </div>
+    </div>
+</body>
 </html>
