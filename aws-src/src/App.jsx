@@ -633,7 +633,7 @@ function App() {
 
   useEffect(() => {
     try {
-      const saved = localStorage.getItem("aws-mastery-progress");
+      const saved = localStorage.getItem("aws-mastery-v3");
       if (saved) setProgress(JSON.parse(saved));
     } catch {}
     setLoaded(true);
@@ -641,7 +641,7 @@ function App() {
 
   const save = useCallback((p) => {
     setProgress(p);
-    try { localStorage.setItem("aws-mastery-progress", JSON.stringify(p)); } catch {}
+    try { localStorage.setItem("aws-mastery-v3", JSON.stringify(p)); } catch {}
   }, []);
 
   const toggle = useCallback((id) => save({ ...progress, [id]: !progress[id] }), [progress, save]);
@@ -685,7 +685,7 @@ function App() {
             {[["dashboard","Dashboard"],["gaps","🔥 Gap Map"],["certs","Certs"]].map(([v,l])=>(
               <button key={v} className="bt" onClick={()=>{setView(v);setActiveWeek(null)}} style={{padding:"6px 12px",background:view===v?"#FF9900":"#1e293b",color:view===v?"#0a0e1a":"#94a3b8",fontSize:12}}>{l}</button>
             ))}
-            <button className="bt" onClick={async()=>{if(confirm("Reset all progress?")){setProgress({});try{localStorage.removeItem("aws-mastery-progress")}catch{}}}} style={{padding:"6px 12px",background:"#1e293b",color:"#ef4444",fontSize:12}}>Reset</button>
+            <button className="bt" onClick={()=>{if(confirm("Reset all progress?")){setProgress({});try{localStorage.removeItem("aws-mastery-v3")}catch{}}}} style={{padding:"6px 12px",background:"#1e293b",color:"#ef4444",fontSize:12}}>Reset</button>
           </div>
         </div>
       </div>
