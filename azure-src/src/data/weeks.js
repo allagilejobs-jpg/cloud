@@ -5,8 +5,6 @@ export const WEEKS = [
     title: "Cloud Foundations, Azure Setup & Cost Awareness",
     cert: "AZ-900",
     color: "#0078D4",
-    gapBadges: [],
-    services: ["Azure Portal", "Azure CLI", "Resource Groups", "Cost Management", "Budgets", "Tags"],
     infused: ["Resource tagging from Day 1", "Budget alerts & cost basics", "Cost Management introduction"],
     topics: [
       "Cloud computing overview (IaaS, PaaS, SaaS)",
@@ -19,38 +17,27 @@ export const WEEKS = [
     ],
     labs: [
       {
-        id: "lab-1-1",
-        name: "Create a Free Azure Account",
-        duration: "20 min",
-        difficulty: "Beginner",
+        name: "Lab 1: Create a Free Azure Account",
         steps: [
           "Navigate to azure.microsoft.com/free and sign up",
           "Verify identity with phone number and credit card (no charge)",
           "Explore the Azure Portal dashboard — pin key services",
           "Open Azure Cloud Shell (Bash) and run: az account show",
           "Navigate to Cost Management → set a $10 monthly budget with email alerts at 50%, 80%, 100%"
-        ],
-        verify: "Azure account active. Budget created with email alerts configured."
+        ]
       },
       {
-        id: "lab-1-2",
-        name: "Install Azure CLI & VS Code",
-        duration: "15 min",
-        difficulty: "Beginner",
+        name: "Lab 2: Install Azure CLI & VS Code",
         steps: [
           "Download VS Code from code.visualstudio.com",
           "Install Azure CLI from Microsoft docs",
           "Open terminal → run: az login → authenticate via browser",
           "Run: az group list -o table → verify empty list",
           "Install VS Code extensions: Azure Account, Azure Resources, Azure CLI Tools"
-        ],
-        verify: "az login succeeds. VS Code extensions installed and working."
+        ]
       },
       {
-        id: "lab-1-3",
-        name: "Create Resource Groups with Proper Tagging",
-        duration: "25 min",
-        difficulty: "Beginner",
+        name: "Lab 3: Create Resource Groups with Proper Tagging",
         steps: [
           "In Portal: Create rg-learning-portal in East US",
           "Add tags: Environment=Learning, Owner=YourName, CostCenter=Training, Week=1",
@@ -59,8 +46,7 @@ export const WEEKS = [
           "View tags: az tag list → understand the tagging structure",
           "Navigate to Cost Management → Cost Analysis → group by Tag:CostCenter",
           "Clean up: az group delete --name rg-learning-cli --yes --no-wait"
-        ],
-        verify: "Both resource groups created with proper tags. Cost Analysis shows tag grouping."
+        ]
       }
     ],
     resources: [
@@ -82,8 +68,6 @@ export const WEEKS = [
     title: "Entra ID, RBAC & Azure Policy Fundamentals",
     cert: "AZ-104 / AZ-500",
     color: "#5C2D91",
-    gapBadges: [],
-    services: ["Entra ID", "RBAC", "Azure Policy", "Management Groups", "PIM", "Service Principals", "Managed Identities"],
     infused: ["Azure Policy basics (allowed locations, require tags)", "Management Groups hierarchy", "Conditional Access introduction"],
     topics: [
       "Active Directory vs Microsoft Entra ID",
@@ -98,10 +82,7 @@ export const WEEKS = [
     ],
     labs: [
       {
-        id: "lab-2-1",
-        name: "Create Users & Groups in Entra ID",
-        duration: "25 min",
-        difficulty: "Beginner",
+        name: "Lab 1: Create Users & Groups in Entra ID",
         steps: [
           "Go to Portal → Microsoft Entra ID → Users → New User",
           "Create user: alice@yourtenant.onmicrosoft.com ('Cloud Admin')",
@@ -109,14 +90,10 @@ export const WEEKS = [
           "Create Security Group: 'Azure-Admins' → add Alice",
           "Create Security Group: 'Developers' → add Bob",
           "Sign in as Alice in private browser → change temp password"
-        ],
-        verify: "Both users created. Groups assigned correctly. Alice can sign in."
+        ]
       },
       {
-        id: "lab-2-2",
-        name: "Configure RBAC",
-        duration: "30 min",
-        difficulty: "Intermediate",
+        name: "Lab 2: Configure RBAC",
         steps: [
           "Create resource group: rg-rbac-lab in East US (with proper tags)",
           "Assign 'Reader' role to Bob on rg-rbac-lab",
@@ -124,14 +101,10 @@ export const WEEKS = [
           "Change Bob to 'Contributor' → verify create access",
           "Assign 'Reader' to 'Developers' group at subscription level",
           "Clean up all assignments"
-        ],
-        verify: "Bob has read-only access as Reader. Contributor allows resource creation."
+        ]
       },
       {
-        id: "lab-2-3",
-        name: "Implement Your First Azure Policies",
-        duration: "35 min",
-        difficulty: "Intermediate",
+        name: "Lab 3: Implement Your First Azure Policies",
         steps: [
           "Navigate to Azure Policy → Definitions → browse built-in policies",
           "Assign policy: 'Allowed locations' → restrict to East US and West US",
@@ -140,22 +113,17 @@ export const WEEKS = [
           "Test: create resource without CostCenter tag → verify DENIED",
           "Create resource WITH CostCenter tag → verify ALLOWED",
           "View Policy Compliance dashboard → understand compliance state"
-        ],
-        verify: "Policies block non-compliant resources. Compliance dashboard shows status."
+        ]
       },
       {
-        id: "lab-2-4",
-        name: "Create a Service Principal",
-        duration: "20 min",
-        difficulty: "Intermediate",
+        name: "Lab 4: Create a Service Principal",
         steps: [
           "Run: az ad sp create-for-rbac --name sp-week2-demo --role Contributor --scopes /subscriptions/<sub-id>",
           "Save appId, password, tenant from JSON output",
           "Login as SP: az login --service-principal -u <appId> -p <password> --tenant <tenant>",
           "Verify access: az group list -o table",
           "Delete SP: az ad sp delete --id <appId>"
-        ],
-        verify: "Service Principal created and authenticated. Access verified via CLI."
+        ]
       }
     ],
     resources: [
@@ -176,8 +144,6 @@ export const WEEKS = [
     title: "Virtual Networks, Subnets, NSGs & DNS",
     cert: "AZ-104",
     color: "#0078D4",
-    gapBadges: [],
-    services: ["VNet", "Subnets", "NSG", "ASG", "Azure DNS", "Azure Bastion", "Public IP"],
     infused: [],
     topics: [
       "Virtual Networks (VNets) & address spaces (CIDR notation)",
@@ -189,24 +155,17 @@ export const WEEKS = [
     ],
     labs: [
       {
-        id: "lab-3-1",
-        name: "Build a VNet with 3 Subnets",
-        duration: "25 min",
-        difficulty: "Beginner",
+        name: "Lab 1: Build a VNet with 3 Subnets",
         steps: [
           "Create VNet: vnet-main, 10.0.0.0/16, East US (tag: Environment=Learning)",
           "Add Subnet: snet-web (10.0.1.0/24) — web tier",
           "Add Subnet: snet-app (10.0.2.0/24) — application tier",
           "Add Subnet: snet-db (10.0.3.0/24) — database tier",
           "Verify: az network vnet subnet list --vnet-name vnet-main -g rg-network -o table"
-        ],
-        verify: "VNet created with 3 subnets. CLI shows correct CIDR ranges."
+        ]
       },
       {
-        id: "lab-3-2",
-        name: "Configure NSG Rules",
-        duration: "35 min",
-        difficulty: "Intermediate",
+        name: "Lab 2: Configure NSG Rules",
         steps: [
           "Create nsg-web → associate with snet-web",
           "Add inbound: Allow HTTP (80) from Internet, Priority 100",
@@ -215,22 +174,17 @@ export const WEEKS = [
           "Create nsg-db → associate with snet-db",
           "Add rule: Allow SQL (1433) ONLY from 10.0.2.0/24 (app subnet)",
           "Deploy VMs and test connectivity between subnets"
-        ],
-        verify: "NSGs block unauthorized traffic. Web allows HTTP/HTTPS. DB only accepts from app tier."
+        ]
       },
       {
-        id: "lab-3-3",
-        name: "Deploy Azure Bastion",
-        duration: "30 min",
-        difficulty: "Intermediate",
+        name: "Lab 3: Deploy Azure Bastion",
         steps: [
           "Add AzureBastionSubnet (10.0.4.0/26) to vnet-main",
           "Deploy Bastion and associate with vnet-main",
           "Deploy a VM in snet-web WITHOUT a public IP",
           "Connect via Bastion (Portal → VM → Connect → Bastion)",
           "Verify secure access without exposing public IP"
-        ],
-        verify: "Bastion connects to VM. No public IP exposed. SSH/RDP works through Portal."
+        ]
       }
     ],
     resources: [
@@ -250,8 +204,6 @@ export const WEEKS = [
     title: "Load Balancing, VPN Gateway & Peering",
     cert: "AZ-104 / AZ-305",
     color: "#00A4EF",
-    gapBadges: [],
-    services: ["Azure Load Balancer", "Application Gateway", "Traffic Manager", "Front Door", "VNet Peering", "VPN Gateway", "ExpressRoute"],
     infused: [],
     topics: [
       "Azure Load Balancer (Layer 4) — public & internal",
@@ -263,10 +215,7 @@ export const WEEKS = [
     ],
     labs: [
       {
-        id: "lab-4-1",
-        name: "Deploy a Public Load Balancer",
-        duration: "40 min",
-        difficulty: "Intermediate",
+        name: "Lab 1: Deploy a Public Load Balancer",
         steps: [
           "Create 2 VMs (vm-web-1, vm-web-2) in availability set, running nginx",
           "Create Load Balancer: lb-web, SKU: Standard",
@@ -275,14 +224,10 @@ export const WEEKS = [
           "Add LB rule: port 80 → backend port 80",
           "Browse to LB public IP → refresh to see traffic alternate",
           "Stop vm-web-1 → verify failover to vm-web-2"
-        ],
-        verify: "Load balancer distributes traffic. Failover works when VM stops."
+        ]
       },
       {
-        id: "lab-4-2",
-        name: "Configure VNet Peering (Hub-Spoke)",
-        duration: "35 min",
-        difficulty: "Intermediate",
+        name: "Lab 2: Configure VNet Peering (Hub-Spoke)",
         steps: [
           "Create vnet-spoke1 (10.1.0.0/16) and vnet-spoke2 (10.2.0.0/16)",
           "Deploy a VM in each VNet",
@@ -290,8 +235,7 @@ export const WEEKS = [
           "From spoke1 VM, ping vnet-main VM → should succeed",
           "From spoke1 VM, ping spoke2 VM → should FAIL (non-transitive)",
           "Document the hub-spoke topology"
-        ],
-        verify: "Peering works between hub and spokes. Non-transitive routing confirmed."
+        ]
       }
     ],
     resources: [
@@ -299,23 +243,15 @@ export const WEEKS = [
       { type: "doc", name: "VNet Peering", url: "https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview" }
     ],
     project: {
-      id: "proj-3tier",
       name: "PROJECT 1: Deploy a 3-Tier Architecture in Azure",
-      description: "Design and deploy a full 3-tier app (web → app → database) with load balancing, NSGs between tiers, and Bastion access.",
+      description: "Design and deploy a full 3-tier app (web → app → database) with load balancing, NSGs between tiers, and Bastion access. The database tier will use a simple VM-based setup for now — you'll upgrade to managed databases in Weeks 6-7.",
       dummyData: "Contoso Retail — e-commerce with 500 daily users. Web tier serves static assets, App tier runs business logic APIs, DB tier hosts product catalog (50,000 SKUs).",
-      prompt: `Build a 3-tier architecture for 'Contoso Retail':
-- Web Tier: 2 VMs behind public Load Balancer running nginx
-- App Tier: 1 VM running Node.js API in private subnet
-- DB Tier: 1 VM with PostgreSQL (managed DB upgrade in Week 7)
-- NSGs: web allows 80/443, app allows 8080 from web only, db allows 5432 from app only
-- Azure Bastion for management access
-Give me all CLI commands, NSG rules, and architecture diagram.`,
       steps: [
         "Design the architecture diagram with Claude",
         "Create VNet with 3 subnets: web, app, db",
         "Deploy 2 web VMs behind a public Load Balancer",
         "Deploy 1 app VM running a Node.js API",
-        "Deploy 1 VM with PostgreSQL in the db subnet",
+        "Deploy 1 VM with PostgreSQL in the db subnet (managed DB upgrade coming Week 7)",
         "Configure NSGs: web allows 80/443, app allows 8080 from web only, db allows 5432 from app only",
         "Deploy Bastion for management access",
         "Test end-to-end and document architecture"
@@ -333,8 +269,6 @@ Give me all CLI commands, NSG rules, and architecture diagram.`,
     title: "VMs, App Service & Serverless Compute Intro",
     cert: "AZ-104 / AZ-204",
     color: "#F25022",
-    gapBadges: [],
-    services: ["Virtual Machines", "VMSS", "Availability Sets", "App Service", "Azure Functions", "Static Web Apps"],
     infused: ["Azure Functions basics (HTTP trigger)", "Static Web Apps introduction", "Serverless as a compute model"],
     topics: [
       "Azure VM sizes, families & pricing tiers",
@@ -348,10 +282,7 @@ Give me all CLI commands, NSG rules, and architecture diagram.`,
     ],
     labs: [
       {
-        id: "lab-5-1",
-        name: "Deploy Windows & Linux VMs",
-        duration: "30 min",
-        difficulty: "Beginner",
+        name: "Lab 1: Deploy Windows & Linux VMs",
         steps: [
           "Create Windows VM: vm-win-01, B2s, Windows Server 2022",
           "RDP in → install IIS via Server Manager",
@@ -359,42 +290,30 @@ Give me all CLI commands, NSG rules, and architecture diagram.`,
           "SSH in → sudo apt update && sudo apt install nginx -y",
           "Verify both serve web pages via public IPs",
           "Resize vm-linux-01 to B2s → observe restart"
-        ],
-        verify: "Both VMs accessible. IIS and nginx serve default pages. Resize completes."
+        ]
       },
       {
-        id: "lab-5-2",
-        name: "VM Scale Set with Autoscaling",
-        duration: "35 min",
-        difficulty: "Intermediate",
+        name: "Lab 2: VM Scale Set with Autoscaling",
         steps: [
           "Create VMSS with cloud-init for nginx, 2 initial instances",
           "Attach Load Balancer",
           "Set autoscale: out at CPU > 70%, in at CPU < 30%",
           "Stress test: stress --cpu 4 --timeout 300",
           "Watch VMSS scale out in Activity Log"
-        ],
-        verify: "VMSS scales out under load. Scale-in works when load decreases."
+        ]
       },
       {
-        id: "lab-5-3",
-        name: "Azure App Service with Deployment Slots",
-        duration: "30 min",
-        difficulty: "Intermediate",
+        name: "Lab 3: Azure App Service with Deployment Slots",
         steps: [
           "Create App Service Plan (B1, Linux) + Web App (Node.js 18)",
           "Connect to sample GitHub repo for deployment",
           "Enable staging slot → deploy v2 to staging",
           "Browse both slots → verify different versions",
           "Swap staging → production → zero-downtime deployment"
-        ],
-        verify: "Staging and production show different versions. Swap completes with zero downtime."
+        ]
       },
       {
-        id: "lab-5-4",
-        name: "Your First Azure Function",
-        duration: "25 min",
-        difficulty: "Beginner",
+        name: "Lab 4: Your First Azure Function",
         steps: [
           "Create Function App: func-week5, Node.js, Consumption plan",
           "Create HTTP trigger function: GetGreeting → returns personalized JSON",
@@ -402,14 +321,10 @@ Give me all CLI commands, NSG rules, and architecture diagram.`,
           "Test via curl: curl https://func-week5.azurewebsites.net/api/GetGreeting?name=Azure",
           "View Monitor tab → see invocation logs",
           "Note: we'll go deep on Functions triggers and patterns in Week 16"
-        ],
-        verify: "Function returns JSON response. Logs show invocations in Monitor."
+        ]
       },
       {
-        id: "lab-5-5",
-        name: "Deploy a Static Web App",
-        duration: "25 min",
-        difficulty: "Beginner",
+        name: "Lab 5: Deploy a Static Web App",
         steps: [
           "Create a simple React or HTML app (ask Claude to generate it)",
           "Push to a GitHub repository",
@@ -417,8 +332,7 @@ Give me all CLI commands, NSG rules, and architecture diagram.`,
           "Verify auto-deployment on push",
           "Create a PR → see preview environment auto-created",
           "Note: we'll add API backends and auth in Week 16"
-        ],
-        verify: "Static Web App deploys automatically on push. PR preview environment works."
+        ]
       }
     ],
     resources: [
@@ -428,16 +342,9 @@ Give me all CLI commands, NSG rules, and architecture diagram.`,
       { type: "doc", name: "Static Web Apps", url: "https://learn.microsoft.com/en-us/azure/static-web-apps/" }
     ],
     project: {
-      id: "proj-portfolio",
       name: "PROJECT 2: Host a Portfolio on Azure (3 Ways)",
-      description: "Deploy the same portfolio website three ways: Blob Storage static site, App Service with slots, and Static Web App with GitHub integration.",
+      description: "Deploy the same portfolio website three ways: Blob Storage static site, App Service with slots, and Static Web App with GitHub integration. Compare the approaches.",
       dummyData: "Portfolio: About Me, 5 projects with screenshots, Skills section, Contact form. Use placeholder images and dummy descriptions.",
-      prompt: `Host my portfolio on Azure three ways:
-1. Blob Storage static site with CDN
-2. App Service with staging/production slots
-3. Static Web App with GitHub CI/CD and Azure Functions API
-Compare: cost, deployment speed, features of each approach.
-Give me all commands and code.`,
       steps: [
         "Ask Claude to generate a responsive HTML/CSS portfolio",
         "Deploy v1 to Blob Storage as a static website + CDN",
@@ -460,8 +367,6 @@ Give me all commands and code.`,
     title: "Storage, Key Vault & SQL Database Fundamentals",
     cert: "AZ-104 / AZ-204",
     color: "#7FBA00",
-    gapBadges: [],
-    services: ["Storage Account", "Blob Storage", "Azure Files", "Key Vault", "Azure SQL Database", "SAS Tokens"],
     infused: ["Azure SQL Database basics (create, connect, query)", "Database firewall rules & basic security", "SQL as a natural extension of data services"],
     topics: [
       "Storage accounts: Blob, File, Table, Queue",
@@ -476,37 +381,26 @@ Give me all commands and code.`,
     ],
     labs: [
       {
-        id: "lab-6-1",
-        name: "Storage Account & Blob Containers",
-        duration: "25 min",
-        difficulty: "Beginner",
+        name: "Lab 1: Storage Account & Blob Containers",
         steps: [
           "Create storage account: stweek6demo, Standard, LRS (with proper tags)",
           "Create containers: 'documents' (private), 'images' (blob access)",
           "Upload files via Portal and CLI",
           "Generate SAS token with 1-hour expiry",
           "Access blob via SAS URL in browser"
-        ],
-        verify: "Containers created. SAS URL provides temporary access. Private container blocks direct access."
+        ]
       },
       {
-        id: "lab-6-2",
-        name: "Blob Lifecycle Management",
-        duration: "20 min",
-        difficulty: "Intermediate",
+        name: "Lab 2: Blob Lifecycle Management",
         steps: [
           "Navigate to Lifecycle Management → Add Rule",
           "Move to Cool after 30 days, Archive after 90, Delete after 365",
           "Review JSON policy structure",
           "Verify via CLI: az storage account management-policy show"
-        ],
-        verify: "Lifecycle policy created. JSON shows correct tier transitions."
+        ]
       },
       {
-        id: "lab-6-3",
-        name: "Azure Key Vault",
-        duration: "30 min",
-        difficulty: "Intermediate",
+        name: "Lab 3: Azure Key Vault",
         steps: [
           "Create Key Vault: kv-week6-demo",
           "Add secret: DatabasePassword = 'P@ssw0rd!2025-DEMO'",
@@ -514,14 +408,10 @@ Give me all commands and code.`,
           "Retrieve via CLI: az keyvault secret show",
           "Create VM with managed identity → grant Key Vault access",
           "From VM, retrieve secret using managed identity + REST API"
-        ],
-        verify: "Secret stored and retrieved. Managed identity accesses Key Vault without credentials."
+        ]
       },
       {
-        id: "lab-6-4",
-        name: "Create Your First Azure SQL Database",
-        duration: "35 min",
-        difficulty: "Intermediate",
+        name: "Lab 4: Create Your First Azure SQL Database",
         steps: [
           "Create Azure SQL Server: sql-week6.database.windows.net",
           "Create database: db-products, DTU tier: Basic (5 DTUs)",
@@ -531,8 +421,7 @@ Give me all commands and code.`,
           "Ask Claude to generate 30 INSERT statements → run them",
           "Run queries: SELECT with WHERE, GROUP BY, ORDER BY",
           "Store the SQL connection string in Key Vault (tie it together!)"
-        ],
-        verify: "SQL Database accessible. 30 products inserted. Connection string in Key Vault."
+        ]
       }
     ],
     resources: [
@@ -553,8 +442,6 @@ Give me all commands and code.`,
     title: "Cosmos DB, PostgreSQL & Database Security",
     cert: "AZ-204 / AZ-305",
     color: "#E8A400",
-    gapBadges: [],
-    services: ["Azure SQL", "Cosmos DB", "PostgreSQL Flexible Server", "MySQL Flexible Server", "Private Endpoints", "TDE", "Database Auditing"],
     infused: [],
     topics: [
       "Azure SQL security deep dive: TDE, auditing, Entra ID auth",
@@ -568,10 +455,7 @@ Give me all commands and code.`,
     ],
     labs: [
       {
-        id: "lab-7-1",
-        name: "Secure Azure SQL (from Week 6)",
-        duration: "35 min",
-        difficulty: "Intermediate",
+        name: "Lab 1: Secure Azure SQL (from Week 6)",
         steps: [
           "Enable Transparent Data Encryption on db-products → verify on by default",
           "Enable Auditing → send logs to Storage Account",
@@ -580,14 +464,10 @@ Give me all commands and code.`,
           "Configure Private DNS Zone: privatelink.database.windows.net",
           "From VNet VM: nslookup → verify private IP resolution",
           "From local machine: verify access is DENIED"
-        ],
-        verify: "TDE enabled. Auditing logs to storage. Private Endpoint blocks public access."
+        ]
       },
       {
-        id: "lab-7-2",
-        name: "Deploy PostgreSQL Flexible Server",
-        duration: "40 min",
-        difficulty: "Intermediate",
+        name: "Lab 2: Deploy PostgreSQL Flexible Server",
         steps: [
           "Create PostgreSQL: pg-week7-demo, Burstable B1ms",
           "Configure VNet integration in snet-db",
@@ -596,14 +476,10 @@ Give me all commands and code.`,
           "Insert dummy data: 5 warehouses, 100 products",
           "Run aggregation queries across tables",
           "Enable point-in-time restore and verify backup settings"
-        ],
-        verify: "PostgreSQL accessible from VNet only. Queries return data. PITR enabled."
+        ]
       },
       {
-        id: "lab-7-3",
-        name: "Cosmos DB Deep Dive",
-        duration: "45 min",
-        difficulty: "Advanced",
+        name: "Lab 3: Cosmos DB Deep Dive",
         steps: [
           "Create Cosmos DB: cosmos-week7, API: NoSQL",
           "Create database: ecommerce, container: user_sessions, partition: /userId",
@@ -612,8 +488,7 @@ Give me all commands and code.`,
           "Change consistency: Strong → Session → observe tradeoffs",
           "Add second region (West US) → test global distribution",
           "Create container with TTL (auto-delete after 24 hours)"
-        ],
-        verify: "Cosmos DB queries work. RU consumption visible. Multi-region replication active."
+        ]
       }
     ],
     resources: [
@@ -622,17 +497,9 @@ Give me all commands and code.`,
       { type: "doc", name: "PostgreSQL Flexible Server", url: "https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/" }
     ],
     project: {
-      id: "proj-multidb",
       name: "PROJECT 3: Multi-Database E-Commerce Backend",
       description: "Build a complete data layer: Azure SQL for transactions, Cosmos DB for user sessions, Blob Storage for product images — all secured with Private Endpoints and Key Vault.",
       dummyData: "Northwind Traders: 500 products, 12 categories, 1,000 customers, 5,000 orders, session data (cart, recently viewed). Product images in blob storage.",
-      prompt: `Build a multi-database backend for 'Northwind Traders':
-- Azure SQL: products, customers, orders, order_items tables
-- Cosmos DB: user_sessions container with cart and recently viewed
-- Blob Storage: product images with lifecycle policy
-- All databases behind Private Endpoints
-- Node.js API using managed identity to access all stores
-Give me complete schema, Cosmos DB document model, and API code.`,
       steps: [
         "Ask Claude to generate full SQL schema (products, customers, orders, order_items)",
         "Ask Claude for Cosmos DB document model for sessions",
@@ -659,8 +526,6 @@ Give me complete schema, Cosmos DB document model, and API code.`,
     title: "Docker, ACR & Azure Container Instances",
     cert: "AZ-204",
     color: "#0078D4",
-    gapBadges: ["DOCKER"],
-    services: ["Docker", "Azure Container Registry", "Azure Container Instances", "Container Groups"],
     infused: [],
     topics: [
       "Docker fundamentals: images, containers, Dockerfile",
@@ -672,10 +537,7 @@ Give me complete schema, Cosmos DB document model, and API code.`,
     ],
     labs: [
       {
-        id: "lab-8-1",
-        name: "Build & Push Docker Image to ACR",
-        duration: "35 min",
-        difficulty: "Intermediate",
+        name: "Lab 1: Build & Push Docker Image to ACR",
         steps: [
           "Create a Node.js express server returning 'Hello Azure!'",
           "Write Dockerfile: FROM node:18-alpine, COPY, RUN npm install, EXPOSE 3000, CMD",
@@ -683,22 +545,17 @@ Give me complete schema, Cosmos DB document model, and API code.`,
           "Create ACR: az acr create --name acrweek8 --sku Basic",
           "Login, tag, push to ACR",
           "Verify: az acr repository list --name acrweek8"
-        ],
-        verify: "Docker image built. ACR contains the pushed image."
+        ]
       },
       {
-        id: "lab-8-2",
-        name: "Deploy to Azure Container Instances",
-        duration: "25 min",
-        difficulty: "Intermediate",
+        name: "Lab 2: Deploy to Azure Container Instances",
         steps: [
           "Enable ACR admin user",
           "Deploy ACI: az container create --name aci-myapp --image acrweek8.azurecr.io/myapp:v1 --ports 3000",
           "Browse to the public URL",
           "View logs: az container logs --name aci-myapp",
           "Clean up: az container delete --name aci-myapp --yes"
-        ],
-        verify: "Container accessible via public URL. Logs show application output."
+        ]
       }
     ],
     resources: [
@@ -706,17 +563,9 @@ Give me complete schema, Cosmos DB document model, and API code.`,
       { type: "doc", name: "ACR Docs", url: "https://learn.microsoft.com/en-us/azure/container-registry/" }
     ],
     project: {
-      id: "proj-container",
       name: "PROJECT 4: Containerize & Deploy a Task API",
       description: "Containerize a REST API with Docker, push to ACR, deploy on ACI with Redis sidecar.",
       dummyData: "Task management API: id, title, description, status (todo/in-progress/done), created_at. Pre-seed with 20 tasks.",
-      prompt: `Build a containerized Task API:
-- Node.js/Express REST API with CRUD for tasks
-- Multi-stage Dockerfile for minimal image size
-- Push to ACR
-- Deploy to ACI with Redis as multi-container group
-- All CRUD endpoints tested
-Give me Dockerfile, docker-compose for local, and ACI deployment commands.`,
       steps: [
         "Ask Claude to generate a REST API with in-memory data",
         "Write multi-stage Dockerfile",
@@ -739,8 +588,6 @@ Give me Dockerfile, docker-compose for local, and ACI deployment commands.`,
     title: "AKS, Kubernetes & API Management",
     cert: "AZ-204 / AZ-400",
     color: "#326CE5",
-    gapBadges: ["KUBERNETES"],
-    services: ["AKS", "kubectl", "Kubernetes", "API Management", "Ingress Controller", "HPA"],
     infused: ["API Management basics (gateway, policies)", "Exposing AKS services via APIM"],
     topics: [
       "Kubernetes architecture: nodes, pods, services, deployments",
@@ -754,10 +601,7 @@ Give me Dockerfile, docker-compose for local, and ACI deployment commands.`,
     ],
     labs: [
       {
-        id: "lab-9-1",
-        name: "Create & Access AKS Cluster",
-        duration: "40 min",
-        difficulty: "Advanced",
+        name: "Lab 1: Create & Access AKS Cluster",
         steps: [
           "az aks create --name aks-week9 --node-count 2 --node-vm-size Standard_B2s --generate-ssh-keys",
           "az aks get-credentials --name aks-week9",
@@ -766,14 +610,10 @@ Give me Dockerfile, docker-compose for local, and ACI deployment commands.`,
           "kubectl expose deployment nginx --type=LoadBalancer --port=80",
           "Browse to external IP",
           "kubectl scale deployment nginx --replicas=5"
-        ],
-        verify: "AKS cluster running. nginx accessible via LoadBalancer. Scaling works."
+        ]
       },
       {
-        id: "lab-9-2",
-        name: "Deploy Multi-Container App with YAML",
-        duration: "45 min",
-        difficulty: "Advanced",
+        name: "Lab 2: Deploy Multi-Container App with YAML",
         steps: [
           "Ask Claude for K8s YAML: frontend (nginx), backend (Node API), redis",
           "kubectl apply -f app-manifest.yaml",
@@ -781,14 +621,10 @@ Give me Dockerfile, docker-compose for local, and ACI deployment commands.`,
           "View logs: kubectl logs <pod-name>",
           "Exec into pod: kubectl exec -it <pod> -- /bin/sh",
           "Delete: kubectl delete -f app-manifest.yaml"
-        ],
-        verify: "All pods running. Services accessible. Logs visible."
+        ]
       },
       {
-        id: "lab-9-3",
-        name: "API Management for Your AKS APIs",
-        duration: "35 min",
-        difficulty: "Advanced",
+        name: "Lab 3: API Management for Your AKS APIs",
         steps: [
           "Deploy a simple API to AKS (the task API from Week 8)",
           "Create APIM instance: apim-week9 (Developer tier)",
@@ -797,8 +633,7 @@ Give me Dockerfile, docker-compose for local, and ACI deployment commands.`,
           "Create a product and subscription key",
           "Test via APIM developer portal with subscription key",
           "Compare: direct API access vs APIM-mediated access"
-        ],
-        verify: "API accessible through APIM. Rate limiting enforced. Caching works."
+        ]
       }
     ],
     resources: [
@@ -807,16 +642,9 @@ Give me Dockerfile, docker-compose for local, and ACI deployment commands.`,
       { type: "doc", name: "API Management Docs", url: "https://learn.microsoft.com/en-us/azure/api-management/" }
     ],
     project: {
-      id: "proj-voting",
       name: "PROJECT 5: Voting App on AKS with API Management",
       description: "Deploy a voting app to AKS with autoscaling, expose it through API Management with policies.",
       dummyData: "Cats vs Dogs voting app. Flask frontend, Redis backend. Pre-seeded: 150 cat, 120 dog votes.",
-      prompt: `Deploy a voting app on AKS:
-- Build container images and push to ACR
-- 3-node AKS cluster
-- K8s YAML with Deployments, Services, HPA
-- Expose via APIM with rate limiting and JWT validation
-Give me all Dockerfiles, K8s YAML, and APIM policy XML.`,
       steps: [
         "Build container images and push to ACR",
         "Create 3-node AKS cluster",
@@ -840,8 +668,6 @@ Give me all Dockerfiles, K8s YAML, and APIM policy XML.`,
     title: "Azure DevOps & CI/CD Pipelines",
     cert: "AZ-400",
     color: "#F25022",
-    gapBadges: [],
-    services: ["Azure DevOps", "Azure Repos", "Azure Pipelines", "Azure Boards", "Azure Artifacts"],
     infused: [],
     topics: [
       "Azure DevOps organization, projects, repos",
@@ -853,24 +679,17 @@ Give me all Dockerfiles, K8s YAML, and APIM policy XML.`,
     ],
     labs: [
       {
-        id: "lab-10-1",
-        name: "Set Up Azure DevOps & First Pipeline",
-        duration: "30 min",
-        difficulty: "Intermediate",
+        name: "Lab 1: Set Up Azure DevOps & First Pipeline",
         steps: [
           "Create account at dev.azure.com and project: 'AzureLearning'",
           "Initialize Git repo with sample Node.js app",
           "Create azure-pipelines.yml: trigger on main, steps: npm install, test, build",
           "Commit → watch pipeline run automatically",
           "Check logs for each step"
-        ],
-        verify: "Pipeline triggers on commit. All steps pass. Logs show build output."
+        ]
       },
       {
-        id: "lab-10-2",
-        name: "CI/CD to Azure App Service",
-        duration: "40 min",
-        difficulty: "Intermediate",
+        name: "Lab 2: CI/CD to Azure App Service",
         steps: [
           "Create App Service: app-devops-demo",
           "Create service connection to your Azure subscription",
@@ -878,8 +697,7 @@ Give me all Dockerfiles, K8s YAML, and APIM policy XML.`,
           "Commit code change → watch auto-build and deploy",
           "Add staging environment with manual approval gate",
           "Test: commit → build → deploy staging → approve → deploy prod"
-        ],
-        verify: "Code deploys automatically. Staging requires approval. Prod deploys after approval."
+        ]
       }
     ],
     resources: [
@@ -887,16 +705,9 @@ Give me all Dockerfiles, K8s YAML, and APIM policy XML.`,
       { type: "doc", name: "YAML Pipeline Reference", url: "https://learn.microsoft.com/en-us/azure/devops/pipelines/yaml-schema" }
     ],
     project: {
-      id: "proj-netflix",
       name: "PROJECT 6: Netflix Clone CI/CD Pipeline",
       description: "Full CI/CD pipeline: build, test, scan, deploy a web app to AKS with quality gates.",
       dummyData: "Movie catalog: 50 movies (title, genre, rating, thumbnail_url, description). React frontend, Express API.",
-      prompt: `Build CI/CD for a Netflix clone:
-- React frontend + Express API
-- Azure DevOps with Boards, Repos, Pipelines
-- YAML pipeline: Build → Docker push → Deploy staging → Test → Approve → Prod
-- Branch policies: PR reviews, build validation
-Give me azure-pipelines.yml and all configs.`,
       steps: [
         "Scaffold project with Claude (React + Express)",
         "Set up Azure DevOps with Boards, Repos, Pipelines",
@@ -916,8 +727,6 @@ Give me azure-pipelines.yml and all configs.`,
     title: "IaC: Bicep, Terraform & GitHub Actions",
     cert: "AZ-400",
     color: "#FF7139",
-    gapBadges: ["TERRAFORM", "BICEP"],
-    services: ["ARM Templates", "Bicep", "Terraform", "GitHub Actions", "GitOps", "Flux"],
     infused: [],
     topics: [
       "ARM Templates — structure, parameters, variables",
@@ -929,10 +738,7 @@ Give me azure-pipelines.yml and all configs.`,
     ],
     labs: [
       {
-        id: "lab-11-1",
-        name: "Deploy with Bicep",
-        duration: "35 min",
-        difficulty: "Intermediate",
+        name: "Lab 1: Deploy with Bicep",
         steps: [
           "az bicep install",
           "Create main.bicep: VNet + Subnet + NSG + VM",
@@ -940,14 +746,10 @@ Give me azure-pipelines.yml and all configs.`,
           "Deploy: az deployment group create --template-file main.bicep",
           "Modify to add second VM → re-deploy (incremental)",
           "Decompile ARM to Bicep: az bicep decompile"
-        ],
-        verify: "Bicep deploys infrastructure. What-if shows changes. Incremental update works."
+        ]
       },
       {
-        id: "lab-11-2",
-        name: "Terraform for Azure",
-        duration: "45 min",
-        difficulty: "Advanced",
+        name: "Lab 2: Terraform for Azure",
         steps: [
           "Install Terraform CLI",
           "Create main.tf: provider, resource group, VNet, subnet, VM",
@@ -955,14 +757,10 @@ Give me azure-pipelines.yml and all configs.`,
           "Inspect: terraform state list",
           "Modify VM size → plan (see diff) → apply",
           "terraform destroy"
-        ],
-        verify: "Terraform provisions infrastructure. State file tracks resources. Destroy cleans up."
+        ]
       },
       {
-        id: "lab-11-3",
-        name: "GitHub Actions CI/CD",
-        duration: "35 min",
-        difficulty: "Intermediate",
+        name: "Lab 3: GitHub Actions CI/CD",
         steps: [
           "Create GitHub repo with web app",
           "Create .github/workflows/deploy.yml",
@@ -970,8 +768,7 @@ Give me azure-pipelines.yml and all configs.`,
           "Set GitHub secrets: AZURE_CREDENTIALS",
           "Push → watch Action run",
           "Add Terraform step for infrastructure provisioning"
-        ],
-        verify: "GitHub Action triggers on push. Deploys to Azure successfully."
+        ]
       }
     ],
     resources: [
@@ -979,16 +776,9 @@ Give me azure-pipelines.yml and all configs.`,
       { type: "doc", name: "Terraform Azure Provider", url: "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs" }
     ],
     project: {
-      id: "proj-terraform",
       name: "PROJECT 7: Automate Infrastructure with Terraform + Pipelines",
       description: "Terraform-defined infrastructure deployed via Azure Pipelines on every commit.",
       dummyData: "Northwind Traders: dev + prod envs with VNet, AKS, SQL, Key Vault, App Gateway.",
-      prompt: `Build Terraform + CI/CD for Northwind Traders:
-- Terraform modules: networking, compute, database, security
-- tfvars for dev (small) and prod (HA)
-- Azure Pipeline: init → plan → approve → apply
-- Remote state in Azure Blob Storage
-Give me complete directory structure and all .tf files.`,
       steps: [
         "Design infrastructure with Claude",
         "Write Terraform modules: networking, compute, database, security",
@@ -1010,8 +800,6 @@ Give me complete directory structure and all .tf files.`,
     title: "Monitoring, Observability & Cost Management Deep Dive",
     cert: "AZ-104 / AZ-305",
     color: "#FFB900",
-    gapBadges: ["FINOPS"],
-    services: ["Azure Monitor", "Log Analytics", "Application Insights", "Alerts", "Network Watcher", "Cost Management", "Advisor"],
     infused: ["Cost Management deep dive (11 weeks of spend data)", "Azure Advisor recommendations", "FinOps principles"],
     topics: [
       "Azure Monitor overview & metrics",
@@ -1025,52 +813,37 @@ Give me complete directory structure and all .tf files.`,
     ],
     labs: [
       {
-        id: "lab-12-1",
-        name: "Log Analytics & VM Monitoring",
-        duration: "30 min",
-        difficulty: "Intermediate",
+        name: "Lab 1: Log Analytics & VM Monitoring",
         steps: [
           "Create Log Analytics Workspace: law-week12",
           "Deploy VM → enable Azure Monitor Agent",
           "Configure data collection: Syslog + Performance counters",
           "Wait 15 min → run KQL for CPU utilization and error logs",
           "Create alert: CPU > 80% for 5 minutes"
-        ],
-        verify: "Logs appear in workspace. KQL queries return data. Alert configured."
+        ]
       },
       {
-        id: "lab-12-2",
-        name: "Application Insights",
-        duration: "25 min",
-        difficulty: "Intermediate",
+        name: "Lab 2: Application Insights",
         steps: [
           "Create App Insights → connect to a web app",
           "Generate traffic including /error endpoints",
           "Explore Live Metrics, Performance, Failures panels",
           "Custom KQL: requests | where duration > 2000",
           "Set up availability test from 5 regions"
-        ],
-        verify: "App Insights shows requests. Failures tracked. Availability test running."
+        ]
       },
       {
-        id: "lab-12-3",
-        name: "Network Watcher",
-        duration: "25 min",
-        difficulty: "Intermediate",
+        name: "Lab 3: Network Watcher",
         steps: [
           "Enable Network Watcher",
           "Connection Troubleshoot: test VM-to-VM connectivity",
           "IP Flow Verify: check NSG allows port 443",
           "Capture 60 seconds of packets",
           "Review NSG flow logs and visualize topology"
-        ],
-        verify: "Connection troubleshoot diagnoses issues. Flow logs captured. Topology visible."
+        ]
       },
       {
-        id: "lab-12-4",
-        name: "Cost Management & FinOps Deep Dive",
-        duration: "35 min",
-        difficulty: "Intermediate",
+        name: "Lab 4: Cost Management & FinOps Deep Dive",
         steps: [
           "Navigate to Cost Management → Cost Analysis",
           "View costs by: resource group, service, location, tag (CostCenter)",
@@ -1080,8 +853,7 @@ Give me complete directory structure and all .tf files.`,
           "Identify underutilized VMs and right-sizing opportunities",
           "Export cost data to CSV → ask Claude to analyze and summarize trends",
           "Calculate: what would Reserved Instances save you for always-on VMs?"
-        ],
-        verify: "Cost trends identified. Budget alerts set. Advisor recommendations reviewed."
+        ]
       }
     ],
     resources: [
@@ -1104,8 +876,6 @@ Give me complete directory structure and all .tf files.`,
     title: "Zero Trust, Firewall, Private Endpoints & Defender",
     cert: "AZ-500",
     color: "#D83B01",
-    gapBadges: [],
-    services: ["Azure Firewall", "DDoS Protection", "Private Endpoints", "Conditional Access", "MFA", "Defender for Cloud", "WAF"],
     infused: [],
     topics: [
       "Zero Trust Architecture — 6 pillars in Azure",
@@ -1118,10 +888,7 @@ Give me complete directory structure and all .tf files.`,
     ],
     labs: [
       {
-        id: "lab-13-1",
-        name: "Azure Firewall with DDoS Protection",
-        duration: "40 min",
-        difficulty: "Advanced",
+        name: "Lab 1: Azure Firewall with DDoS Protection",
         steps: [
           "Create hub VNet with AzureFirewallSubnet",
           "Deploy Azure Firewall → route table forcing spoke traffic through FW",
@@ -1129,28 +896,20 @@ Give me complete directory structure and all .tf files.`,
           "Add network rule: allow DNS (UDP 53)",
           "Test: curl microsoft.com (allowed), google.com (denied)",
           "Enable DDoS Protection plan"
-        ],
-        verify: "Firewall allows microsoft.com. Blocks google.com. DDoS Protection enabled."
+        ]
       },
       {
-        id: "lab-13-2",
-        name: "Private Endpoints for PaaS",
-        duration: "30 min",
-        difficulty: "Intermediate",
+        name: "Lab 2: Private Endpoints for PaaS",
         steps: [
           "Create storage account with public access disabled",
           "Create Private Endpoint + Private DNS Zone",
           "From VM: nslookup → verify private IP resolution",
           "Upload from VM (success) vs local machine (denied)",
           "Compare behavior: Private Endpoint vs Service Endpoint"
-        ],
-        verify: "Private Endpoint works from VNet. Public access denied. DNS resolves privately."
+        ]
       },
       {
-        id: "lab-13-3",
-        name: "Zero Trust Web App",
-        duration: "45 min",
-        difficulty: "Advanced",
+        name: "Lab 3: Zero Trust Web App",
         steps: [
           "Deploy App Service with Private Endpoint (no public access)",
           "Enable Entra ID authentication",
@@ -1159,14 +918,10 @@ Give me complete directory structure and all .tf files.`,
           "Key Vault with managed identity only",
           "Verify: every layer requires identity + private networking",
           "Document Zero Trust implementation per pillar"
-        ],
-        verify: "All resources private. Auth required everywhere. Zero Trust documented."
+        ]
       },
       {
-        id: "lab-13-4",
-        name: "Defender for Cloud",
-        duration: "30 min",
-        difficulty: "Intermediate",
+        name: "Lab 4: Defender for Cloud",
         steps: [
           "Enable Defender for Cloud on your subscription",
           "Review current Secure Score and recommendations",
@@ -1174,8 +929,7 @@ Give me complete directory structure and all .tf files.`,
           "Enable Defender for Servers on your VMs",
           "Review vulnerability assessment results",
           "Set a target: improve Secure Score by 20 points"
-        ],
-        verify: "Defender enabled. Secure Score visible. 5 recommendations implemented."
+        ]
       }
     ],
     resources: [
@@ -1184,17 +938,9 @@ Give me complete directory structure and all .tf files.`,
       { type: "doc", name: "Defender for Cloud", url: "https://learn.microsoft.com/en-us/azure/defender-for-cloud/" }
     ],
     project: {
-      id: "proj-zerotrust",
       name: "PROJECT 8: Secure Corporate Environment (Zero Trust)",
       description: "Implement enterprise-grade Zero Trust: Conditional Access, Private Endpoints for all PaaS, Azure Firewall, and Defender for Cloud.",
       dummyData: "Woodgrove Bank — 200 employees, 3 offices. SOC 2 compliant. US regions only. No public PaaS endpoints. MFA for all admins.",
-      prompt: `Build Zero Trust for Woodgrove Bank:
-- Conditional Access: MFA for admin roles, compliant devices required
-- Azure Firewall in hub VNet with spoke routing
-- All PaaS behind Private Endpoints
-- Defender for Cloud with 80%+ Secure Score
-- Azure Policies for security enforcement
-Give me all Conditional Access policies, firewall rules, and Policy definitions.`,
       steps: [
         "Design Zero Trust architecture with Claude",
         "Conditional Access: MFA for admin roles",
@@ -1219,8 +965,6 @@ Give me all Conditional Access policies, firewall rules, and Policy definitions.
     title: "Sentinel SIEM, Advanced Policy & Governance at Scale",
     cert: "AZ-500 / AZ-305",
     color: "#008575",
-    gapBadges: [],
-    services: ["Microsoft Sentinel", "Azure Policy", "Azure Blueprints", "Management Groups", "Azure Arc"],
     infused: ["Microsoft Sentinel deep dive", "Advanced custom policies & initiatives", "Azure Blueprints", "Azure Arc for hybrid"],
     topics: [
       "Microsoft Sentinel — SIEM & SOAR setup",
@@ -1233,10 +977,7 @@ Give me all Conditional Access policies, firewall rules, and Policy definitions.
     ],
     labs: [
       {
-        id: "lab-14-1",
-        name: "Microsoft Sentinel SIEM",
-        duration: "45 min",
-        difficulty: "Advanced",
+        name: "Lab 1: Microsoft Sentinel SIEM",
         steps: [
           "Enable Sentinel on Log Analytics Workspace",
           "Connect data sources: Activity Logs, Entra ID sign-ins",
@@ -1245,14 +986,10 @@ Give me all Conditional Access policies, firewall rules, and Policy definitions.
           "Simulate failed logins → watch incident appear",
           "Create Playbook (Logic App) for alert notification",
           "Explore Sentinel workbooks for visualization"
-        ],
-        verify: "Sentinel connected. Analytics rules fire. Incidents created. Playbook triggers."
+        ]
       },
       {
-        id: "lab-14-2",
-        name: "Advanced Azure Policy",
-        duration: "35 min",
-        difficulty: "Advanced",
+        name: "Lab 2: Advanced Azure Policy",
         steps: [
           "Create custom policy: 'Deny public IP on VMs'",
           "Write policy rule JSON (ask Claude to generate)",
@@ -1260,14 +997,10 @@ Give me all Conditional Access policies, firewall rules, and Policy definitions.
           "Bundle policies into a Policy Initiative (set)",
           "Assign initiative at Management Group level",
           "Review compliance dashboard → remediate non-compliant resources"
-        ],
-        verify: "Custom policies block non-compliant resources. Initiative assigned. Compliance visible."
+        ]
       },
       {
-        id: "lab-14-3",
-        name: "Azure Blueprints",
-        duration: "35 min",
-        difficulty: "Advanced",
+        name: "Lab 3: Azure Blueprints",
         steps: [
           "Create Blueprint: bp-secure-landing-zone",
           "Add artifacts: Resource Group, VNet, NSG, Key Vault, Storage",
@@ -1275,22 +1008,17 @@ Give me all Conditional Access policies, firewall rules, and Policy definitions.
           "Add RBAC: Contributor to specific group",
           "Publish v1.0 → assign to subscription",
           "Verify all resources created with correct policies and RBAC"
-        ],
-        verify: "Blueprint deployed. All artifacts created. Policies and RBAC applied."
+        ]
       },
       {
-        id: "lab-14-4",
-        name: "Azure Arc — Hybrid Management",
-        duration: "30 min",
-        difficulty: "Intermediate",
+        name: "Lab 4: Azure Arc — Hybrid Management",
         steps: [
           "Install Arc agent on a local VM or WSL instance",
           "Register as Arc-enabled server",
           "View in Portal → verify properties",
           "Apply Azure Policy to the Arc server",
           "Apply tags and explore management capabilities"
-        ],
-        verify: "Arc server visible in Portal. Policies applied. Tags assigned."
+        ]
       }
     ],
     resources: [
@@ -1299,18 +1027,9 @@ Give me all Conditional Access policies, firewall rules, and Policy definitions.
       { type: "doc", name: "Azure Arc Docs", url: "https://learn.microsoft.com/en-us/azure/azure-arc/" }
     ],
     project: {
-      id: "proj-governance",
       name: "PROJECT 9: Enterprise Governance & SIEM Framework",
       description: "Design and implement a complete governance framework with Sentinel SIEM, custom policies, Blueprints, and Arc for a multi-team enterprise.",
       dummyData: "Fabrikam Inc — 500 people, 4 business units (Eng, Marketing, Sales, Finance). Each has dev/staging/prod. Currently no policies, no SIEM, no tagging enforcement.",
-      prompt: `Build governance for Fabrikam Inc:
-- Management Group hierarchy for 4 business units
-- Custom policies: deny public IPs, require encryption, allowed VM sizes, require tags
-- Policy Initiative bundling all policies
-- Blueprints for dev, staging, prod environments
-- Sentinel: data connectors, analytics rules, 3 playbooks
-- Azure Arc for 2 on-prem servers
-Give me Management Group structure, all policy JSON, and Sentinel rules.`,
       steps: [
         "Design Management Group hierarchy with Claude",
         "Create custom policies: deny public IPs, require encryption, allowed VM sizes, require tags",
@@ -1336,8 +1055,6 @@ Give me Management Group structure, all policy JSON, and Sentinel rules.`,
     title: "Solutions Architecture, DR & Migration (AZ-305)",
     cert: "AZ-305",
     color: "#0078D4",
-    gapBadges: [],
-    services: ["Well-Architected Framework", "Azure Migrate", "Site Recovery", "Traffic Manager", "Front Door"],
     infused: [],
     topics: [
       "Well-Architected Framework (5 pillars)",
@@ -1351,10 +1068,7 @@ Give me Management Group structure, all policy JSON, and Sentinel rules.`,
     ],
     labs: [
       {
-        id: "lab-15-1",
-        name: "Design a Complete Architecture",
-        duration: "60 min",
-        difficulty: "Advanced",
+        name: "Lab 1: Design a Complete Architecture",
         steps: [
           "Scenario: E-commerce for 100K daily users, global presence",
           "Design with Claude: compute, networking, data, security, DR",
@@ -1362,14 +1076,10 @@ Give me Management Group structure, all policy JSON, and Sentinel rules.`,
           "Calculate costs with Azure Pricing Calculator",
           "Document SLA targets, RPO/RTO, scaling strategy, security controls",
           "Present the design as a CTO pitch"
-        ],
-        verify: "Complete architecture documented. Cost estimated. SLA/RPO/RTO defined."
+        ]
       },
       {
-        id: "lab-15-2",
-        name: "Disaster Recovery with Site Recovery",
-        duration: "45 min",
-        difficulty: "Advanced",
+        name: "Lab 2: Disaster Recovery with Site Recovery",
         steps: [
           "Deploy VM in East US with a web application",
           "Set up Azure Site Recovery to replicate to West US",
@@ -1377,8 +1087,7 @@ Give me Management Group structure, all policy JSON, and Sentinel rules.`,
           "Run test failover → verify app works in West US",
           "Clean up test failover resources",
           "Document RPO and RTO achieved"
-        ],
-        verify: "Site Recovery configured. Test failover succeeds. RPO/RTO documented."
+        ]
       }
     ],
     resources: [
@@ -1386,17 +1095,9 @@ Give me Management Group structure, all policy JSON, and Sentinel rules.`,
       { type: "doc", name: "AZ-305 Learning Path", url: "https://learn.microsoft.com/en-us/training/paths/design-identity-governance-monitor-solutions/" }
     ],
     project: {
-      id: "proj-migration",
       name: "PROJECT 10: On-Premises to Azure Migration",
       description: "Plan and execute a simulated migration using Azure Migrate and Site Recovery.",
       dummyData: "Legacy Corp: 3 Windows Servers (AD, File, SQL), 2 Linux web servers, 10.10.0.0/16 network. Budget: $5K/month.",
-      prompt: `Plan migration for Legacy Corp:
-- 3 Windows Servers (AD, File, SQL)
-- 2 Linux web servers
-- Current network: 10.10.0.0/16
-- Budget: $5K/month
-Design target architecture, migration plan, and execute with Site Recovery.
-Give me assessment, architecture diagram, and step-by-step migration runbook.`,
       steps: [
         "Create migration assessment with Claude",
         "Map each server to Azure equivalents",
@@ -1420,8 +1121,6 @@ Give me assessment, architecture diagram, and step-by-step migration runbook.`,
     title: "Functions Deep Dive, Logic Apps, Event Grid & Service Bus",
     cert: "AZ-204",
     color: "#5C2D91",
-    gapBadges: [],
-    services: ["Azure Functions", "Durable Functions", "Service Bus", "Event Grid", "Logic Apps", "Azure CDN", "Static Web Apps"],
     infused: [],
     topics: [
       "Azure Functions — Timer, Blob, Queue, Event Grid triggers",
@@ -1435,10 +1134,7 @@ Give me assessment, architecture diagram, and step-by-step migration runbook.`,
     ],
     labs: [
       {
-        id: "lab-16-1",
-        name: "Azure Functions — All Trigger Types",
-        duration: "40 min",
-        difficulty: "Intermediate",
+        name: "Lab 1: Azure Functions — All Trigger Types",
         steps: [
           "Revisit func-week5 from Week 5 (or create new)",
           "Add Timer trigger: cleanup job every 5 minutes",
@@ -1446,14 +1142,10 @@ Give me assessment, architecture diagram, and step-by-step migration runbook.`,
           "Add Queue trigger: processes messages from a Storage Queue",
           "Add Event Grid trigger: responds to resource events",
           "Monitor all triggers via Application Insights"
-        ],
-        verify: "All trigger types working. App Insights shows invocations for each."
+        ]
       },
       {
-        id: "lab-16-2",
-        name: "Service Bus & Event Grid",
-        duration: "35 min",
-        difficulty: "Intermediate",
+        name: "Lab 2: Service Bus & Event Grid",
         steps: [
           "Create Service Bus: queue 'orders', topic 'notifications' with 2 subscriptions",
           "Write sender app: 10 messages to queue",
@@ -1461,35 +1153,26 @@ Give me assessment, architecture diagram, and step-by-step migration runbook.`,
           "Create Event Grid topic → subscribe Azure Function",
           "Send custom event → watch Function fire",
           "Verify dead-letter queue for failed messages"
-        ],
-        verify: "Service Bus queue processes messages. Event Grid triggers Function."
+        ]
       },
       {
-        id: "lab-16-3",
-        name: "Logic Apps Workflow Automation",
-        duration: "30 min",
-        difficulty: "Intermediate",
+        name: "Lab 3: Logic Apps Workflow Automation",
         steps: [
           "Workflow 1: Blob upload → conditional email (if size > 5MB → manager, else → team)",
           "Workflow 2: HTTP trigger → query Azure SQL → return formatted response",
           "Workflow 3: Daily recurrence → call Cost Management API → email cost report",
           "Test all workflows and review run history"
-        ],
-        verify: "All 3 Logic Apps run successfully. Emails sent. Run history shows executions."
+        ]
       },
       {
-        id: "lab-16-4",
-        name: "Static Web App with Full API Backend",
-        duration: "30 min",
-        difficulty: "Intermediate",
+        name: "Lab 4: Static Web App with Full API Backend",
         steps: [
           "Build on the Static Web App from Week 5",
           "Add API folder with multiple Azure Functions endpoints",
           "Add Entra ID authentication to the Static Web App",
           "Configure environment variables and app settings",
           "Deploy and test the full-stack serverless application"
-        ],
-        verify: "Static Web App with API backend deployed. Auth working. All endpoints functional."
+        ]
       }
     ],
     resources: [
@@ -1499,18 +1182,9 @@ Give me assessment, architecture diagram, and step-by-step migration runbook.`,
       { type: "doc", name: "Event Grid Docs", url: "https://learn.microsoft.com/en-us/azure/event-grid/" }
     ],
     project: {
-      id: "proj-eventdriven",
       name: "PROJECT 11: Event-Driven Serverless Order System",
-      description: "Full event-driven app: Static Web App frontend, Functions API, Service Bus for async processing, Logic Apps for notifications, APIM gateway.",
+      description: "Full event-driven app: Static Web App frontend, Functions API, Service Bus for async processing, Logic Apps for notifications, APIM gateway (from Week 9).",
       dummyData: "Alpine Coffee Roasters: orders flow through validation → payment → fulfillment → notification. 30 products, 200 customers, 500 historical orders.",
-      prompt: `Build event-driven order system for Alpine Coffee:
-- React frontend (Static Web App)
-- Functions: CreateOrder, ProcessPayment, FulfillOrder, GetStatus
-- Service Bus queue for async order processing
-- Event Grid: 'OrderCompleted' → triggers Logic App
-- Logic App: sends email + updates blob
-- APIM for rate limiting
-Give me all Function code, Service Bus setup, and Logic App workflow.`,
       steps: [
         "Ask Claude for React frontend (order form + status page)",
         "Build Functions: CreateOrder, ProcessPayment, FulfillOrder, GetStatus",
@@ -1537,8 +1211,6 @@ Give me all Function code, Service Bus setup, and Logic App workflow.`,
     title: "Capstone Project, Cert Prep & Career Readiness",
     cert: "ALL CERTS",
     color: "#107C10",
-    gapBadges: [],
-    services: ["All Azure Services", "GitHub Portfolio", "Resume", "Interview Prep"],
     infused: [],
     topics: [
       "Certification exam strategies & study tips",
@@ -1550,10 +1222,7 @@ Give me all Function code, Service Bus setup, and Logic App workflow.`,
     ],
     labs: [
       {
-        id: "lab-17-1",
-        name: "Certification Practice Exams",
-        duration: "90 min",
-        difficulty: "Advanced",
+        name: "Lab 1: Certification Practice Exams",
         steps: [
           "Ask Claude for 20 AZ-900 practice questions → take quiz",
           "Ask Claude for 20 AZ-104 questions → take quiz",
@@ -1562,22 +1231,17 @@ Give me all Function code, Service Bus setup, and Logic App workflow.`,
           "Review wrong answers → study specific topics",
           "Time yourself: 2 min per question max",
           "Identify 3 weakest areas → focused study plan"
-        ],
-        verify: "All practice exams completed. Weak areas identified. Study plan created."
+        ]
       },
       {
-        id: "lab-17-2",
-        name: "Build Your Azure Portfolio",
-        duration: "60 min",
-        difficulty: "Intermediate",
+        name: "Lab 2: Build Your Azure Portfolio",
         steps: [
           "Compile all 11 projects on GitHub with READMEs",
           "Add screenshots and architecture diagrams to each",
           "Write a blog post about your favorite project (use Claude)",
           "Update LinkedIn with certifications and project descriptions",
           "Ask Claude to review your resume for Azure roles"
-        ],
-        verify: "GitHub portfolio complete. LinkedIn updated. Resume reviewed."
+        ]
       }
     ],
     resources: [
@@ -1585,24 +1249,9 @@ Give me all Function code, Service Bus setup, and Logic App workflow.`,
       { type: "doc", name: "Azure Architecture Browse", url: "https://learn.microsoft.com/en-us/azure/architecture/browse/" }
     ],
     project: {
-      id: "proj-capstone",
       name: "CAPSTONE: Full Enterprise Azure Deployment",
       description: "Build a complete enterprise-grade Azure environment from scratch using EVERY skill from all 17 weeks. This is your portfolio crown jewel.",
       dummyData: "GlobalTech Solutions — SaaS project management tool. 500 employees, 10K customers year 1. SOC 2, multi-region, CI/CD, monitoring, DR.",
-      prompt: `Build the ultimate Azure deployment for GlobalTech Solutions:
-- Terraform: hub-spoke network, AKS, SQL, Cosmos DB, Key Vault, Firewall
-- Entra ID: RBAC, Conditional Access, MFA
-- Governance: Management Groups, Policies, tags, budgets
-- Databases: SQL + Cosmos DB with Private Endpoints
-- Containerize app → ACR → AKS with APIM
-- Full CI/CD: Azure DevOps pipeline
-- Serverless: Functions for background jobs, Logic Apps for notifications
-- Security: Private Endpoints, Firewall, Defender 90%+ Score
-- Sentinel: analytics rules and incident playbooks
-- Monitoring: Log Analytics, App Insights, alerts
-- Cost Management: budgets, Advisor optimization
-- DR: Site Recovery to secondary region
-Give me complete architecture, all Terraform files, pipeline YAML, and documentation.`,
       steps: [
         "Design complete architecture with Claude (all layers)",
         "Terraform: hub-spoke network, AKS, SQL, Cosmos DB, Key Vault, Firewall",

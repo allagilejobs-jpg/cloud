@@ -12,8 +12,8 @@ Built with **Vite + React**, deployable to **GitHub Pages**.
 
 ```bash
 # Clone the repo
-git clone https://github.com/YOUR-USERNAME/azure-learning-plan.git
-cd azure-learning-plan
+git clone https://github.com/YOUR-USERNAME/cloud/azure.git
+cd cloud/azure
 
 # Install dependencies
 npm install
@@ -28,11 +28,11 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ### First-time setup
 
-1. **Create a GitHub repo** named `azure-learning-plan`
+1. **Create a GitHub repo** named `cloud/azure`
 
 2. **Update `vite.config.js`** — set the `base` to match your repo name:
    ```js
-   base: '/azure-learning-plan/',
+   base: '/cloud/azure/',
    ```
 
 3. **Push your code:**
@@ -40,7 +40,7 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
    git init
    git add .
    git commit -m "Initial commit: Azure Learning Plan v3"
-   git remote add origin https://github.com/YOUR-USERNAME/azure-learning-plan.git
+   git remote add origin https://github.com/YOUR-USERNAME/cloud/azure.git
    git push -u origin main
    ```
 
@@ -53,7 +53,7 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 Your site will be live at:
 ```
-https://YOUR-USERNAME.github.io/azure-learning-plan/
+https://YOUR-USERNAME.github.io/cloud/azure/
 ```
 
 ### Subsequent deploys
@@ -67,7 +67,7 @@ That's it — `gh-pages` handles the build + push automatically.
 ## 🏗️ Project Structure
 
 ```
-azure-learning-plan/
+cloud/azure/
 ├── index.html              # Vite entry point
 ├── package.json            # Dependencies + scripts
 ├── vite.config.js          # Vite config with GH Pages base
