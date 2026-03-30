@@ -4,8 +4,6 @@ const WEEKS = [
   // ═══════════════ PHASE 1: FOUNDATIONS (Weeks 1-3) ═══════════════
   {
     week: 1, phase: 1, phaseTitle: "FOUNDATIONS",
-    cert: "CLF-C02",
-    color: "#FF9900",
     title: "Cloud Fundamentals, Linux Essentials & AWS Core",
     gapBadges: ["LINUX"],
     objectives: [
@@ -18,11 +16,11 @@ const WEEKS = [
     ],
     services: ["IAM", "EC2", "S3", "CloudWatch", "AWS CLI", "Linux"],
     resources: [
-      { type: "doc", name: "AWS Cloud Practitioner Essentials", url: "https://skillbuilder.aws" },
-      { type: "doc", name: "Linux Journey (Free)", url: "https://linuxjourney.com/" },
-      { type: "doc", name: "IAM User Guide", url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/" }
+      { name: "AWS Cloud Practitioner Essentials", url: "https://skillbuilder.aws" },
+      { name: "Linux Journey (Free)", url: "https://linuxjourney.com/" },
+      { name: "IAM User Guide", url: "https://docs.aws.amazon.com/IAM/latest/UserGuide/" }
     ],
-    askClaude: [
+    prompts: [
       { title: "Cloud Computing Basics", prompt: `Explain AWS cloud computing to me like I'm switching from on-premises IT. Cover: IaaS vs PaaS vs SaaS, the shared responsibility model, and why companies migrate to AWS. Give me real-world analogies for each concept.` },
       { title: "Linux for AWS Engineers", prompt: `I'm starting my AWS career and need Linux fundamentals NOW because I'll be managing EC2 servers. Teach me the 40 most essential Linux commands organized by: file management (ls, cd, mkdir, cp, mv, rm, find, chmod, chown), text processing (cat, grep, awk, sed, head, tail, wc), networking (curl, wget, ping, ss, dig, ip addr), process management (ps, top, kill, systemctl, journalctl), and disk/storage (df, du, lsblk, mount, fdisk). For each command give me the syntax, 2 common flags, and a real AWS use case.` },
       { title: "IAM Deep Dive", prompt: `Teach me IAM from scratch. Explain users, groups, roles, and policies with a real company example. A startup called 'CloudBrew Coffee' has a CEO, 2 developers, 1 DBA, and 1 DevOps engineer — design their IAM structure with least privilege.` },
@@ -46,8 +44,6 @@ const WEEKS = [
   },
   {
     week: 2, phase: 1,
-    cert: "CLF-C02 / SAA-C03",
-    color: "#FF9900",
     title: "Storage Deep Dive — S3, EBS, EFS, Glacier",
     gapBadges: [],
     objectives: [
@@ -59,10 +55,10 @@ const WEEKS = [
     ],
     services: ["S3", "EBS", "EFS", "Glacier", "CloudFront", "Snow Family"],
     resources: [
-      { type: "doc", name: "S3 User Guide", url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/" },
-      { type: "doc", name: "EBS Volume Types", url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html" }
+      { name: "S3 User Guide", url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/" },
+      { name: "EBS Volume Types", url: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html" }
     ],
-    askClaude: [
+    prompts: [
       { title: "S3 Storage Classes", prompt: `Explain all S3 storage classes with a cost comparison table. I'm storing user photos (accessed daily), monthly reports (occasional), and legal docs (7 years, rarely accessed). Which class for each? Include lifecycle rules.` },
       { title: "S3 Security Policies", prompt: `Teach me S3 bucket policies vs ACLs vs IAM policies. When do I use each? Write an example bucket policy that: 1) allows public read on /public, 2) restricts uploads to a specific IAM role, 3) denies access from outside the US.` },
       { title: "EBS Volume Types", prompt: `Compare EBS volume types (gp3, io2, st1, sc1) in a table. My app needs: a boot volume, a high-IOPS database volume, and a log storage volume. Recommend the best type for each with cost estimates.` }
@@ -87,8 +83,6 @@ const WEEKS = [
   },
   {
     week: 3, phase: 1,
-    cert: "CLF-C02 / SAA-C03",
-    color: "#FF9900",
     title: "EC2, Bash Scripting, Load Balancers & Auto Scaling",
     gapBadges: ["BASH"],
     objectives: [
@@ -99,10 +93,10 @@ const WEEKS = [
     ],
     services: ["EC2", "ALB", "NLB", "Auto Scaling", "AMI", "Bash"],
     resources: [
-      { type: "doc", name: "EC2 Auto Scaling", url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/" },
-      { type: "video", name: "Bash Scripting Tutorial", url: "https://linuxconfig.org/bash-scripting-tutorial" }
+      { name: "EC2 Auto Scaling", url: "https://docs.aws.amazon.com/autoscaling/ec2/userguide/" },
+      { name: "Bash Scripting Tutorial", url: "https://linuxconfig.org/bash-scripting-tutorial" }
     ],
-    askClaude: [
+    prompts: [
       { title: "Bash Scripting for AWS", prompt: `I'm writing EC2 User Data scripts and need to learn Bash properly. Teach me: variables, conditionals (if/else), loops (for/while), functions, exit codes, piping (|), redirects (> >>), and error handling (set -e, trap). Then write 3 real scripts:\n1. Web server setup script (install httpd, configure, start, verify)\n2. Health check script that pings 5 IPs from a file and logs failures\n3. Log rotation script that compresses logs older than 7 days\nExplain every line.` },
       { title: "Load Balancers Explained", prompt: `Explain Load Balancers like I'm designing a food delivery app. Cover: ALB vs NLB vs Classic. When do I use each? Include health checks and cross-zone load balancing.` },
       { title: "Auto Scaling Deep Dive", prompt: `Teach me EC2 Auto Scaling end-to-end. Explain launch templates, ASG config, scaling policies (target tracking, step, scheduled). Design scaling for 100 users normally, 10,000 during sales events.` }
@@ -126,8 +120,6 @@ const WEEKS = [
   // ═══════════════ PHASE 2: NETWORKING, DATABASES & MONITORING (Weeks 4-6) ═══════════════
   {
     week: 4, phase: 2, phaseTitle: "NETWORKING, DATABASES & MONITORING",
-    cert: "SAA-C03",
-    color: "#1A73E8",
     title: "VPC & Networking Deep Dive",
     gapBadges: [],
     objectives: [
@@ -138,10 +130,10 @@ const WEEKS = [
     ],
     services: ["VPC", "Subnets", "IGW", "NAT GW", "NACLs", "Route 53", "VPN"],
     resources: [
-      { type: "doc", name: "VPC User Guide", url: "https://docs.aws.amazon.com/vpc/latest/userguide/" },
-      { type: "doc", name: "Route 53 Guide", url: "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/" }
+      { name: "VPC User Guide", url: "https://docs.aws.amazon.com/vpc/latest/userguide/" },
+      { name: "Route 53 Guide", url: "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/" }
     ],
-    askClaude: [
+    prompts: [
       { title: "VPC Architecture Design", prompt: `Teach me VPC from scratch. I'm building 'MediTrack' healthcare app needing: public web servers, private app servers, isolated databases. Design the complete VPC with CIDR blocks, subnets across 2 AZs, route tables, and all gateways. Explain every decision.` },
       { title: "Security Groups vs NACLs", prompt: `Explain SGs vs NACLs with a comparison table. Give me 5 scenarios for each. Write NACL rules for: allow HTTP/HTTPS, allow SSH from one IP, deny all else.` },
       { title: "Route 53 Policies", prompt: `Teach me Route 53 routing policies (Simple, Weighted, Latency, Failover, Geolocation, Multi-Value). Real-world use case and dummy config for each.` }
@@ -163,8 +155,6 @@ const WEEKS = [
   },
   {
     week: 5, phase: 2,
-    cert: "SAA-C03 / DVA-C02",
-    color: "#1A73E8",
     title: "Databases, Serverless & Python/boto3",
     gapBadges: ["PYTHON", "STEP FUNCTIONS", "EVENTBRIDGE"],
     objectives: [
@@ -176,11 +166,11 @@ const WEEKS = [
     ],
     services: ["RDS", "DynamoDB", "Lambda", "API Gateway", "SQS", "SNS", "Step Functions", "EventBridge", "boto3"],
     resources: [
-      { type: "doc", name: "Boto3 Documentation", url: "https://boto3.amazonaws.com/v1/documentation/api/latest/" },
-      { type: "doc", name: "Lambda Guide", url: "https://docs.aws.amazon.com/lambda/latest/dg/" },
-      { type: "doc", name: "Step Functions Guide", url: "https://docs.aws.amazon.com/step-functions/latest/dg/" }
+      { name: "Boto3 Documentation", url: "https://boto3.amazonaws.com/v1/documentation/api/latest/" },
+      { name: "Lambda Guide", url: "https://docs.aws.amazon.com/lambda/latest/dg/" },
+      { name: "Step Functions Guide", url: "https://docs.aws.amazon.com/step-functions/latest/dg/" }
     ],
-    askClaude: [
+    prompts: [
       { title: "Python boto3 Crash Course", prompt: `I'm about to write Lambda functions in Python and need to learn boto3 NOW. Teach me:\n1. Setup: clients vs resources, sessions, credentials\n2. EC2: list/start/stop instances with filters\n3. S3: upload, download, list, presigned URLs\n4. DynamoDB: put_item, get_item, query, scan\n5. Error handling with botocore.exceptions\nFor each, give me working code I can paste into Lambda immediately. Then build a complete Lambda function that: reads from S3, processes JSON, stores results in DynamoDB.` },
       { title: "Database Decision Matrix", prompt: `Compare RDS vs DynamoDB vs ElastiCache vs Redshift. I'm building: e-commerce site, real-time leaderboard, data warehouse, session store. Which for each and why?` },
       { title: "Step Functions & EventBridge", prompt: `Teach me Step Functions + EventBridge. Build an order workflow: EventBridge receives 'OrderPlaced' → Step Functions: validate → charge → update inventory → send email. Give me the ASL definition with error handling and retries.` }
@@ -205,8 +195,6 @@ const WEEKS = [
   },
   {
     week: 6, phase: 2,
-    cert: "SAA-C03 / SCS-C02",
-    color: "#1A73E8",
     title: "Monitoring, Security & Observability",
     gapBadges: ["SECRETS MANAGER", "SSM", "X-RAY"],
     objectives: [
@@ -219,11 +207,11 @@ const WEEKS = [
     ],
     services: ["CloudWatch", "CloudTrail", "AWS Config", "KMS", "WAF", "Secrets Manager", "SSM", "X-Ray", "GuardDuty"],
     resources: [
-      { type: "doc", name: "CloudWatch Guide", url: "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/" },
-      { type: "doc", name: "Systems Manager Guide", url: "https://docs.aws.amazon.com/systems-manager/latest/userguide/" },
-      { type: "doc", name: "X-Ray Guide", url: "https://docs.aws.amazon.com/xray/latest/devguide/" }
+      { name: "CloudWatch Guide", url: "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/" },
+      { name: "Systems Manager Guide", url: "https://docs.aws.amazon.com/systems-manager/latest/userguide/" },
+      { name: "X-Ray Guide", url: "https://docs.aws.amazon.com/xray/latest/devguide/" }
     ],
-    askClaude: [
+    prompts: [
       { title: "Monitoring Strategy", prompt: `Design monitoring for my 3-tier ShopStream app: CPU dashboards, billing alerts, log aggregation from EC2 + Lambda, custom metrics for order processing time, SNS phone alerts. Step-by-step.` },
       { title: "Secrets Manager vs SSM Parameter Store", prompt: `Compare Secrets Manager vs SSM Parameter Store. I have: DB passwords, API keys, feature flags, SSL certs. Which service for each? Show me: store a DB password in Secrets Manager with auto-rotation, retrieve it from Lambda with boto3. Then show Parameter Store for non-secret config.` },
       { title: "SSM Session Manager", prompt: `Teach me AWS Systems Manager: 1) Session Manager — SSH without key pairs or open ports, 2) Run Command — execute scripts across 100 instances, 3) Patch Manager — automated OS patching. Show me how to replace traditional SSH entirely.` },
@@ -250,8 +238,6 @@ const WEEKS = [
   // ═══════════════ PHASE 3: IaC & DEVOPS (Weeks 7-9) ═══════════════
   {
     week: 7, phase: 3, phaseTitle: "INFRASTRUCTURE AS CODE & DEVOPS",
-    cert: "SAA-C03 / DOP-C02",
-    color: "#00C853",
     title: "CloudFormation & Terraform — IaC Side-by-Side",
     gapBadges: ["TERRAFORM"],
     objectives: [
@@ -262,11 +248,11 @@ const WEEKS = [
     ],
     services: ["CloudFormation", "Terraform", "S3 (state)", "DynamoDB (locking)"],
     resources: [
-      { type: "doc", name: "CloudFormation Guide", url: "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/" },
-      { type: "doc", name: "Terraform AWS Provider", url: "https://registry.terraform.io/providers/hashicorp/aws/latest/docs" },
-      { type: "doc", name: "Terraform Learn (Free)", url: "https://developer.hashicorp.com/terraform/tutorials" }
+      { name: "CloudFormation Guide", url: "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/" },
+      { name: "Terraform AWS Provider", url: "https://registry.terraform.io/providers/hashicorp/aws/latest/docs" },
+      { name: "Terraform Learn (Free)", url: "https://developer.hashicorp.com/terraform/tutorials" }
     ],
-    askClaude: [
+    prompts: [
       { title: "CloudFormation from Zero", prompt: `Teach me CloudFormation from zero. Write a YAML template that creates: VPC with 2 subnets, EC2 with web server, security group, and outputs the public IP. Explain every line. Add configurable parameters.` },
       { title: "Terraform from Zero", prompt: `Now teach me the EXACT same infrastructure in Terraform. I just learned CloudFormation — show me the Terraform equivalent side-by-side:\n1. Provider config (vs AWS::Region in CFn)\n2. Variables (vs Parameters)\n3. Resources (vs Resources — same names, different syntax)\n4. Outputs (vs Outputs)\n5. State (CFn manages this automatically; Terraform needs a backend)\n\nBuild the same VPC + EC2 + SG + outputs. Then show remote state with S3 + DynamoDB. For each block, add a comment showing the CloudFormation equivalent.` },
       { title: "Terraform Modules", prompt: `Teach me Terraform modules for reusable infrastructure. Create: modules/vpc, modules/ec2, modules/rds. Show me workspaces for dev/staging/prod with different .tfvars files. Include terraform fmt, validate, plan in a CI/CD context.` }
@@ -286,8 +272,6 @@ const WEEKS = [
   },
   {
     week: 8, phase: 3,
-    cert: "DVA-C02 / DOP-C02",
-    color: "#00C853",
     title: "CI/CD Pipelines & Elastic Beanstalk",
     gapBadges: [],
     objectives: [
@@ -297,10 +281,10 @@ const WEEKS = [
     ],
     services: ["Elastic Beanstalk", "CodeBuild", "CodeDeploy", "CodePipeline", "ECR"],
     resources: [
-      { type: "doc", name: "CodePipeline Guide", url: "https://docs.aws.amazon.com/codepipeline/latest/userguide/" },
-      { type: "doc", name: "Elastic Beanstalk Guide", url: "https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/" }
+      { name: "CodePipeline Guide", url: "https://docs.aws.amazon.com/codepipeline/latest/userguide/" },
+      { name: "Elastic Beanstalk Guide", url: "https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/" }
     ],
-    askClaude: [
+    prompts: [
       { title: "Beanstalk Deployments", prompt: `Explain Elastic Beanstalk deployment strategies: All-at-once, Rolling, Rolling with batch, Immutable, Blue/Green. Pizza delivery analogy. Comparison table with downtime, rollback speed, cost.` },
       { title: "CI/CD Pipeline Design", prompt: `Design CI/CD for ShopStream: 1) GitHub source, 2) CodeBuild tests + Docker build, 3) Push to ECR, 4) Deploy to ECS. Give me buildspec.yml and all configs.` }
     ],
@@ -322,8 +306,6 @@ const WEEKS = [
   },
   {
     week: 9, phase: 3,
-    cert: "DVA-C02 / DOP-C02",
-    color: "#00C853",
     title: "Containers — Docker, ECS, EKS",
     gapBadges: [],
     objectives: [
@@ -334,10 +316,10 @@ const WEEKS = [
     ],
     services: ["Docker", "ECR", "ECS", "EKS", "Fargate"],
     resources: [
-      { type: "doc", name: "ECS Guide", url: "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/" },
-      { type: "doc", name: "EKS Guide", url: "https://docs.aws.amazon.com/eks/latest/userguide/" }
+      { name: "ECS Guide", url: "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/" },
+      { name: "EKS Guide", url: "https://docs.aws.amazon.com/eks/latest/userguide/" }
     ],
-    askClaude: [
+    prompts: [
       { title: "Docker, ECS & EKS", prompt: `Explain Docker, ECS, and EKS like I'm 10, then like a senior engineer. When to use Fargate vs EC2 launch type vs EKS? I have 5 microservices — which to choose?` },
       { title: "ECS Fargate Deploy", prompt: `Deploy a 3-container app on ECS Fargate: web frontend, API backend, Redis cache. Include task definitions, service configs, ALB setup.` }
     ],
@@ -354,8 +336,6 @@ const WEEKS = [
   // ═══════════════ PHASE 4: ARCHITECTURE, SECURITY & MIGRATION (Weeks 10-12) ═══════════════
   {
     week: 10, phase: 4, phaseTitle: "ARCHITECTURE, SECURITY & MIGRATION",
-    cert: "SAA-C03 / SCS-C02",
-    color: "#E040FB",
     title: "Security, Well-Architected & Multi-Account Strategy",
     gapBadges: ["MULTI-ACCOUNT", "ORGANIZATIONS"],
     objectives: [
@@ -366,10 +346,10 @@ const WEEKS = [
     ],
     services: ["WAF", "Shield", "GuardDuty", "Inspector", "Organizations", "Control Tower", "SCPs"],
     resources: [
-      { type: "doc", name: "Well-Architected Framework", url: "https://aws.amazon.com/architecture/well-architected" },
-      { type: "doc", name: "AWS Organizations Guide", url: "https://docs.aws.amazon.com/organizations/latest/userguide/" }
+      { name: "Well-Architected Framework", url: "https://aws.amazon.com/architecture/well-architected" },
+      { name: "AWS Organizations Guide", url: "https://docs.aws.amazon.com/organizations/latest/userguide/" }
     ],
-    askClaude: [
+    prompts: [
       { title: "Well-Architected Framework", prompt: `All 6 pillars with real ShopStream examples. For each: 3 actions + 1 anti-pattern.` },
       { title: "Multi-Account Strategy", prompt: `Design multi-account for 'CloudCorp' (50 engineers):\n- Management, Security, Shared Services, Dev/Staging/Prod accounts\n- SCPs: prevent disabling CloudTrail, block unapproved regions, block public S3\nGive me OU structure and SCP JSON.` },
       { title: "Disaster Recovery", prompt: `Design DR for ShopStream. RPO: 1 hour, RTO: 4 hours. Cover: RDS backups, S3 cross-region, Route 53 failover, multi-region architecture.` }
@@ -388,14 +368,12 @@ const WEEKS = [
   },
   {
     week: 11, phase: 4,
-    cert: "SAA-C03",
-    color: "#E040FB",
     title: "Migration Strategies & DMS",
     gapBadges: [],
     objectives: ["Understand 7 Rs of migration", "Use DMS and SCT for database migration", "Migrate monolith to microservices"],
     services: ["Migration Hub", "DMS", "SCT", "Application Migration Service"],
-    resources: [{ type: "doc", name: "DMS Guide", url: "https://docs.aws.amazon.com/dms/latest/userguide/" }],
-    askClaude: [
+    resources: [{ name: "DMS Guide", url: "https://docs.aws.amazon.com/dms/latest/userguide/" }],
+    prompts: [
       { title: "7 Rs of Migration", prompt: `Explain 7 Rs with examples. 'RetailMax' has: Java monolith, Oracle DB, file server, reporting tool, PHP site. Which R for each?` },
       { title: "DMS End-to-End", prompt: `Walk through DMS: migrate PostgreSQL to Aurora. Cover: replication instance, endpoints, task, validation. Include dummy schema.` }
     ],
@@ -410,14 +388,12 @@ const WEEKS = [
   },
   {
     week: 12, phase: 4,
-    cert: "SAA-C03 / DVA-C02",
-    color: "#E040FB",
     title: "Host Real Applications on AWS",
     gapBadges: [],
     objectives: ["Host static sites (S3+CloudFront)", "Deploy dynamic sites (LAMP)", "Containerized apps with GitHub Actions CI/CD"],
     services: ["S3", "CloudFront", "Route 53", "ECS", "GitHub Actions"],
-    resources: [{ type: "doc", name: "S3 Static Hosting", url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html" }],
-    askClaude: [
+    resources: [{ name: "S3 Static Hosting", url: "https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html" }],
+    prompts: [
       { title: "Portfolio on AWS", prompt: `Host my portfolio on AWS: S3 static hosting, CloudFront CDN, Route 53 DNS, Lambda contact form, SES emails. Complete step-by-step.` }
     ],
     labs: [
@@ -435,14 +411,12 @@ const WEEKS = [
   // ═══════════════ PHASE 5: ADVANCED PROJECTS (Weeks 13-15) ═══════════════
   {
     week: 13, phase: 5, phaseTitle: "ADVANCED PROJECTS & MASTERY",
-    cert: "DOP-C02",
-    color: "#FF5252",
     title: "Netflix Clone, DevSecOps & Advanced K8s",
     gapBadges: [],
     objectives: ["Deploy Netflix Clone on EKS", "Implement DevSecOps pipelines with security scanning", "Build end-to-end Kubernetes projects"],
     services: ["EKS", "Docker", "Ingress", "HPA", "WAF", "Trivy"],
-    resources: [{ type: "doc", name: "EKS Best Practices", url: "https://aws.github.io/aws-eks-best-practices/" }],
-    askClaude: [
+    resources: [{ name: "EKS Best Practices", url: "https://aws.github.io/aws-eks-best-practices/" }],
+    prompts: [
       { title: "Netflix Clone on EKS", prompt: `Deploy Netflix Clone on EKS: React frontend, Node.js backend, K8s manifests, HPA, Container Insights. All code and YAML.` },
       { title: "DevSecOps Pipeline", prompt: `Zomato clone with DevSecOps: GitHub Actions, SonarQube, Trivy container scanning, OWASP ZAP, deploy to ECS with WAF. Full workflow.` }
     ],
@@ -457,17 +431,15 @@ const WEEKS = [
   },
   {
     week: 14, phase: 5,
-    cert: "SAA-C03",
-    color: "#FF5252",
     title: "Cost Optimization, FinOps & Automation",
     gapBadges: ["FINOPS"],
     objectives: ["Master FinOps practices and cost optimization", "Automate resource cleanup with Lambda + EventBridge", "Implement tagging compliance", "Use Compute Optimizer for right-sizing"],
     services: ["Cost Explorer", "Trusted Advisor", "Compute Optimizer", "Lambda", "EventBridge", "Budgets"],
     resources: [
-      { type: "doc", name: "Cost Optimization Pillar", url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/" },
-      { type: "doc", name: "FinOps Foundation", url: "https://www.finops.org/framework/" }
+      { name: "Cost Optimization Pillar", url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/" },
+      { name: "FinOps Foundation", url: "https://www.finops.org/framework/" }
     ],
-    askClaude: [
+    prompts: [
       { title: "FinOps & Cost Audit", prompt: `I spend $500/month on AWS. Audit and optimize:\n1. Find unused resources (EBS, idle EC2, old snapshots)\n2. Right-size with Compute Optimizer\n3. Reserved Instances vs Savings Plans\n4. Weekly cost report via SES\n5. FinOps: showback/chargeback, unit economics per customer\nGive me all Lambda functions, EventBridge rules, FinOps dashboard design.` }
     ],
     labs: [
@@ -481,8 +453,6 @@ const WEEKS = [
   },
   {
     week: 15, phase: 5,
-    cert: "DOP-C02",
-    color: "#FF5252",
     title: "AWS CDK, GitOps & Advanced IaC",
     gapBadges: ["CDK", "GITOPS", "ARGOCD"],
     objectives: [
@@ -493,11 +463,11 @@ const WEEKS = [
     ],
     services: ["AWS CDK", "Terraform (review)", "ArgoCD", "EKS", "GitHub"],
     resources: [
-      { type: "doc", name: "AWS CDK Workshop", url: "https://cdkworkshop.com/" },
-      { type: "doc", name: "ArgoCD Docs", url: "https://argo-cd.readthedocs.io/" },
-      { type: "doc", name: "CDK API Reference", url: "https://docs.aws.amazon.com/cdk/api/v2/" }
+      { name: "AWS CDK Workshop", url: "https://cdkworkshop.com/" },
+      { name: "ArgoCD Docs", url: "https://argo-cd.readthedocs.io/" },
+      { name: "CDK API Reference", url: "https://docs.aws.amazon.com/cdk/api/v2/" }
     ],
-    askClaude: [
+    prompts: [
       { title: "AWS CDK in Python", prompt: `Teach me CDK with Python. I know CloudFormation and Terraform. Cover:\n1. App, Stack, Construct, L1/L2/L3 constructs\n2. cdk init → build same 3-tier architecture from Week 3\n3. cdk synth (see generated CFn), deploy, destroy\n4. When to choose Terraform vs CDK vs CloudFormation\nGive me complete Python code and line-by-line CFn comparison.` },
       { title: "GitOps with ArgoCD", prompt: `Explain GitOps + ArgoCD for EKS:\n1. What GitOps is vs traditional CI/CD\n2. Install ArgoCD on EKS cluster\n3. ArgoCD Application watching GitHub repo\n4. Auto-sync: push to main → auto-deploy to K8s\n5. Rollback: revert commit → auto-rollback\nDesign GitOps for ShopStream microservices.` }
     ],
@@ -517,8 +487,6 @@ const WEEKS = [
   // ═══════════════ PHASE 6: AI/ML & CAREER LAUNCH (Weeks 16-18) ═══════════════
   {
     week: 16, phase: 6, phaseTitle: "AI/ML & CAREER LAUNCH",
-    cert: "AIF-C01",
-    color: "#00BCD4",
     title: "AWS AI/ML — Bedrock, SageMaker & GenAI",
     gapBadges: ["AI/ML", "BEDROCK", "SAGEMAKER"],
     objectives: [
@@ -529,11 +497,11 @@ const WEEKS = [
     ],
     services: ["Bedrock", "SageMaker", "Rekognition", "Comprehend", "Textract", "Polly", "Transcribe"],
     resources: [
-      { type: "doc", name: "Amazon Bedrock Guide", url: "https://docs.aws.amazon.com/bedrock/latest/userguide/" },
-      { type: "doc", name: "SageMaker Getting Started", url: "https://docs.aws.amazon.com/sagemaker/latest/dg/" },
-      { type: "doc", name: "AWS AI Practitioner Cert", url: "https://aws.amazon.com/certification/certified-ai-practitioner/" }
+      { name: "Amazon Bedrock Guide", url: "https://docs.aws.amazon.com/bedrock/latest/userguide/" },
+      { name: "SageMaker Getting Started", url: "https://docs.aws.amazon.com/sagemaker/latest/dg/" },
+      { name: "AWS AI Practitioner Cert", url: "https://aws.amazon.com/certification/certified-ai-practitioner/" }
     ],
-    askClaude: [
+    prompts: [
       { title: "AWS AI/ML Services Map", prompt: `Map ALL AWS AI/ML services:\n1. Pre-trained (no ML needed): Rekognition, Comprehend, Polly, Transcribe, Translate, Textract, Lex\n2. ML Platform: SageMaker (Studio, Canvas, Autopilot, endpoints)\n3. GenAI: Bedrock (foundation models, RAG, agents, guardrails)\nFor each: what it does, use case, pricing. Which cert should I get?` },
       { title: "Build with Bedrock", prompt: `Build a GenAI chatbot for CloudBrew Coffee using Bedrock:\n- Claude model via Bedrock API\n- RAG Knowledge Base with S3 product FAQs\n- Lambda backend calling invoke_model\n- API Gateway REST endpoint\n- Guardrails: block PII, limit to coffee/orders topics\nAll code: Lambda function, RAG setup, guardrails config.` }
     ],
@@ -552,8 +520,6 @@ const WEEKS = [
   },
   {
     week: 17, phase: 6,
-    cert: "ALL CERTS",
-    color: "#00BCD4",
     title: "Cloud Resume Challenge & Capstone Project",
     gapBadges: ["CLOUD RESUME CHALLENGE"],
     objectives: [
@@ -563,10 +529,10 @@ const WEEKS = [
     ],
     services: ["S3", "CloudFront", "Route 53", "Lambda", "DynamoDB", "API Gateway", "CloudFormation", "GitHub Actions", "Cognito", "SQS", "SES"],
     resources: [
-      { type: "doc", name: "Cloud Resume Challenge", url: "https://cloudresumechallenge.dev/" },
-      { type: "doc", name: "AWS Architecture Center", url: "https://aws.amazon.com/architecture/" }
+      { name: "Cloud Resume Challenge", url: "https://cloudresumechallenge.dev/" },
+      { name: "AWS Architecture Center", url: "https://aws.amazon.com/architecture/" }
     ],
-    askClaude: [
+    prompts: [
       { title: "Cloud Resume Challenge", prompt: `Build the Cloud Resume Challenge on AWS:\n1. HTML/CSS resume on S3 with CloudFront HTTPS\n2. Custom domain via Route 53\n3. Visitor counter: JavaScript → API Gateway → Lambda (Python/boto3) → DynamoDB\n4. IaC: CloudFormation OR Terraform for all backend resources\n5. CI/CD: GitHub Actions auto-deploy on push\n6. Python tests for Lambda\nGive me EVERYTHING: HTML, Lambda code, IaC template, GitHub Actions workflow.` },
       { title: "Capstone: CloudBrew Coffee", prompt: `Build 'CloudBrew Coffee' full-stack e-commerce:\n- React frontend on S3 + CloudFront\n- API Gateway + Lambda (serverless)\n- DynamoDB (products) + RDS (orders)\n- Cognito auth, S3 product images\n- SQS order queue, SNS+SES notifications\n- CloudWatch dashboards\n- Terraform for infrastructure\n- GitHub Actions CI/CD\n- WAF + KMS encryption\nAll code, templates, deployment instructions.` }
     ],
@@ -585,8 +551,6 @@ const WEEKS = [
   },
   {
     week: 18, phase: 6,
-    cert: "ALL CERTS",
-    color: "#00BCD4",
     title: "Certification Prep & Interview Mastery",
     gapBadges: ["INTERVIEW PREP", "SYSTEM DESIGN"],
     objectives: [
@@ -598,11 +562,11 @@ const WEEKS = [
     ],
     services: ["All Services — Exam Review"],
     resources: [
-      { type: "doc", name: "AWS Skill Builder", url: "https://skillbuilder.aws" },
-      { type: "doc", name: "AWS Certification", url: "https://aws.amazon.com/certification/" },
-      { type: "doc", name: "AWS Architecture Center", url: "https://aws.amazon.com/architecture/" }
+      { name: "AWS Skill Builder", url: "https://skillbuilder.aws" },
+      { name: "AWS Certification", url: "https://aws.amazon.com/certification/" },
+      { name: "AWS Architecture Center", url: "https://aws.amazon.com/architecture/" }
     ],
-    askClaude: [
+    prompts: [
       { title: "SAA-C03 Practice (20 Qs)", prompt: `Give me 20 scenario-based AWS Solutions Architect Associate questions covering: VPC, S3, EC2+ALB, RDS, Lambda, cost optimization. Explain every answer.` },
       { title: "Mock Cloud Practitioner Exam", prompt: `Simulate a 30-question mock CCP exam. Ask one at a time, wait for my answer, give score and domain breakdown at the end.` },
       { title: "System Design Interview", prompt: `Give me 10 AWS system design interview questions with complete answers:\n1. URL shortener (API GW + Lambda + DynamoDB + CloudFront)\n2. Real-time notifications (EventBridge + SNS + SQS + WebSocket)\n3. Multi-region e-commerce (Route 53 + Aurora Global)\n4. Video streaming platform\n5. IoT data pipeline\n6. CI/CD pipeline design\n7. Cost optimization exercise\n8. Security incident response\n9. On-prem migration plan\n10. Serverless data lake\nFor each: requirements → design → services → trade-offs → follow-up Qs.` },
@@ -640,16 +604,6 @@ const CERTS = [
   { name: "Security Specialty", code: "SCS-C02", weeks: "6, 10", icon: "🛡️" },
   { name: "AI Practitioner", code: "AIF-C01", weeks: "16", icon: "🧠" }
 ];
-
-const CERT_COLORS = {
-  "CLF-C02": "#FF9900",
-  "SAA-C03": "#1A73E8",
-  "DVA-C02": "#00C853",
-  "DOP-C02": "#E040FB",
-  "SCS-C02": "#FF5252",
-  "AIF-C01": "#00BCD4",
-  "ALL CERTS": "#107C10"
-};
 
 const GAP_INFUSIONS = [
   { gap: "Linux Fundamentals", where: "Week 1", why: "You SSH into EC2 immediately — need Linux NOW, not later", severity: "critical" },
