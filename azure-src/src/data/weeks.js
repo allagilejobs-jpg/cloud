@@ -1,11 +1,11 @@
 export const WEEKS = [
   {
     week: 1,
-    phase: "Foundation",
+    phase: 1, phaseTitle: "FOUNDATION",
     title: "Cloud Foundations, Azure Setup & Cost Awareness",
     cert: "AZ-900",
     color: "#0078D4",
-    gapBadges: [],
+    gapBadges: ["TAGGING", "COST"],
     objectives: [
       "Understand cloud computing models (IaaS, PaaS, SaaS)",
       "Navigate the Azure Portal and use Cloud Shell",
@@ -25,7 +25,7 @@ export const WEEKS = [
       "Azure Cost Management — budgets, billing alerts, cost awareness"
     ],
     labs: [
-      { id: "lab-1-1", name: "Lab 1: Create a Free Azure Account", duration: "25 min",
+      { id: "lab-1-1", title: "Create a Free Azure Account", duration: "25 min",
         difficulty: "Beginner",
         steps: [
           "Open your browser and go to https://azure.microsoft.com/free",
@@ -52,7 +52,7 @@ export const WEEKS = [
         ],
         verify: "You can access the Azure Portal. Your subscription shows $200 credit. Budget with 3 alert thresholds is active."
       },
-      { id: "lab-1-2", name: "Lab 2: Install Azure CLI & VS Code", duration: "30 min",
+      { id: "lab-1-2", title: "Install Azure CLI & VS Code", duration: "30 min",
         difficulty: "Beginner",
         steps: [
           "Open your browser and go to https://code.visualstudio.com",
@@ -82,7 +82,7 @@ export const WEEKS = [
         ],
         verify: "az account show returns your subscription details. VS Code has Azure extensions installed and you're signed in."
       },
-      { id: "lab-1-3", name: "Lab 3: Create Resource Groups with Proper Tagging", duration: "25 min",
+      { id: "lab-1-3", title: "Create Resource Groups with Proper Tagging", duration: "25 min",
         difficulty: "Beginner",
         steps: [
           "Open the Azure Portal (portal.azure.com) in your browser",
@@ -132,11 +132,11 @@ export const WEEKS = [
   },
   {
     week: 2,
-    phase: "Identity & Governance",
+    phase: 2, phaseTitle: "IDENTITY & GOVERNANCE",
     title: "Entra ID, RBAC & Azure Policy Fundamentals",
     cert: "AZ-104 / AZ-500",
     color: "#5C2D91",
-    gapBadges: [],
+    gapBadges: ["CONDITIONAL ACCESS", "POLICY"],
     objectives: [
       "Create and manage users and groups in Entra ID",
       "Implement RBAC with built-in and custom roles",
@@ -158,7 +158,7 @@ export const WEEKS = [
       "Conditional Access introduction"
     ],
     labs: [
-      { id: "lab-2-1", name: "Lab 1: Create Users & Groups in Entra ID", duration: "30 min",
+      { id: "lab-2-1", title: "Create Users & Groups in Entra ID", duration: "30 min",
         difficulty: "Beginner",
         steps: [
           "Open Azure Portal (portal.azure.com) and sign in",
@@ -189,7 +189,7 @@ export const WEEKS = [
         ],
         verify: "Both Alice and Bob exist in Users. Azure-Admins group contains Alice. Developers group contains Bob. Alice can sign in."
       },
-      { id: "lab-2-2", name: "Lab 2: Configure RBAC", duration: "35 min",
+      { id: "lab-2-2", title: "Configure RBAC", duration: "35 min",
         difficulty: "Intermediate",
         steps: [
           "In Azure Portal, search for 'Resource groups' and click on it",
@@ -223,7 +223,7 @@ export const WEEKS = [
         ],
         verify: "Bob with Reader role could only view. Bob with Contributor role could create. Role assignments visible in IAM."
       },
-      { id: "lab-2-3", name: "Lab 3: Implement Your First Azure Policies", duration: "40 min",
+      { id: "lab-2-3", title: "Implement Your First Azure Policies", duration: "40 min",
         difficulty: "Intermediate",
         steps: [
           "In Azure Portal search bar, type 'Policy' and click on 'Policy'",
@@ -259,7 +259,7 @@ export const WEEKS = [
         ],
         verify: "Location policy blocks non-US resources. Tag policy blocks untagged resources. Compliance dashboard shows status."
       },
-      { id: "lab-2-4", name: "Lab 4: Create a Service Principal", duration: "25 min",
+      { id: "lab-2-4", title: "Create a Service Principal", duration: "25 min",
         difficulty: "Intermediate",
         steps: [
           "Open your terminal (Command Prompt, PowerShell, or Terminal on Mac)",
@@ -300,7 +300,7 @@ export const WEEKS = [
   },
   {
     week: 3,
-    phase: "Networking I",
+    phase: 3, phaseTitle: "NETWORKING",
     title: "Virtual Networks, Subnets, NSGs & DNS",
     cert: "AZ-104",
     color: "#0078D4",
@@ -323,7 +323,7 @@ export const WEEKS = [
       "Azure Bastion for secure VM access"
     ],
     labs: [
-      { id: "lab-3-1", name: "Lab 1: Build a VNet with 3 Subnets", duration: "35 min",
+      { id: "lab-3-1", title: "Build a VNet with 3 Subnets", duration: "35 min",
         difficulty: "Beginner",
         steps: [
           "In Azure Portal, search for 'Resource groups' and create 'rg-network' in East US",
@@ -359,7 +359,7 @@ export const WEEKS = [
         ],
         verify: "VNet vnet-main exists with address space 10.0.0.0/16. Three subnets (web, app, db) with non-overlapping /24 ranges."
       },
-      { id: "lab-3-2", name: "Lab 2: Configure NSG Rules", duration: "45 min",
+      { id: "lab-3-2", title: "Configure NSG Rules", duration: "45 min",
         difficulty: "Intermediate",
         steps: [
           "In Azure Portal, search for 'Network security groups'",
@@ -403,7 +403,7 @@ export const WEEKS = [
         ],
         verify: "nsg-web allows HTTP/HTTPS from internet and denies all else. nsg-db only allows SQL from 10.0.2.0/24 (app subnet)."
       },
-      { id: "lab-3-3", name: "Lab 3: Deploy Azure Bastion", duration: "40 min",
+      { id: "lab-3-3", title: "Deploy Azure Bastion", duration: "40 min",
         difficulty: "Intermediate",
         steps: [
           "First, we need to add a special subnet for Bastion",
@@ -471,11 +471,11 @@ export const WEEKS = [
   },
   {
     week: 4,
-    phase: "Networking II",
+    phase: 3, phaseTitle: "NETWORKING",
     title: "Load Balancing, VPN Gateway & Peering",
     cert: "AZ-104 / AZ-305",
     color: "#00A4EF",
-    gapBadges: [],
+    gapBadges: ["CIDR", "NSG"],
     objectives: [
       "Deploy Azure Load Balancer (Layer 4) with health probes",
       "Configure VNet Peering for hub-spoke topology",
@@ -494,7 +494,7 @@ export const WEEKS = [
       "ExpressRoute overview"
     ],
     labs: [
-      { id: "lab-4-1", name: "Lab 1: Deploy a Public Load Balancer", duration: "50 min",
+      { id: "lab-4-1", title: "Deploy a Public Load Balancer", duration: "50 min",
         difficulty: "Intermediate",
         steps: [
           "First, create an Availability Set for our VMs",
@@ -549,7 +549,7 @@ export const WEEKS = [
         ],
         verify: "Load Balancer frontend IP serves traffic. Refreshing shows both VMs. Stopping one VM causes automatic failover to the other."
       },
-      { id: "lab-4-2", name: "Lab 2: Configure VNet Peering (Hub-Spoke)", duration: "45 min",
+      { id: "lab-4-2", title: "Configure VNet Peering (Hub-Spoke)", duration: "45 min",
         difficulty: "Intermediate",
         steps: [
           "Create first spoke VNet — search 'Virtual networks' → '+ Create'",
@@ -614,7 +614,7 @@ export const WEEKS = [
   },
   {
     week: 5,
-    phase: "Compute",
+    phase: 4, phaseTitle: "COMPUTE",
     title: "VMs, App Service & Serverless Compute Intro",
     cert: "AZ-104 / AZ-204",
     color: "#F25022",
@@ -639,7 +639,7 @@ export const WEEKS = [
       "Compute decision tree: VM → App Service → Functions → ACI → AKS"
     ],
     labs: [
-      { id: "lab-5-1", name: "Lab 1: Deploy Windows & Linux VMs", duration: "45 min",
+      { id: "lab-5-1", title: "Deploy Windows & Linux VMs", duration: "45 min",
         difficulty: "Beginner",
         steps: [
           "Create a resource group: 'rg-compute' in East US with proper tags",
@@ -683,7 +683,7 @@ export const WEEKS = [
         ],
         verify: "Windows VM shows IIS page on its public IP. Linux VM shows nginx page. Resize completed and VM is accessible."
       },
-      { id: "lab-5-2", name: "Lab 2: VM Scale Set with Autoscaling", duration: "50 min",
+      { id: "lab-5-2", title: "VM Scale Set with Autoscaling", duration: "50 min",
         difficulty: "Intermediate",
         steps: [
           "Search 'Virtual machine scale sets' → Click '+ Create'",
@@ -735,7 +735,7 @@ export const WEEKS = [
         ],
         verify: "VMSS has 2 instances initially. Load balancer distributes traffic. Scale-out triggers at high CPU. Scale-in triggers when CPU drops."
       },
-      { id: "lab-5-3", name: "Lab 3: Azure App Service with Deployment Slots", duration: "40 min",
+      { id: "lab-5-3", title: "Azure App Service with Deployment Slots", duration: "40 min",
         difficulty: "Intermediate",
         steps: [
           "Search 'App Services' → Click '+ Create' → 'Web App'",
@@ -775,7 +775,7 @@ export const WEEKS = [
         ],
         verify: "Web app running with GitHub deployment. Staging slot has different content. Swap moves staging to production with zero downtime."
       },
-      { id: "lab-5-4", name: "Lab 4: Your First Azure Function", duration: "35 min",
+      { id: "lab-5-4", title: "Your First Azure Function", duration: "35 min",
         difficulty: "Beginner",
         steps: [
           "Search 'Function App' → Click '+ Create'",
@@ -818,7 +818,7 @@ export const WEEKS = [
         ],
         verify: "Function responds to HTTP requests with personalized JSON. Works via browser and curl. Monitor shows invocation history."
       },
-      { id: "lab-5-5", name: "Lab 5: Deploy a Static Web App", duration: "40 min",
+      { id: "lab-5-5", title: "Deploy a Static Web App", duration: "40 min",
         difficulty: "Beginner",
         steps: [
           "First, create a simple HTML website on GitHub",
@@ -895,7 +895,7 @@ export const WEEKS = [
   },
   {
     week: 6,
-    phase: "Data Services I",
+    phase: 5, phaseTitle: "DATA SERVICES",
     title: "Storage, Key Vault & SQL Database Fundamentals",
     cert: "AZ-104 / AZ-204",
     color: "#7FBA00",
@@ -921,7 +921,7 @@ export const WEEKS = [
       "SQL firewall rules & basic security"
     ],
     labs: [
-      { id: "lab-6-1", name: "Lab 1: Storage Account & Blob Containers", duration: "40 min",
+      { id: "lab-6-1", title: "Storage Account & Blob Containers", duration: "40 min",
         difficulty: "Beginner",
         steps: [
           "Create resource group: 'rg-data' in East US",
@@ -962,7 +962,7 @@ export const WEEKS = [
         ],
         verify: "Storage account with 2 containers. Private blob accessible via SAS URL. Blob container allows anonymous read."
       },
-      { id: "lab-6-2", name: "Lab 2: Blob Lifecycle Management", duration: "30 min",
+      { id: "lab-6-2", title: "Blob Lifecycle Management", duration: "30 min",
         difficulty: "Intermediate",
         steps: [
           "Go to your storage account in Portal",
@@ -992,7 +992,7 @@ export const WEEKS = [
         ],
         verify: "Lifecycle rule created. Policy shows Cool at 30 days, Archive at 90, Delete at 365. CLI confirms the policy."
       },
-      { id: "lab-6-3", name: "Lab 3: Azure Key Vault", duration: "45 min",
+      { id: "lab-6-3", title: "Azure Key Vault", duration: "45 min",
         difficulty: "Intermediate",
         steps: [
           "Search 'Key vaults' → Click '+ Create'",
@@ -1033,7 +1033,7 @@ export const WEEKS = [
         ],
         verify: "Secret stored in Key Vault. CLI retrieves secret. VM accesses secret using managed identity (no stored credentials)."
       },
-      { id: "lab-6-4", name: "Lab 4: Create Your First Azure SQL Database", duration: "50 min",
+      { id: "lab-6-4", title: "Create Your First Azure SQL Database", duration: "50 min",
         difficulty: "Intermediate",
         steps: [
           "Search 'SQL databases' → Click '+ Create'",
@@ -1100,7 +1100,7 @@ export const WEEKS = [
   },
   {
     week: 7,
-    phase: "Data Services II",
+    phase: 5, phaseTitle: "DATA SERVICES",
     title: "Cosmos DB, PostgreSQL & Database Security",
     cert: "AZ-204 / AZ-305",
     color: "#E8A400",
@@ -1125,7 +1125,7 @@ export const WEEKS = [
       "Azure Database Migration Service"
     ],
     labs: [
-      { id: "lab-7-1", name: "Lab 1: Secure Azure SQL (from Week 6)", duration: "45 min",
+      { id: "lab-7-1", title: "Secure Azure SQL (from Week 6)", duration: "45 min",
         difficulty: "Intermediate",
         steps: [
           "Go to your SQL server (not database) from Week 6",
@@ -1162,7 +1162,7 @@ export const WEEKS = [
         ],
         verify: "TDE enabled. Auditing logs to storage. Private endpoint resolves to private IP. Public access denied."
       },
-      { id: "lab-7-2", name: "Lab 2: Deploy PostgreSQL Flexible Server", duration: "50 min",
+      { id: "lab-7-2", title: "Deploy PostgreSQL Flexible Server", duration: "50 min",
         difficulty: "Intermediate",
         steps: [
           "Search 'Azure Database for PostgreSQL' → Click '+ Create'",
@@ -1208,7 +1208,7 @@ export const WEEKS = [
         ],
         verify: "PostgreSQL created with VNet integration. Connected via psql from VNet VM. Tables created with sample data."
       },
-      { id: "lab-7-3", name: "Lab 3: Cosmos DB Deep Dive", duration: "55 min",
+      { id: "lab-7-3", title: "Cosmos DB Deep Dive", duration: "55 min",
         difficulty: "Intermediate",
         steps: [
           "Search 'Azure Cosmos DB' → Click '+ Create' → 'Azure Cosmos DB for NoSQL'",
@@ -1288,7 +1288,7 @@ export const WEEKS = [
   },
   {
     week: 8,
-    phase: "Containers I",
+    phase: 6, phaseTitle: "CONTAINERS",
     title: "Docker, ACR & Azure Container Instances",
     cert: "AZ-204",
     color: "#0078D4",
@@ -1311,7 +1311,7 @@ export const WEEKS = [
       "Container networking & volumes"
     ],
     labs: [
-      { id: "lab-8-1", name: "Lab 1: Build & Push Docker Image to ACR", duration: "50 min",
+      { id: "lab-8-1", title: "Build & Push Docker Image to ACR", duration: "50 min",
         difficulty: "Intermediate",
         steps: [
           "First, ensure Docker Desktop is installed and running on your machine",
@@ -1353,7 +1353,7 @@ export const WEEKS = [
         ],
         verify: "Docker image builds locally. Container runs on localhost. Image pushed to ACR and visible in Repositories."
       },
-      { id: "lab-8-2", name: "Lab 2: Deploy to Azure Container Instances", duration: "35 min",
+      { id: "lab-8-2", title: "Deploy to Azure Container Instances", duration: "35 min",
         difficulty: "Intermediate",
         steps: [
           "In Portal, search 'Container instances' → Click '+ Create'",
@@ -1415,7 +1415,7 @@ export const WEEKS = [
   },
   {
     week: 9,
-    phase: "Containers II",
+    phase: 6, phaseTitle: "CONTAINERS",
     title: "AKS, Kubernetes & API Management",
     cert: "AZ-204 / AZ-400",
     color: "#326CE5",
@@ -1440,7 +1440,7 @@ export const WEEKS = [
       "APIM policies: rate limiting, caching, JWT validation"
     ],
     labs: [
-      { id: "lab-9-1", name: "Lab 1: Create AKS Cluster & Deploy Nginx", duration: "55 min",
+      { id: "lab-9-1", title: "Create AKS Cluster & Deploy Nginx", duration: "55 min",
         difficulty: "Intermediate",
         steps: [
           "Open Azure Cloud Shell (click >_ icon in Portal top-right) or use local terminal",
@@ -1465,7 +1465,7 @@ export const WEEKS = [
         ],
         verify: "AKS cluster with 2 nodes. nginx scales up/down. LoadBalancer provides external access."
       },
-      { id: "lab-9-2", name: "Lab 2: Deploy Multi-Container App with YAML", duration: "45 min",
+      { id: "lab-9-2", title: "Deploy Multi-Container App with YAML", duration: "45 min",
         difficulty: "Intermediate",
         steps: [
           "Create file: nano voting-app.yaml",
@@ -1485,7 +1485,7 @@ export const WEEKS = [
         ],
         verify: "Multi-container app deployed. All pods running. Can exec into containers."
       },
-      { id: "lab-9-3", name: "Lab 3: Azure API Management Basics", duration: "50 min",
+      { id: "lab-9-3", title: "Azure API Management Basics", duration: "50 min",
         difficulty: "Intermediate",
         steps: [
           "⚠️ APIM takes 30-45 min to deploy — start this first!",
@@ -1547,7 +1547,7 @@ export const WEEKS = [
   },
   {
     week: 10,
-    phase: "DevOps I",
+    phase: 7, phaseTitle: "DEVOPS & IaC",
     title: "Azure DevOps & CI/CD Pipelines",
     cert: "AZ-400",
     color: "#F25022",
@@ -1570,7 +1570,7 @@ export const WEEKS = [
       "Release pipelines & deployment gates"
     ],
     labs: [
-      { id: "lab-10-1", name: "Lab 1: Set Up Azure DevOps & First Pipeline", duration: "45 min",
+      { id: "lab-10-1", title: "Set Up Azure DevOps & First Pipeline", duration: "45 min",
         difficulty: "Beginner",
         steps: [
           "Go to dev.azure.com and sign in with your Microsoft account",
@@ -1609,7 +1609,7 @@ export const WEEKS = [
         ],
         verify: "Pipeline runs automatically on commit. All 3 steps (install, test, build) pass with green checkmarks."
       },
-      { id: "lab-10-2", name: "Lab 2: CI/CD to Azure App Service", duration: "55 min",
+      { id: "lab-10-2", title: "CI/CD to Azure App Service", duration: "55 min",
         difficulty: "Intermediate",
         steps: [
           "First create an App Service in Azure Portal",
@@ -1680,7 +1680,7 @@ export const WEEKS = [
   },
   {
     week: 11,
-    phase: "DevOps II",
+    phase: 7, phaseTitle: "DEVOPS & IaC",
     title: "IaC: Bicep, Terraform & GitHub Actions",
     cert: "AZ-400",
     color: "#FF7139",
@@ -1703,7 +1703,7 @@ export const WEEKS = [
       "GitOps concepts & Flux in AKS"
     ],
     labs: [
-      { id: "lab-11-1", name: "Lab 1: Deploy Infrastructure with Bicep", duration: "50 min",
+      { id: "lab-11-1", title: "Deploy Infrastructure with Bicep", duration: "50 min",
         difficulty: "Intermediate",
         steps: [
           "First install Bicep CLI: az bicep install",
@@ -1737,7 +1737,7 @@ export const WEEKS = [
         ],
         verify: "Bicep deploys VNet successfully. What-if shows accurate preview. Incremental updates work."
       },
-      { id: "lab-11-2", name: "Lab 2: Terraform for Azure", duration: "55 min",
+      { id: "lab-11-2", title: "Terraform for Azure", duration: "55 min",
         difficulty: "Intermediate",
         steps: [
           "Install Terraform: brew install terraform (Mac) or download from terraform.io",
@@ -1781,7 +1781,7 @@ export const WEEKS = [
         ],
         verify: "Terraform init/plan/apply work. State tracks resources. Destroy removes everything cleanly."
       },
-      { id: "lab-11-3", name: "Lab 3: GitHub Actions CI/CD", duration: "45 min",
+      { id: "lab-11-3", title: "GitHub Actions CI/CD", duration: "45 min",
         difficulty: "Intermediate",
         steps: [
           "Create a new GitHub repo: my-azure-app",
@@ -1847,7 +1847,7 @@ export const WEEKS = [
   },
   {
     week: 12,
-    phase: "Monitoring & Cost",
+    phase: 8, phaseTitle: "MONITORING & COST",
     title: "Monitoring, Observability & Cost Management Deep Dive",
     cert: "AZ-104 / AZ-305",
     color: "#FFB900",
@@ -1872,7 +1872,7 @@ export const WEEKS = [
       "FinOps principles — right-sizing, reserved instances, spot VMs"
     ],
     labs: [
-      { id: "lab-12-1", name: "Lab 1: Log Analytics & VM Monitoring", duration: "50 min",
+      { id: "lab-12-1", title: "Log Analytics & VM Monitoring", duration: "50 min",
         difficulty: "Intermediate",
         steps: [
           "Search 'Log Analytics workspaces' → Click '+ Create'",
@@ -1903,7 +1903,7 @@ export const WEEKS = [
         ],
         verify: "Log Analytics has VM data. KQL queries return CPU and log data. Alert rule created."
       },
-      { id: "lab-12-2", name: "Lab 2: Application Insights", duration: "40 min",
+      { id: "lab-12-2", title: "Application Insights", duration: "40 min",
         difficulty: "Intermediate",
         steps: [
           "Search 'Application Insights' → Click '+ Create'",
@@ -1931,7 +1931,7 @@ export const WEEKS = [
         ],
         verify: "App Insights shows live metrics, performance data, and failures. Availability test running from 5 regions."
       },
-      { id: "lab-12-3", name: "Lab 3: Cost Management & FinOps", duration: "45 min",
+      { id: "lab-12-3", title: "Cost Management & FinOps", duration: "45 min",
         difficulty: "Intermediate",
         steps: [
           "Search 'Cost Management' → Click to open",
@@ -1978,7 +1978,7 @@ export const WEEKS = [
   },
   {
     week: 13,
-    phase: "Security",
+    phase: 9, phaseTitle: "SECURITY & GOVERNANCE",
     title: "Zero Trust, Firewall, Private Endpoints & Defender",
     cert: "AZ-500",
     color: "#D83B01",
@@ -2002,7 +2002,7 @@ export const WEEKS = [
       "Secure DevOps — shifting security left"
     ],
     labs: [
-      { id: "lab-13-1", name: "Lab 1: Azure Firewall Deployment", duration: "55 min",
+      { id: "lab-13-1", title: "Azure Firewall Deployment", duration: "55 min",
         difficulty: "Advanced",
         steps: [
           "⚠️ Azure Firewall costs ~$1.25/hour — deploy, learn, delete quickly!",
@@ -2044,7 +2044,7 @@ export const WEEKS = [
         ],
         verify: "Firewall deployed. Route table forces traffic through it. microsoft.com allowed, other sites blocked."
       },
-      { id: "lab-13-2", name: "Lab 2: Private Endpoints for PaaS", duration: "45 min",
+      { id: "lab-13-2", title: "Private Endpoints for PaaS", duration: "45 min",
         difficulty: "Intermediate",
         steps: [
           "Create a storage account with NO public access",
@@ -2075,7 +2075,7 @@ export const WEEKS = [
         ],
         verify: "Storage only accessible from within VNet via private endpoint. Public access blocked."
       },
-      { id: "lab-13-3", name: "Lab 3: Defender for Cloud & Secure Score", duration: "40 min",
+      { id: "lab-13-3", title: "Defender for Cloud & Secure Score", duration: "40 min",
         difficulty: "Intermediate",
         steps: [
           "Search 'Microsoft Defender for Cloud' → open it",
@@ -2130,7 +2130,7 @@ export const WEEKS = [
   },
   {
     week: 14,
-    phase: "Governance & SIEM",
+    phase: 9, phaseTitle: "SECURITY & GOVERNANCE",
     title: "Sentinel SIEM, Advanced Policy & Governance at Scale",
     cert: "AZ-500 / AZ-305",
     color: "#008575",
@@ -2154,7 +2154,7 @@ export const WEEKS = [
       "Compliance frameworks in Azure"
     ],
     labs: [
-      { id: "lab-14-1", name: "Lab 1: Microsoft Sentinel SIEM Setup", duration: "55 min",
+      { id: "lab-14-1", title: "Microsoft Sentinel SIEM Setup", duration: "55 min",
         difficulty: "Advanced",
         steps: [
           "⚠️ Sentinel has costs — use existing Log Analytics workspace when possible",
@@ -2186,7 +2186,7 @@ export const WEEKS = [
         ],
         verify: "Sentinel enabled with data connectors. Analytics rules active. Incidents generated from security events."
       },
-      { id: "lab-14-2", name: "Lab 2: Custom Azure Policy", duration: "45 min",
+      { id: "lab-14-2", title: "Custom Azure Policy", duration: "45 min",
         difficulty: "Advanced",
         steps: [
           "Search 'Policy' → click to open Azure Policy",
@@ -2214,7 +2214,7 @@ export const WEEKS = [
         ],
         verify: "Custom policy created and assigned. VM creation with public IP denied. Initiative bundles multiple policies."
       },
-      { id: "lab-14-3", name: "Lab 3: Azure Blueprints (Landing Zone)", duration: "40 min",
+      { id: "lab-14-3", title: "Azure Blueprints (Landing Zone)", duration: "40 min",
         difficulty: "Intermediate",
         steps: [
           "Search 'Blueprints' → click to open",
@@ -2242,7 +2242,7 @@ export const WEEKS = [
         ],
         verify: "Blueprint creates resource group, VNet, applies policies, and assigns RBAC. Consistent environment deployable in minutes."
       },
-      { id: "lab-14-4", name: "Lab 4: Azure Arc", duration: "25 min",
+      { id: "lab-14-4", title: "Azure Arc", duration: "25 min",
         difficulty: "Intermediate",
         steps: [
           "Install Arc agent on a local VM or WSL instance",
@@ -2283,7 +2283,7 @@ export const WEEKS = [
   },
   {
     week: 15,
-    phase: "Architecture",
+    phase: 10, phaseTitle: "ARCHITECTURE & DR",
     title: "Solutions Architecture, DR & Migration (AZ-305)",
     cert: "AZ-305",
     color: "#0078D4",
@@ -2308,7 +2308,7 @@ export const WEEKS = [
       "Azure Migrate & Site Recovery"
     ],
     labs: [
-      { id: "lab-15-1", name: "Lab 1: Design a Complete Architecture", duration: "60 min",
+      { id: "lab-15-1", title: "Design a Complete Architecture", duration: "60 min",
         difficulty: "Advanced",
         steps: [
           "Open a new document or draw.io (diagrams.net) for your design",
@@ -2332,7 +2332,7 @@ export const WEEKS = [
         ],
         verify: "Complete architecture document with diagram, cost estimate, SLA targets, and WAF review."
       },
-      { id: "lab-15-2", name: "Lab 2: Disaster Recovery with Site Recovery", duration: "55 min",
+      { id: "lab-15-2", title: "Disaster Recovery with Site Recovery", duration: "55 min",
         difficulty: "Advanced",
         steps: [
           "⚠️ Site Recovery has costs — complete lab promptly and clean up!",
@@ -2368,7 +2368,7 @@ export const WEEKS = [
         ],
         verify: "Test failover successful. App runs identically in West US. RPO/RTO documented."
       },
-      { id: "lab-15-3", name: "Lab 3: Azure Migrate Assessment", duration: "40 min",
+      { id: "lab-15-3", title: "Azure Migrate Assessment", duration: "40 min",
         difficulty: "Intermediate",
         steps: [
           "Scenario: Migrate a simulated on-premises environment to Azure",
@@ -2429,7 +2429,7 @@ export const WEEKS = [
   },
   {
     week: 16,
-    phase: "Serverless Advanced",
+    phase: 11, phaseTitle: "SERVERLESS",
     title: "Functions Deep Dive, Logic Apps, Event Grid & Service Bus",
     cert: "AZ-204",
     color: "#5C2D91",
@@ -2454,7 +2454,7 @@ export const WEEKS = [
       "Static Web Apps with API backends"
     ],
     labs: [
-      { id: "lab-16-1", name: "Lab 1: Azure Functions — All Trigger Types", duration: "50 min",
+      { id: "lab-16-1", title: "Azure Functions — All Trigger Types", duration: "50 min",
         difficulty: "Intermediate",
         steps: [
           "We'll create a Function App with multiple trigger types",
@@ -2491,7 +2491,7 @@ export const WEEKS = [
         ],
         verify: "All 4 trigger types working: Timer, Blob, Queue, HTTP. Visible in Application Insights."
       },
-      { id: "lab-16-2", name: "Lab 2: Service Bus Messaging", duration: "45 min",
+      { id: "lab-16-2", title: "Service Bus Messaging", duration: "45 min",
         difficulty: "Intermediate",
         steps: [
           "Search 'Service Bus' → '+ Create'",
@@ -2531,7 +2531,7 @@ export const WEEKS = [
         ],
         verify: "Queue receives messages. Topic delivers to both subscriptions. Function processes queue messages."
       },
-      { id: "lab-16-3", name: "Lab 3: Event Grid Custom Events", duration: "40 min",
+      { id: "lab-16-3", title: "Event Grid Custom Events", duration: "40 min",
         difficulty: "Intermediate",
         steps: [
           "Search 'Event Grid Topics' → '+ Create'",
@@ -2572,7 +2572,7 @@ export const WEEKS = [
         ],
         verify: "Custom events delivered to Function. Storage blob events trigger subscriber."
       },
-      { id: "lab-16-4", name: "Lab 4: Logic Apps Workflow Automation", duration: "45 min",
+      { id: "lab-16-4", title: "Logic Apps Workflow Automation", duration: "45 min",
         difficulty: "Intermediate",
         steps: [
           "Search 'Logic Apps' → '+ Add'",
@@ -2638,11 +2638,11 @@ export const WEEKS = [
   },
   {
     week: 17,
-    phase: "Capstone",
+    phase: 12, phaseTitle: "CAPSTONE & CAREER",
     title: "Capstone Project, Cert Prep & Career Readiness",
     cert: "ALL CERTS",
     color: "#107C10",
-    gapBadges: [],
+    gapBadges: ["FUNCTIONS"],
     objectives: [
       "Build a complete enterprise Azure environment",
       "Pass certification practice exams",
@@ -2661,7 +2661,7 @@ export const WEEKS = [
       "Capstone project combining ALL 17 weeks"
     ],
     labs: [
-      { id: "lab-17-1", name: "Lab 1: Certification Practice Exams", duration: "90 min",
+      { id: "lab-17-1", title: "Certification Practice Exams", duration: "90 min",
         difficulty: "Mixed",
         steps: [
           "Set up your study environment — quiet space, timer, notepad",
@@ -2689,7 +2689,7 @@ export const WEEKS = [
         ],
         verify: "Completed 70+ practice questions. 3 weak areas identified with study plan. Exam scheduled."
       },
-      { id: "lab-17-2", name: "Lab 2: Build Your Azure Portfolio", duration: "120 min",
+      { id: "lab-17-2", title: "Build Your Azure Portfolio", duration: "120 min",
         difficulty: "Advanced",
         steps: [
           "Create a GitHub repo: azure-portfolio",
@@ -2728,7 +2728,7 @@ export const WEEKS = [
         ],
         verify: "GitHub portfolio live with all projects. LinkedIn updated with certs. Blog post drafted."
       },
-      { id: "lab-17-3", name: "Lab 3: Interview Preparation", duration: "60 min",
+      { id: "lab-17-3", title: "Interview Preparation", duration: "60 min",
         difficulty: "Advanced",
         steps: [
           "Technical interview prep with Claude:",
@@ -2760,7 +2760,7 @@ export const WEEKS = [
         ],
         verify: "Completed mock interviews. STAR stories prepared. Questions for interviewer ready."
       },
-      { id: "lab-17-4", name: "Lab 4: Capstone Project Execution", duration: "180 min",
+      { id: "lab-17-4", title: "Capstone Project Execution", duration: "180 min",
         difficulty: "Advanced",
         steps: [
           "This is your crown jewel — a complete enterprise deployment",
@@ -2850,23 +2850,18 @@ export const CERT_COLORS = {
 };
 
 export const PHASES = [
-  { name: "Foundation", title: "FOUNDATION", weeks: "1", color: "#0078D4", icon: "🏗️" },
-  { name: "Identity & Governance", title: "IDENTITY & GOVERNANCE", weeks: "2", color: "#5C2D91", icon: "🔐" },
-  { name: "Networking I", title: "NETWORKING I", weeks: "3", color: "#00A4EF", icon: "🌐" },
-  { name: "Networking II", title: "NETWORKING II", weeks: "4", color: "#00A4EF", icon: "🌐" },
-  { name: "Compute", title: "COMPUTE", weeks: "5", color: "#F25022", icon: "⚡" },
-  { name: "Data Services I", title: "DATA SERVICES I", weeks: "6", color: "#7FBA00", icon: "💾" },
-  { name: "Data Services II", title: "DATA SERVICES II", weeks: "7", color: "#7FBA00", icon: "💾" },
-  { name: "Containers I", title: "CONTAINERS I", weeks: "8", color: "#E8A400", icon: "🐳" },
-  { name: "Containers II", title: "CONTAINERS II", weeks: "9", color: "#E8A400", icon: "🐳" },
-  { name: "DevOps I", title: "DEVOPS I", weeks: "10", color: "#00A4EF", icon: "🔄" },
-  { name: "DevOps II", title: "DEVOPS II (IaC)", weeks: "11", color: "#5C2D91", icon: "📐" },
-  { name: "Monitoring & Cost", title: "MONITORING & COST", weeks: "12", color: "#0078D4", icon: "📊" },
-  { name: "Security", title: "SECURITY", weeks: "13", color: "#D83B01", icon: "🛡️" },
-  { name: "Governance & SIEM", title: "GOVERNANCE & SIEM", weeks: "14", color: "#D83B01", icon: "🛡️" },
-  { name: "Architecture", title: "ARCHITECTURE & DR", weeks: "15", color: "#107C10", icon: "🏛️" },
-  { name: "Serverless Advanced", title: "SERVERLESS", weeks: "16", color: "#5C2D91", icon: "⚡" },
-  { name: "Capstone", title: "CAPSTONE & CAREER", weeks: "17", color: "#5C2D91", icon: "🚀" }
+  { num: 1, title: "FOUNDATION", weeks: "1", color: "#0078D4", icon: "🏗️" },
+  { num: 2, title: "IDENTITY & GOVERNANCE", weeks: "2", color: "#5C2D91", icon: "🔐" },
+  { num: 3, title: "NETWORKING", weeks: "3-4", color: "#00A4EF", icon: "🌐" },
+  { num: 4, title: "COMPUTE", weeks: "5", color: "#F25022", icon: "⚡" },
+  { num: 5, title: "DATA SERVICES", weeks: "6-7", color: "#7FBA00", icon: "💾" },
+  { num: 6, title: "CONTAINERS", weeks: "8-9", color: "#E8A400", icon: "🐳" },
+  { num: 7, title: "DEVOPS & IaC", weeks: "10-11", color: "#00A4EF", icon: "🔄" },
+  { num: 8, title: "MONITORING & COST", weeks: "12", color: "#0078D4", icon: "📊" },
+  { num: 9, title: "SECURITY & GOVERNANCE", weeks: "13-14", color: "#D83B01", icon: "🛡️" },
+  { num: 10, title: "ARCHITECTURE & DR", weeks: "15", color: "#107C10", icon: "🏛️" },
+  { num: 11, title: "SERVERLESS", weeks: "16", color: "#5C2D91", icon: "⚡" },
+  { num: 12, title: "CAPSTONE & CAREER", weeks: "17", color: "#5C2D91", icon: "🚀" }
 ];
 
 export const CERTS = [

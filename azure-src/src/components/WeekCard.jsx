@@ -1,7 +1,7 @@
 import { PHASES, CERT_COLORS } from "../data/weeks";
 
 export default function WeekCard({ week, progress = {}, onSelect }) {
-  const phase = PHASES.find(p => p.name === week.phase);
+  const phase = PHASES.find(p => p.num === week.phase);
   
   // Calculate completion
   const labsDone = week.labs.filter(l => progress[l.id]).length;

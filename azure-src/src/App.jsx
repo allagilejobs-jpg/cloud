@@ -250,10 +250,10 @@ export default function App() {
             <div style={{ textAlign: "center", padding: 40, color: "var(--text-muted)" }}>No weeks match your search.</div>
           ) : (
             PHASES.map(p => {
-              const phaseWeeks = filteredWeeks.filter(w => w.phase === p.name);
+              const phaseWeeks = filteredWeeks.filter(w => w.phase === p.num);
               if (phaseWeeks.length === 0) return null;
               return (
-                <div key={p.name} style={{ marginBottom: 20 }}>
+                <div key={p.num} style={{ marginBottom: 20 }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
                     <span style={{ fontSize: 15 }}>{p.icon}</span>
                     <span style={{ fontSize: 10, fontWeight: 700, color: p.color, letterSpacing: 1, textTransform: "uppercase", fontFamily: "monospace" }}>

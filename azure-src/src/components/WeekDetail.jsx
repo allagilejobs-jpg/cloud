@@ -57,7 +57,7 @@ export default function WeekDetail({ week: w, progress, onToggle, onBack, onNavi
       <div style={{ background: "linear-gradient(135deg, #111827 0%, #1e293b 100%)", border: "1px solid #334155", borderRadius: 12, padding: 16, marginBottom: 12, borderLeft: `4px solid ${w.color}` }}>
         <div style={{ display: "flex", gap: 6, marginBottom: 6, flexWrap: "wrap" }}>
           <span style={{ fontSize: 10, padding: "2px 8px", borderRadius: 10, background: w.color + "20", color: w.color, fontWeight: 700 }}>WEEK {w.week}</span>
-          <span style={{ fontSize: 10, padding: "2px 8px", borderRadius: 10, background: "#1e293b", color: "#94a3b8", fontWeight: 600 }}>{w.phase}</span>
+          <span style={{ fontSize: 10, padding: "2px 8px", borderRadius: 10, background: "#1e293b", color: "#94a3b8", fontWeight: 600 }}>Phase {w.phase}</span>
           <span style={{ fontSize: 10, padding: "2px 8px", borderRadius: 10, background: (CERT_COLORS[w.cert] || w.color) + "15", color: CERT_COLORS[w.cert] || w.color, fontWeight: 600 }}>{w.cert}</span>
           <span style={{ fontSize: 10, padding: "2px 8px", borderRadius: 10, background: "#0ea5e915", color: "#0ea5e9", fontWeight: 600 }}>⏱️ ~{Math.round(totalMins / 60)}h</span>
         </div>
@@ -174,7 +174,7 @@ export default function WeekDetail({ week: w, progress, onToggle, onBack, onNavi
                     </div>
                     <div style={{ flex: 1 }}>
                       <div style={{ fontSize: 13, fontWeight: 600, color: done ? "#10b981" : "#fff", textDecoration: done ? "line-through" : "none" }}>
-                        {lab.name || lab.title}
+                        {lab.title || lab.name}
                       </div>
                       <div style={{ display: "flex", gap: 8, marginTop: 4 }}>
                         {lab.duration && <span style={{ fontSize: 10, color: "#64748b" }}>⏱️ {lab.duration}</span>}
