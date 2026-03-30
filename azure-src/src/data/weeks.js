@@ -2850,18 +2850,23 @@ export const CERT_COLORS = {
 };
 
 export const PHASES = [
-  { num: 1, title: "FOUNDATION", weeks: "1–2", color: "#0078D4", icon: "🏗️" },
-  { num: 2, title: "IDENTITY & GOVERNANCE", weeks: "3", color: "#5C2D91", icon: "🔐" },
-  { num: 3, title: "NETWORKING", weeks: "4", color: "#00A4EF", icon: "🌐" },
-  { num: 4, title: "COMPUTE & STORAGE", weeks: "5–6", color: "#F25022", icon: "⚡" },
-  { num: 5, title: "DATA & DATABASES", weeks: "7", color: "#7FBA00", icon: "💾" },
-  { num: 6, title: "CONTAINERS", weeks: "8–9", color: "#E8A400", icon: "🐳" },
-  { num: 7, title: "DEVOPS", weeks: "10", color: "#00A4EF", icon: "🔄" },
-  { num: 8, title: "IaC", weeks: "11", color: "#5C2D91", icon: "📐" },
-  { num: 9, title: "MONITORING", weeks: "12", color: "#0078D4", icon: "📊" },
-  { num: 10, title: "SECURITY", weeks: "13–14", color: "#D83B01", icon: "🛡️" },
-  { num: 11, title: "ARCHITECTURE & DR", weeks: "15", color: "#107C10", icon: "🏛️" },
-  { num: 12, title: "SERVERLESS & CAPSTONE", weeks: "16–17", color: "#5C2D91", icon: "🚀" }
+  { name: "Foundation", title: "FOUNDATION", weeks: "1", color: "#0078D4", icon: "🏗️" },
+  { name: "Identity & Governance", title: "IDENTITY & GOVERNANCE", weeks: "2", color: "#5C2D91", icon: "🔐" },
+  { name: "Networking I", title: "NETWORKING I", weeks: "3", color: "#00A4EF", icon: "🌐" },
+  { name: "Networking II", title: "NETWORKING II", weeks: "4", color: "#00A4EF", icon: "🌐" },
+  { name: "Compute", title: "COMPUTE", weeks: "5", color: "#F25022", icon: "⚡" },
+  { name: "Data Services I", title: "DATA SERVICES I", weeks: "6", color: "#7FBA00", icon: "💾" },
+  { name: "Data Services II", title: "DATA SERVICES II", weeks: "7", color: "#7FBA00", icon: "💾" },
+  { name: "Containers I", title: "CONTAINERS I", weeks: "8", color: "#E8A400", icon: "🐳" },
+  { name: "Containers II", title: "CONTAINERS II", weeks: "9", color: "#E8A400", icon: "🐳" },
+  { name: "DevOps I", title: "DEVOPS I", weeks: "10", color: "#00A4EF", icon: "🔄" },
+  { name: "DevOps II", title: "DEVOPS II (IaC)", weeks: "11", color: "#5C2D91", icon: "📐" },
+  { name: "Monitoring & Cost", title: "MONITORING & COST", weeks: "12", color: "#0078D4", icon: "📊" },
+  { name: "Security", title: "SECURITY", weeks: "13", color: "#D83B01", icon: "🛡️" },
+  { name: "Governance & SIEM", title: "GOVERNANCE & SIEM", weeks: "14", color: "#D83B01", icon: "🛡️" },
+  { name: "Architecture", title: "ARCHITECTURE & DR", weeks: "15", color: "#107C10", icon: "🏛️" },
+  { name: "Serverless Advanced", title: "SERVERLESS", weeks: "16", color: "#5C2D91", icon: "⚡" },
+  { name: "Capstone", title: "CAPSTONE & CAREER", weeks: "17", color: "#5C2D91", icon: "🚀" }
 ];
 
 export const CERTS = [

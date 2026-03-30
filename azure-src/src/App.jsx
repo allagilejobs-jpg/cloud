@@ -243,19 +243,38 @@ export default function App() {
         ))}
       </div>
 
-      {/* Dashboard - Week Cards */}
+      {/* Dashboard - Phase Groups with Grid Cards */}
       {view === "dashboard" && !sel && (
-        <div style={{ display: "flex", flexDirection: "column", gap: 6, animation: "fadeUp .3s ease" }}>
+        <div style={{ animation: "fadeUp .3s ease" }}>
           {filteredWeeks.length === 0 ? (
             <div style={{ textAlign: "center", padding: 40, color: "var(--text-muted)" }}>No weeks match your search.</div>
-          ) : filteredWeeks.map(w => (
-            <WeekCard
-              key={w.week}
-              week={w}
-              progress={progress}
-              onSelect={setActiveWeek}
-            />
-          ))}
+          ) : (
+            PHASES.map(p => {
+              const phaseWeeks = filteredWeeks.filter(w => w.phase === p.name);
+              if (phaseWeeks.length === 0) return null;
+              return (
+                <div key={p.name} style={{ marginBottom: 20 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
+                    <span style={{ fontSize: 15 }}>{p.icon}</span>
+                    <span style={{ fontSize: 10, fontWeight: 700, color: p.color, letterSpacing: 1, textTransform: "uppercase", fontFamily: "monospace" }}>
+                      Wk {p.weeks}
+                    </span>
+                    <span style={{ fontSize: 12, color: "var(--text-muted)" }}>{p.title}</span>
+                  </div>
+                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 10 }}>
+                    {phaseWeeks.map(w => (
+                      <WeekCard
+                        key={w.week}
+                        week={w}
+                        progress={progress}
+                        onSelect={setActiveWeek}
+                      />
+                    ))}
+                  </div>
+                </div>
+              );
+            })
+          )}
         </div>
       )}
 
