@@ -3,14 +3,22 @@ import { CERT_COLORS } from "../data/weeks";
 export default function WeekCard({
   week: w,
   isOpen,
-  isDone,
+  progress = {},
   expandedSection,
   onToggleWeek,
-  onToggleComplete,
+  onToggle,
   onToggleSection,
 }) {
   const hasInfused = w.infused && w.infused.length > 0;
   const isCmd = (step) => /^(az |kubectl|terraform|docker|npm|curl |Run:|Deploy:)/.test(step);
+
+  // Calculate completion based on lab/project IDs
+  const labsDone = w.labs.filter(l => progress[l.id]).length;
+  const projectDone = w.project && progress[w.project?.id] ? 1 : 0;
+  const totalItems = w.labs.length + (w.project ? 1 : 0);
+  const doneItems = labsDone + projectDone;
+  const weekComplete = totalItems > 0 && doneItems === totalItems;
+  const weekPct = totalItems > 0 ? Math.round((doneItems / totalItems) * 100) : 0;
 
   return (
     <div
@@ -44,19 +52,25 @@ export default function WeekCard({
           userSelect: "none",
         }}
       >
-        <button
-          onClick={(e) => onToggleComplete(w.week, e)}
-          style={{
-            width: "20px", height: "20px", borderRadius: "50%",
-            border: isDone ? "none" : "2px solid #cbd5e1",
-            background: isDone ? "#10b981" : "transparent",
-            color: "#fff", fontSize: "11px",
-            display: "flex", alignItems: "center", justifyContent: "center",
-            flexShrink: 0,
-          }}
-        >
-          {isDone ? "✓" : ""}
-        </button>
+        {/* Progress ring instead of checkbox */}
+        <div style={{ position: "relative", width: 24, height: 24, flexShrink: 0 }}>
+          <svg width="24" height="24" style={{ transform: "rotate(-90deg)" }}>
+            <circle cx="12" cy="12" r="10" fill="none" stroke="var(--border-subtle)" strokeWidth="2"/>
+            <circle 
+              cx="12" cy="12" r="10" 
+              fill="none" 
+              stroke={weekComplete ? "#10b981" : w.color} 
+              strokeWidth="2" 
+              strokeDasharray={`${2 * Math.PI * 10}`} 
+              strokeDashoffset={`${2 * Math.PI * 10 * (1 - weekPct / 100)}`} 
+              strokeLinecap="round" 
+              style={{ transition: "stroke-dashoffset .3s" }}
+            />
+          </svg>
+          {weekComplete && (
+            <span style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", color: "#10b981", fontSize: 10, fontWeight: 700 }}>✓</span>
+          )}
+        </div>
 
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ display: "flex", alignItems: "center", gap: "5px", flexWrap: "wrap" }}>
@@ -67,8 +81,8 @@ export default function WeekCard({
             <span
               style={{
                 fontSize: "8px", padding: "1px 5px", borderRadius: "8px",
-                background: (CERT_COLORS[w.cert.split(" / ")[0]] || w.color) + "12",
-                color: CERT_COLORS[w.cert.split(" / ")[0]] || w.color,
+                background: (CERT_COLORS[w.cert?.split(" / ")[0]] || w.color) + "12",
+                color: CERT_COLORS[w.cert?.split(" / ")[0]] || w.color,
                 fontWeight: 600,
               }}
             >
@@ -78,8 +92,8 @@ export default function WeekCard({
           <div
             style={{
               fontSize: "12.5px", fontWeight: 600, marginTop: "1px",
-              color: isDone ? "var(--text-muted)" : "var(--text-color)",
-              textDecoration: isDone ? "line-through" : "none",
+              color: weekComplete ? "var(--text-muted)" : "var(--text-color)",
+              textDecoration: weekComplete ? "line-through" : "none",
             }}
           >
             {w.title}
@@ -87,7 +101,7 @@ export default function WeekCard({
         </div>
 
         <span style={{ fontSize: "9px", color: "var(--text-muted)", whiteSpace: "nowrap" }}>
-          {w.labs.length} labs{w.project ? " · project" : ""}
+          {doneItems}/{totalItems}
         </span>
         <span
           style={{
@@ -166,18 +180,20 @@ export default function WeekCard({
           )}
 
           {/* Topics */}
-          <div style={{ marginBottom: "12px" }}>
-            <div style={{ fontSize: "9px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "1px", color: w.color, marginBottom: "5px" }}>
-              Topics
+          {w.topics && w.topics.length > 0 && (
+            <div style={{ marginBottom: "12px" }}>
+              <div style={{ fontSize: "9px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "1px", color: w.color, marginBottom: "5px" }}>
+                Topics
+              </div>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "3px" }}>
+                {w.topics.map((t, i) => (
+                  <span key={i} style={{ fontSize: "10.5px", padding: "2px 7px", borderRadius: "4px", background: "var(--tag-bg)", border: "1px solid var(--border-subtle)", color: "var(--text-color)" }}>
+                    {t}
+                  </span>
+                ))}
+              </div>
             </div>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "3px" }}>
-              {w.topics.map((t, i) => (
-                <span key={i} style={{ fontSize: "10.5px", padding: "2px 7px", borderRadius: "4px", background: "var(--tag-bg)", border: "1px solid var(--border-subtle)", color: "var(--text-color)" }}>
-                  {t}
-                </span>
-              ))}
-            </div>
-          </div>
+          )}
 
           {/* Labs */}
           <div style={{ marginBottom: "12px" }}>
@@ -187,33 +203,51 @@ export default function WeekCard({
             {w.labs.map((lab, li) => {
               const lk = `${w.week}-${li}`;
               const lo = expandedSection === lk;
+              const labDone = progress[lab.id];
               return (
                 <div key={li} style={{ background: "var(--card-bg)", border: "1px solid var(--border-subtle)", borderRadius: "6px", marginBottom: "4px", overflow: "hidden" }}>
                   <div
                     onClick={() => onToggleSection(lk)}
                     style={{ padding: "8px 10px", cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: "11.5px", fontWeight: 600 }}
                   >
-                    <div style={{ flex: 1 }}>
-                      <div>{lab.name}</div>
-                      {(lab.duration || lab.difficulty) && (
-                        <div style={{ display: "flex", gap: "8px", marginTop: "3px" }}>
-                          {lab.duration && (
-                            <span style={{ fontSize: "9px", color: "var(--text-muted)", display: "flex", alignItems: "center", gap: "2px" }}>
-                              ⏱️ {lab.duration}
-                            </span>
-                          )}
-                          {lab.difficulty && (
-                            <span style={{
-                              fontSize: "9px", padding: "1px 6px", borderRadius: "8px",
-                              background: lab.difficulty === "Beginner" ? "#10b98120" : lab.difficulty === "Intermediate" ? "#f59e0b20" : "#ef444420",
-                              color: lab.difficulty === "Beginner" ? "#10b981" : lab.difficulty === "Intermediate" ? "#f59e0b" : "#ef4444",
-                              fontWeight: 600,
-                            }}>
-                              {lab.difficulty}
-                            </span>
-                          )}
+                    <div style={{ display: "flex", alignItems: "center", gap: "8px", flex: 1 }}>
+                      {/* Lab checkbox */}
+                      <div 
+                        onClick={(e) => { e.stopPropagation(); onToggle(lab.id); }}
+                        style={{
+                          width: 18, height: 18, borderRadius: 4,
+                          border: labDone ? "none" : "2px solid var(--border-subtle)",
+                          background: labDone ? "#10b981" : "transparent",
+                          display: "flex", alignItems: "center", justifyContent: "center",
+                          cursor: "pointer", flexShrink: 0
+                        }}
+                      >
+                        {labDone && <span style={{ color: "#fff", fontSize: 10, fontWeight: 700 }}>✓</span>}
+                      </div>
+                      <div>
+                        <div style={{ color: labDone ? "#10b981" : "inherit", textDecoration: labDone ? "line-through" : "none" }}>
+                          {lab.name}
                         </div>
-                      )}
+                        {(lab.duration || lab.difficulty) && (
+                          <div style={{ display: "flex", gap: "8px", marginTop: "3px" }}>
+                            {lab.duration && (
+                              <span style={{ fontSize: "9px", color: "var(--text-muted)", display: "flex", alignItems: "center", gap: "2px" }}>
+                                ⏱️ {lab.duration}
+                              </span>
+                            )}
+                            {lab.difficulty && (
+                              <span style={{
+                                fontSize: "9px", padding: "1px 6px", borderRadius: "8px",
+                                background: lab.difficulty === "Beginner" ? "#10b98120" : lab.difficulty === "Intermediate" ? "#f59e0b20" : "#ef444420",
+                                color: lab.difficulty === "Beginner" ? "#10b981" : lab.difficulty === "Intermediate" ? "#f59e0b" : "#ef4444",
+                                fontWeight: 600,
+                              }}>
+                                {lab.difficulty}
+                              </span>
+                            )}
+                          </div>
+                        )}
+                      </div>
                     </div>
                     <span style={{ fontSize: "12px", color: "var(--text-muted)", transform: lo ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
                   </div>
@@ -256,17 +290,34 @@ export default function WeekCard({
           {/* Project */}
           {w.project && (
             <div style={{ marginBottom: "12px", background: `${w.color}05`, border: `1px solid ${w.color}20`, borderRadius: "8px", padding: "10px" }}>
-              <div style={{ fontSize: "9px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "1px", color: w.color, marginBottom: "3px" }}>
-                🚀 Project
+              <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "6px" }}>
+                {/* Project checkbox */}
+                <div 
+                  onClick={() => onToggle(w.project.id)}
+                  style={{
+                    width: 18, height: 18, borderRadius: 4,
+                    border: progress[w.project.id] ? "none" : "2px solid var(--border-subtle)",
+                    background: progress[w.project.id] ? "#10b981" : "transparent",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    cursor: "pointer", flexShrink: 0
+                  }}
+                >
+                  {progress[w.project.id] && <span style={{ color: "#fff", fontSize: 10, fontWeight: 700 }}>✓</span>}
+                </div>
+                <div style={{ fontSize: "9px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "1px", color: w.color }}>
+                  🚀 Project
+                </div>
               </div>
-              <div style={{ fontSize: "12.5px", fontWeight: 700, marginBottom: "2px" }}>{w.project.name}</div>
+              <div style={{ fontSize: "12.5px", fontWeight: 700, marginBottom: "2px", color: progress[w.project.id] ? "#10b981" : "inherit", textDecoration: progress[w.project.id] ? "line-through" : "none" }}>
+                {w.project.name}
+              </div>
               <div style={{ fontSize: "11px", color: "var(--text-muted)", marginBottom: "6px", lineHeight: 1.4 }}>
                 {w.project.description}
               </div>
               <div style={{ fontSize: "10.5px", marginBottom: "6px", fontStyle: "italic", background: "var(--card-bg)", padding: "5px 8px", borderRadius: "4px", lineHeight: 1.5 }}>
                 <strong style={{ color: "#059669", fontStyle: "normal" }}>Scenario:</strong> {w.project.dummyData}
               </div>
-              {w.project.steps.map((s, si) => (
+              {w.project.steps && w.project.steps.map((s, si) => (
                 <div key={si} style={{ display: "flex", gap: "5px", marginBottom: "2px", fontSize: "10.5px", lineHeight: 1.4 }}>
                   <span style={{ color: w.color, fontWeight: 700, flexShrink: 0 }}>{si + 1}.</span>
                   <span>{s}</span>
@@ -306,7 +357,7 @@ export default function WeekCard({
           )}
 
           {/* Resources */}
-          {w.resources.length > 0 && (
+          {w.resources && w.resources.length > 0 && (
             <div>
               <div style={{ fontSize: "9px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "1px", color: w.color, marginBottom: "3px" }}>
                 📚 Resources
