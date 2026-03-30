@@ -2,7 +2,36 @@
 
 ## 2026-03-30
 
-### AWS Unified with Full Spec (pending commit)
+### Major UI Unification + New Features (pending commit)
+Both AWS and Azure now have identical feature sets:
+
+**New Features (Both Apps):**
+- 🔍 **Search** - Filter weeks, labs, topics, services by keyword
+- 🌙 **Dark/Light Mode** - Theme toggle with localStorage persistence
+- 📥 **Export Progress** - Download progress as JSON file
+- ⌨️ **Keyboard Shortcuts** - j/k navigate weeks, Esc close detail
+- 📝 **Notes** - Add personal notes per lab/project (persisted locally)
+- ⏱️ **Time Estimates** - Show total hours per week and overall
+- 🖨️ **Print-friendly** - CSS media queries hide UI chrome for printing
+
+**Azure UI Overhaul:**
+- New `WeekDetail.jsx` component with tabbed interface
+- Click-to-select weeks (like AWS) instead of inline expand
+- Progress ring on week cards
+- Matching dark theme styling
+- Week navigation (Prev/Next buttons)
+
+**Unified Structure:**
+Both apps now have identical:
+- 5 views: Dashboard, Projects, Resources, Gaps, Certs
+- Filter chips by certification
+- Progress tracking by lab/project ID
+- WeekCard and WeekDetail components
+- Constants: PHASES, CERTS, CERT_COLORS, GAP_INFUSIONS, RESOURCES, TUTOR_PROMPTS
+
+---
+
+### AWS Unified with Full Spec (3a80f56)
 Major refactor to bring AWS to feature parity with Azure:
 
 **New Structure:**

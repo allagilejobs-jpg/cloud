@@ -4,6 +4,18 @@ import { PHASES, CERT_COLORS } from "../data/weeks";
 export default function WeekDetail({ week, progress, onToggle, onBack, onNavigate, totalWeeks, copiedId, onCopy }) {
   const [activeTab, setActiveTab] = useState("overview");
   const [expandedLab, setExpandedLab] = useState(null);
+  const [notes, setNotes] = useState(() => {
+    try {
+      const saved = localStorage.getItem(`aws-notes-${week.week}`);
+      return saved ? JSON.parse(saved) : {};
+    } catch { return {}; }
+  });
+
+  const saveNote = (id, text) => {
+    const updated = { ...notes, [id]: text };
+    setNotes(updated);
+    try { localStorage.setItem(`aws-notes-${week.week}`, JSON.stringify(updated)); } catch {}
+  };
   
   const phase = PHASES.find(p => p.num === week.phase);
   const hasInfused = week.infused && week.infused.length > 0;
@@ -216,6 +228,20 @@ export default function WeekDetail({ week, progress, onToggle, onBack, onNavigat
                       <div style={{ marginTop: 10, padding: "7px 10px", background: "#22c55e0a", border: "1px solid #22c55e28", borderRadius: 8, fontSize: 12, color: "#22c55e" }}>
                         ✓ <strong>Verify:</strong> {lab.verify}
                       </div>
+                      {/* Notes */}
+                      <div style={{ marginTop: 10 }}>
+                        <textarea
+                          placeholder="Add your notes..."
+                          value={notes[lab.id] || ""}
+                          onChange={(e) => saveNote(lab.id, e.target.value)}
+                          onClick={(e) => e.stopPropagation()}
+                          style={{
+                            width: "100%", minHeight: 50, padding: 8, fontSize: 11,
+                            background: "#0a0e1a", border: "1px solid #1e293b", borderRadius: 6,
+                            color: "#cbd5e1", resize: "vertical", fontFamily: "inherit"
+                          }}
+                        />
+                      </div>
                     </div>
                   </div>
                 )}
@@ -307,6 +333,23 @@ export default function WeekDetail({ week, progress, onToggle, onBack, onNavigat
                 </pre>
               </div>
             )}
+            
+            {/* Project Notes */}
+            <div style={{ marginTop: 12 }}>
+              <div style={{ fontSize: 10, fontWeight: 700, color: "#94a3b8", textTransform: "uppercase", letterSpacing: 1, marginBottom: 6 }}>
+                Your Notes
+              </div>
+              <textarea
+                placeholder="Add your project notes..."
+                value={notes[week.project.id] || ""}
+                onChange={(e) => saveNote(week.project.id, e.target.value)}
+                style={{
+                  width: "100%", minHeight: 80, padding: 10, fontSize: 12,
+                  background: "#0a0e1a", border: "1px solid #1e293b", borderRadius: 8,
+                  color: "#cbd5e1", resize: "vertical", fontFamily: "inherit"
+                }}
+              />
+            </div>
           </div>
         </div>
       )}
