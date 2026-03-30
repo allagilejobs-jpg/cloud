@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AWS Solutions Architect Mastery Plan</title>
+    <title>AWS Cloud Mastery — 18 Week Plan</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -36,37 +36,63 @@
         .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
         .stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
             margin-bottom: 50px;
         }
         .stat {
             background: rgba(255,153,0,0.1);
             border: 1px solid rgba(255,153,0,0.3);
             border-radius: 16px;
-            padding: 24px;
+            padding: 20px;
             text-align: center;
         }
-        .stat-value { font-size: 2.5rem; font-weight: 800; color: #ff9900; }
-        .stat-label { font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-top: 4px; }
+        .stat-value { font-size: 2.2rem; font-weight: 800; color: #ff9900; }
+        .stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.7); margin-top: 4px; }
+        .certs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
+            justify-content: center;
+        }
+        .cert {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 10px 16px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .cert-icon { font-size: 1.2rem; }
         .phase {
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
         .phase-header {
             background: rgba(255,153,0,0.15);
             border-left: 4px solid #ff9900;
-            padding: 16px 24px;
-            margin-bottom: 24px;
+            padding: 14px 20px;
+            margin-bottom: 20px;
             border-radius: 0 12px 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
-        .phase-title { font-size: 1.3rem; font-weight: 700; color: #ff9900; }
-        .phase-weeks { font-size: 0.9rem; color: rgba(255,255,255,0.6); }
+        .phase-icon { font-size: 1.5rem; }
+        .phase-title { font-size: 1.1rem; font-weight: 700; color: #ff9900; }
+        .phase-weeks { font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-left: auto; }
+        .weeks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 16px;
+        }
         .week {
             background: rgba(255,255,255,0.03);
             border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 16px;
-            padding: 28px;
-            margin-bottom: 20px;
+            border-radius: 14px;
+            padding: 20px;
             transition: all 0.3s ease;
         }
         .week:hover {
@@ -76,58 +102,39 @@
         .week-header {
             display: flex;
             align-items: center;
-            gap: 16px;
-            margin-bottom: 16px;
+            gap: 12px;
+            margin-bottom: 12px;
         }
         .week-num {
             background: linear-gradient(135deg, #ff9900, #ff6600);
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 800;
-            font-size: 1.2rem;
+            font-size: 1rem;
         }
-        .week-title { font-size: 1.2rem; font-weight: 600; }
+        .week-title { font-size: 1rem; font-weight: 600; flex: 1; }
+        .week-cert {
+            font-size: 0.7rem;
+            background: rgba(255,153,0,0.2);
+            color: #ff9900;
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
         .services {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 16px;
+            gap: 6px;
         }
         .service {
             background: rgba(255,153,0,0.1);
-            border: 1px solid rgba(255,153,0,0.3);
-            padding: 4px 12px;
+            border: 1px solid rgba(255,153,0,0.2);
+            padding: 3px 10px;
             border-radius: 20px;
-            font-size: 0.8rem;
-            color: #ff9900;
-        }
-        .objectives { margin-top: 16px; }
-        .objectives h4 {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: rgba(255,255,255,0.5);
-            margin-bottom: 10px;
-        }
-        .objectives ul {
-            list-style: none;
-            display: grid;
-            gap: 8px;
-        }
-        .objectives li {
-            padding-left: 20px;
-            position: relative;
-            font-size: 0.95rem;
-            color: rgba(255,255,255,0.8);
-        }
-        .objectives li::before {
-            content: "→";
-            position: absolute;
-            left: 0;
+            font-size: 0.75rem;
             color: #ff9900;
         }
         .cta {
@@ -152,350 +159,355 @@
         .cta-btn:hover { transform: scale(1.05); }
         @media (max-width: 600px) {
             .header h1 { font-size: 2rem; }
-            .stat-value { font-size: 2rem; }
+            .stat-value { font-size: 1.8rem; }
+            .weeks-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
     <header class="header" style="position: relative;">
         <a href="../" class="back-link">← Back to Hub</a>
-        <h1>🟠 AWS Solutions Architect</h1>
-        <p>12-week mastery plan covering compute, storage, networking, security, serverless, containers, and IaC</p>
+        <h1>🟠 AWS Cloud Mastery</h1>
+        <p>18-week comprehensive program covering 6 AWS certifications with 50+ hands-on labs and 15+ real-world projects</p>
     </header>
 
     <div class="container">
         <div class="stats">
             <div class="stat">
-                <div class="stat-value">12</div>
+                <div class="stat-value">18</div>
                 <div class="stat-label">Weeks</div>
             </div>
             <div class="stat">
+                <div class="stat-value">6</div>
+                <div class="stat-label">Certifications</div>
+            </div>
+            <div class="stat">
                 <div class="stat-value">50+</div>
-                <div class="stat-label">Hands-on Labs</div>
+                <div class="stat-label">Labs</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">15+</div>
+                <div class="stat-label">Projects</div>
             </div>
             <div class="stat">
                 <div class="stat-value">30+</div>
-                <div class="stat-label">AWS Services</div>
+                <div class="stat-label">Services</div>
             </div>
-            <div class="stat">
-                <div class="stat-value">15</div>
-                <div class="stat-label">Projects</div>
-            </div>
+        </div>
+
+        <div class="certs">
+            <div class="cert"><span class="cert-icon">🏅</span> CLF-C02 Cloud Practitioner</div>
+            <div class="cert"><span class="cert-icon">🏆</span> SAA-C03 Solutions Architect</div>
+            <div class="cert"><span class="cert-icon">💻</span> DVA-C02 Developer</div>
+            <div class="cert"><span class="cert-icon">🚀</span> DOP-C02 DevOps Professional</div>
+            <div class="cert"><span class="cert-icon">🛡️</span> SCS-C02 Security Specialty</div>
+            <div class="cert"><span class="cert-icon">🧠</span> AIF-C01 AI Practitioner</div>
         </div>
 
         <!-- Phase 1 -->
         <div class="phase">
-            <div class="phase-header">
-                <div class="phase-title">PHASE 1: FOUNDATIONS</div>
-                <div class="phase-weeks">Weeks 1-3</div>
+            <div class="phase-header" style="border-color: #FF9900;">
+                <span class="phase-icon">🏗️</span>
+                <span class="phase-title">PHASE 1: FOUNDATIONS</span>
+                <span class="phase-weeks">Weeks 1-3</span>
             </div>
-
-            <div class="week">
-                <div class="week-header">
-                    <div class="week-num">1</div>
-                    <div class="week-title">Cloud Fundamentals, Linux Essentials & AWS Core</div>
+            <div class="weeks-grid">
+                <div class="week">
+                    <div class="week-header">
+                        <div class="week-num">1</div>
+                        <div class="week-title">Cloud Fundamentals, Linux & AWS Core</div>
+                        <span class="week-cert">CLF-C02</span>
+                    </div>
+                    <div class="services">
+                        <span class="service">IAM</span>
+                        <span class="service">EC2</span>
+                        <span class="service">S3</span>
+                        <span class="service">CloudWatch</span>
+                        <span class="service">Linux</span>
+                    </div>
                 </div>
-                <div class="services">
-                    <span class="service">IAM</span>
-                    <span class="service">EC2</span>
-                    <span class="service">S3</span>
-                    <span class="service">CloudWatch</span>
-                    <span class="service">AWS CLI</span>
-                    <span class="service">Linux</span>
+                <div class="week">
+                    <div class="week-header">
+                        <div class="week-num">2</div>
+                        <div class="week-title">Storage Deep Dive — S3, EBS, EFS</div>
+                        <span class="week-cert">SAA-C03</span>
+                    </div>
+                    <div class="services">
+                        <span class="service">S3</span>
+                        <span class="service">EBS</span>
+                        <span class="service">EFS</span>
+                        <span class="service">Glacier</span>
+                        <span class="service">CloudFront</span>
+                    </div>
                 </div>
-                <div class="objectives">
-                    <h4>Objectives</h4>
-                    <ul>
-                        <li>Understand cloud computing, shared responsibility model, IaaS/PaaS/SaaS</li>
-                        <li>Navigate the AWS Management Console and Global Infrastructure</li>
-                        <li>Master essential Linux commands for EC2</li>
-                        <li>Create and manage IAM users, groups, policies, and roles</li>
-                        <li>Launch your first EC2 instance and S3 bucket</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="week">
-                <div class="week-header">
-                    <div class="week-num">2</div>
-                    <div class="week-title">Storage Deep Dive — S3, EBS, EFS, Glacier</div>
-                </div>
-                <div class="services">
-                    <span class="service">S3</span>
-                    <span class="service">EBS</span>
-                    <span class="service">EFS</span>
-                    <span class="service">Glacier</span>
-                    <span class="service">CloudFront</span>
-                </div>
-                <div class="objectives">
-                    <h4>Objectives</h4>
-                    <ul>
-                        <li>Master S3 bucket policies, ACLs, versioning, and lifecycle rules</li>
-                        <li>Understand all storage classes and when to use each</li>
-                        <li>Work with EBS volumes, snapshots, and encryption</li>
-                        <li>Set up EFS for shared file storage</li>
-                        <li>Configure CloudFront CDN</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="week">
-                <div class="week-header">
-                    <div class="week-num">3</div>
-                    <div class="week-title">EC2, Bash Scripting, Load Balancers & Auto Scaling</div>
-                </div>
-                <div class="services">
-                    <span class="service">EC2</span>
-                    <span class="service">ALB</span>
-                    <span class="service">NLB</span>
-                    <span class="service">Auto Scaling</span>
-                    <span class="service">AMI</span>
-                    <span class="service">Bash</span>
-                </div>
-                <div class="objectives">
-                    <h4>Objectives</h4>
-                    <ul>
-                        <li>Write Bash scripts for EC2 User Data and automation</li>
-                        <li>Understand EC2 metadata, AMIs, and purchasing options</li>
-                        <li>Configure Application and Network Load Balancers</li>
-                        <li>Set up Auto Scaling Groups with scaling policies</li>
-                    </ul>
+                <div class="week">
+                    <div class="week-header">
+                        <div class="week-num">3</div>
+                        <div class="week-title">EC2, Bash, Load Balancers & Auto Scaling</div>
+                        <span class="week-cert">SAA-C03</span>
+                    </div>
+                    <div class="services">
+                        <span class="service">EC2</span>
+                        <span class="service">ALB</span>
+                        <span class="service">Auto Scaling</span>
+                        <span class="service">Bash</span>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Phase 2 -->
         <div class="phase">
-            <div class="phase-header">
-                <div class="phase-title">PHASE 2: NETWORKING, DATABASES & MONITORING</div>
-                <div class="phase-weeks">Weeks 4-6</div>
+            <div class="phase-header" style="border-color: #1A73E8;">
+                <span class="phase-icon">🌐</span>
+                <span class="phase-title" style="color: #1A73E8;">PHASE 2: NETWORKING, DATABASES & MONITORING</span>
+                <span class="phase-weeks">Weeks 4-6</span>
             </div>
-
-            <div class="week">
-                <div class="week-header">
-                    <div class="week-num">4</div>
-                    <div class="week-title">VPC & Networking Deep Dive</div>
+            <div class="weeks-grid">
+                <div class="week">
+                    <div class="week-header">
+                        <div class="week-num" style="background: linear-gradient(135deg, #1A73E8, #4285f4);">4</div>
+                        <div class="week-title">VPC & Networking Deep Dive</div>
+                        <span class="week-cert">SAA-C03</span>
+                    </div>
+                    <div class="services">
+                        <span class="service">VPC</span>
+                        <span class="service">Subnets</span>
+                        <span class="service">NAT GW</span>
+                        <span class="service">Route 53</span>
+                    </div>
                 </div>
-                <div class="services">
-                    <span class="service">VPC</span>
-                    <span class="service">Subnets</span>
-                    <span class="service">IGW</span>
-                    <span class="service">NAT GW</span>
-                    <span class="service">NACLs</span>
-                    <span class="service">Route 53</span>
+                <div class="week">
+                    <div class="week-header">
+                        <div class="week-num" style="background: linear-gradient(135deg, #1A73E8, #4285f4);">5</div>
+                        <div class="week-title">Databases, Serverless & Python/boto3</div>
+                        <span class="week-cert">DVA-C02</span>
+                    </div>
+                    <div class="services">
+                        <span class="service">RDS</span>
+                        <span class="service">DynamoDB</span>
+                        <span class="service">Lambda</span>
+                        <span class="service">API Gateway</span>
+                    </div>
                 </div>
-                <div class="objectives">
-                    <h4>Objectives</h4>
-                    <ul>
-                        <li>Design custom VPCs with public and private subnets</li>
-                        <li>Configure Internet Gateways, NAT Gateways, Route Tables</li>
-                        <li>Understand Security Groups vs NACLs</li>
-                        <li>Set up VPC Peering, Endpoints, and Route 53</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="week">
-                <div class="week-header">
-                    <div class="week-num">5</div>
-                    <div class="week-title">Databases, Serverless & Python/boto3</div>
-                </div>
-                <div class="services">
-                    <span class="service">RDS</span>
-                    <span class="service">DynamoDB</span>
-                    <span class="service">Lambda</span>
-                    <span class="service">API Gateway</span>
-                    <span class="service">SQS</span>
-                    <span class="service">Step Functions</span>
-                </div>
-                <div class="objectives">
-                    <h4>Objectives</h4>
-                    <ul>
-                        <li>Deploy RDS, DynamoDB, and ElastiCache</li>
-                        <li>Write Python with boto3 for Lambda functions</li>
-                        <li>Build serverless APIs with Lambda + API Gateway</li>
-                        <li>Orchestrate workflows with Step Functions and EventBridge</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="week">
-                <div class="week-header">
-                    <div class="week-num">6</div>
-                    <div class="week-title">Monitoring, Security & Observability</div>
-                </div>
-                <div class="services">
-                    <span class="service">CloudWatch</span>
-                    <span class="service">CloudTrail</span>
-                    <span class="service">KMS</span>
-                    <span class="service">Secrets Manager</span>
-                    <span class="service">SSM</span>
-                    <span class="service">X-Ray</span>
-                </div>
-                <div class="objectives">
-                    <h4>Objectives</h4>
-                    <ul>
-                        <li>Master CloudWatch metrics, alarms, logs, dashboards</li>
-                        <li>Configure CloudTrail, AWS Config for compliance</li>
-                        <li>Manage secrets with Secrets Manager vs Parameter Store</li>
-                        <li>Replace SSH with SSM Session Manager</li>
-                    </ul>
+                <div class="week">
+                    <div class="week-header">
+                        <div class="week-num" style="background: linear-gradient(135deg, #1A73E8, #4285f4);">6</div>
+                        <div class="week-title">Monitoring, Security & Observability</div>
+                        <span class="week-cert">SCS-C02</span>
+                    </div>
+                    <div class="services">
+                        <span class="service">CloudWatch</span>
+                        <span class="service">CloudTrail</span>
+                        <span class="service">X-Ray</span>
+                        <span class="service">Secrets Manager</span>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Phase 3 -->
         <div class="phase">
-            <div class="phase-header">
-                <div class="phase-title">PHASE 3: INFRASTRUCTURE AS CODE & DEVOPS</div>
-                <div class="phase-weeks">Weeks 7-9</div>
+            <div class="phase-header" style="border-color: #00C853;">
+                <span class="phase-icon">⚙️</span>
+                <span class="phase-title" style="color: #00C853;">PHASE 3: INFRASTRUCTURE AS CODE & DEVOPS</span>
+                <span class="phase-weeks">Weeks 7-9</span>
             </div>
-
-            <div class="week">
-                <div class="week-header">
-                    <div class="week-num">7</div>
-                    <div class="week-title">CloudFormation & Terraform — IaC Side-by-Side</div>
+            <div class="weeks-grid">
+                <div class="week">
+                    <div class="week-header">
+                        <div class="week-num" style="background: linear-gradient(135deg, #00C853, #4CAF50);">7</div>
+                        <div class="week-title">CloudFormation & Terraform</div>
+                        <span class="week-cert">DOP-C02</span>
+                    </div>
+                    <div class="services">
+                        <span class="service">CloudFormation</span>
+                        <span class="service">Terraform</span>
+                        <span class="service">S3 State</span>
+                    </div>
                 </div>
-                <div class="services">
-                    <span class="service">CloudFormation</span>
-                    <span class="service">Terraform</span>
-                    <span class="service">S3 (state)</span>
+                <div class="week">
+                    <div class="week-header">
+                        <div class="week-num" style="background: linear-gradient(135deg, #00C853, #4CAF50);">8</div>
+                        <div class="week-title">CI/CD Pipelines & Elastic Beanstalk</div>
+                        <span class="week-cert">DOP-C02</span>
+                    </div>
+                    <div class="services">
+                        <span class="service">CodePipeline</span>
+                        <span class="service">CodeBuild</span>
+                        <span class="service">CodeDeploy</span>
+                        <span class="service">Beanstalk</span>
+                    </div>
                 </div>
-                <div class="objectives">
-                    <h4>Objectives</h4>
-                    <ul>
-                        <li>Write CloudFormation YAML templates with parameters and outputs</li>
-                        <li>Master Terraform: providers, resources, variables, state</li>
-                        <li>Compare CloudFormation vs Terraform head-to-head</li>
-                        <li>Understand remote state management with S3 + DynamoDB locking</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="week">
-                <div class="week-header">
-                    <div class="week-num">8</div>
-                    <div class="week-title">CI/CD Pipelines & Elastic Beanstalk</div>
-                </div>
-                <div class="services">
-                    <span class="service">Elastic Beanstalk</span>
-                    <span class="service">CodeBuild</span>
-                    <span class="service">CodeDeploy</span>
-                    <span class="service">CodePipeline</span>
-                    <span class="service">ECR</span>
-                </div>
-                <div class="objectives">
-                    <h4>Objectives</h4>
-                    <ul>
-                        <li>Deploy quickly with Elastic Beanstalk</li>
-                        <li>Configure CodeBuild, CodeDeploy, CodePipeline</li>
-                        <li>Create end-to-end CI/CD: GitHub → Build → Test → Deploy</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="week">
-                <div class="week-header">
-                    <div class="week-num">9</div>
-                    <div class="week-title">Containers — Docker, ECS, EKS</div>
-                </div>
-                <div class="services">
-                    <span class="service">Docker</span>
-                    <span class="service">ECR</span>
-                    <span class="service">ECS</span>
-                    <span class="service">EKS</span>
-                    <span class="service">Fargate</span>
-                </div>
-                <div class="objectives">
-                    <h4>Objectives</h4>
-                    <ul>
-                        <li>Build Docker containers and push to ECR</li>
-                        <li>Deploy on ECS with Fargate</li>
-                        <li>Set up EKS (Kubernetes on AWS)</li>
-                        <li>Understand service discovery and task placement</li>
-                    </ul>
+                <div class="week">
+                    <div class="week-header">
+                        <div class="week-num" style="background: linear-gradient(135deg, #00C853, #4CAF50);">9</div>
+                        <div class="week-title">Containers — Docker, ECS, EKS</div>
+                        <span class="week-cert">DVA-C02</span>
+                    </div>
+                    <div class="services">
+                        <span class="service">Docker</span>
+                        <span class="service">ECR</span>
+                        <span class="service">ECS</span>
+                        <span class="service">EKS</span>
+                        <span class="service">Fargate</span>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Phase 4 -->
         <div class="phase">
-            <div class="phase-header">
-                <div class="phase-title">PHASE 4: ARCHITECTURE, SECURITY & MIGRATION</div>
-                <div class="phase-weeks">Weeks 10-12</div>
+            <div class="phase-header" style="border-color: #E040FB;">
+                <span class="phase-icon">🛡️</span>
+                <span class="phase-title" style="color: #E040FB;">PHASE 4: ARCHITECTURE, SECURITY & MIGRATION</span>
+                <span class="phase-weeks">Weeks 10-12</span>
             </div>
-
-            <div class="week">
-                <div class="week-header">
-                    <div class="week-num">10</div>
-                    <div class="week-title">Security, Well-Architected & Multi-Account Strategy</div>
+            <div class="weeks-grid">
+                <div class="week">
+                    <div class="week-header">
+                        <div class="week-num" style="background: linear-gradient(135deg, #E040FB, #9C27B0);">10</div>
+                        <div class="week-title">Security & Multi-Account Strategy</div>
+                        <span class="week-cert">SCS-C02</span>
+                    </div>
+                    <div class="services">
+                        <span class="service">WAF</span>
+                        <span class="service">Shield</span>
+                        <span class="service">GuardDuty</span>
+                        <span class="service">Organizations</span>
+                    </div>
                 </div>
-                <div class="services">
-                    <span class="service">WAF</span>
-                    <span class="service">Shield</span>
-                    <span class="service">GuardDuty</span>
-                    <span class="service">Organizations</span>
-                    <span class="service">SCPs</span>
+                <div class="week">
+                    <div class="week-header">
+                        <div class="week-num" style="background: linear-gradient(135deg, #E040FB, #9C27B0);">11</div>
+                        <div class="week-title">Migration Strategies & DMS</div>
+                        <span class="week-cert">SAA-C03</span>
+                    </div>
+                    <div class="services">
+                        <span class="service">Migration Hub</span>
+                        <span class="service">DMS</span>
+                        <span class="service">SCT</span>
+                    </div>
                 </div>
-                <div class="objectives">
-                    <h4>Objectives</h4>
-                    <ul>
-                        <li>Implement WAF, Shield, GuardDuty, Inspector</li>
-                        <li>Master 6 pillars of Well-Architected Framework</li>
-                        <li>Design enterprise multi-account strategy with AWS Organizations</li>
-                        <li>Write Service Control Policies (SCPs) for governance</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="week">
-                <div class="week-header">
-                    <div class="week-num">11</div>
-                    <div class="week-title">Migration Strategies & DMS</div>
-                </div>
-                <div class="services">
-                    <span class="service">Migration Hub</span>
-                    <span class="service">DMS</span>
-                    <span class="service">SCT</span>
-                    <span class="service">App Migration</span>
-                </div>
-                <div class="objectives">
-                    <h4>Objectives</h4>
-                    <ul>
-                        <li>Understand the 7 Rs of migration</li>
-                        <li>Use DMS and SCT for database migration</li>
-                        <li>Migrate monolith to microservices</li>
-                    </ul>
+                <div class="week">
+                    <div class="week-header">
+                        <div class="week-num" style="background: linear-gradient(135deg, #E040FB, #9C27B0);">12</div>
+                        <div class="week-title">Host Real Applications on AWS</div>
+                        <span class="week-cert">SAA-C03</span>
+                    </div>
+                    <div class="services">
+                        <span class="service">S3</span>
+                        <span class="service">CloudFront</span>
+                        <span class="service">Route 53</span>
+                        <span class="service">GitHub Actions</span>
+                    </div>
                 </div>
             </div>
+        </div>
 
-            <div class="week">
-                <div class="week-header">
-                    <div class="week-num">12</div>
-                    <div class="week-title">Host Real Applications on AWS</div>
+        <!-- Phase 5 -->
+        <div class="phase">
+            <div class="phase-header" style="border-color: #FF5252;">
+                <span class="phase-icon">🚀</span>
+                <span class="phase-title" style="color: #FF5252;">PHASE 5: ADVANCED PROJECTS & MASTERY</span>
+                <span class="phase-weeks">Weeks 13-15</span>
+            </div>
+            <div class="weeks-grid">
+                <div class="week">
+                    <div class="week-header">
+                        <div class="week-num" style="background: linear-gradient(135deg, #FF5252, #D32F2F);">13</div>
+                        <div class="week-title">Netflix Clone & DevSecOps</div>
+                        <span class="week-cert">DOP-C02</span>
+                    </div>
+                    <div class="services">
+                        <span class="service">EKS</span>
+                        <span class="service">HPA</span>
+                        <span class="service">Trivy</span>
+                        <span class="service">WAF</span>
+                    </div>
                 </div>
-                <div class="services">
-                    <span class="service">S3</span>
-                    <span class="service">CloudFront</span>
-                    <span class="service">Route 53</span>
-                    <span class="service">ECS</span>
-                    <span class="service">GitHub Actions</span>
+                <div class="week">
+                    <div class="week-header">
+                        <div class="week-num" style="background: linear-gradient(135deg, #FF5252, #D32F2F);">14</div>
+                        <div class="week-title">Cost Optimization & FinOps</div>
+                        <span class="week-cert">SAA-C03</span>
+                    </div>
+                    <div class="services">
+                        <span class="service">Cost Explorer</span>
+                        <span class="service">Compute Optimizer</span>
+                        <span class="service">Budgets</span>
+                    </div>
                 </div>
-                <div class="objectives">
-                    <h4>Objectives</h4>
-                    <ul>
-                        <li>Host static sites (S3 + CloudFront)</li>
-                        <li>Deploy dynamic sites (LAMP stack)</li>
-                        <li>Containerized apps with GitHub Actions CI/CD</li>
-                    </ul>
+                <div class="week">
+                    <div class="week-header">
+                        <div class="week-num" style="background: linear-gradient(135deg, #FF5252, #D32F2F);">15</div>
+                        <div class="week-title">AWS CDK, GitOps & ArgoCD</div>
+                        <span class="week-cert">DOP-C02</span>
+                    </div>
+                    <div class="services">
+                        <span class="service">CDK</span>
+                        <span class="service">ArgoCD</span>
+                        <span class="service">GitOps</span>
+                        <span class="service">Flux</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 6 -->
+        <div class="phase">
+            <div class="phase-header" style="border-color: #00BCD4;">
+                <span class="phase-icon">🧠</span>
+                <span class="phase-title" style="color: #00BCD4;">PHASE 6: AI/ML & CAREER LAUNCH</span>
+                <span class="phase-weeks">Weeks 16-18</span>
+            </div>
+            <div class="weeks-grid">
+                <div class="week">
+                    <div class="week-header">
+                        <div class="week-num" style="background: linear-gradient(135deg, #00BCD4, #0097A7);">16</div>
+                        <div class="week-title">AWS AI/ML — Bedrock & SageMaker</div>
+                        <span class="week-cert">AIF-C01</span>
+                    </div>
+                    <div class="services">
+                        <span class="service">Bedrock</span>
+                        <span class="service">SageMaker</span>
+                        <span class="service">Rekognition</span>
+                        <span class="service">Comprehend</span>
+                    </div>
+                </div>
+                <div class="week">
+                    <div class="week-header">
+                        <div class="week-num" style="background: linear-gradient(135deg, #00BCD4, #0097A7);">17</div>
+                        <div class="week-title">Cloud Resume Challenge & Capstone</div>
+                        <span class="week-cert">ALL</span>
+                    </div>
+                    <div class="services">
+                        <span class="service">Full Stack</span>
+                        <span class="service">Terraform</span>
+                        <span class="service">CI/CD</span>
+                        <span class="service">Portfolio</span>
+                    </div>
+                </div>
+                <div class="week">
+                    <div class="week-header">
+                        <div class="week-num" style="background: linear-gradient(135deg, #00BCD4, #0097A7);">18</div>
+                        <div class="week-title">Certification Prep & Interview Mastery</div>
+                        <span class="week-cert">ALL</span>
+                    </div>
+                    <div class="services">
+                        <span class="service">Exam Prep</span>
+                        <span class="service">System Design</span>
+                        <span class="service">Portfolio</span>
+                        <span class="service">Interview</span>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="cta">
             <h2>Ready to Master AWS?</h2>
-            <p>Start your journey to AWS Solutions Architect certification today!</p>
-            <a href="https://aws.amazon.com/certification/certified-solutions-architect-associate/" class="cta-btn">Learn More →</a>
+            <p>18 weeks to 6 certifications — start your cloud career today!</p>
+            <a href="https://aws.amazon.com/certification/" class="cta-btn">AWS Certifications →</a>
         </div>
     </div>
 </body>
