@@ -2,6 +2,47 @@
 
 ## 2026-03-30
 
+### AWS Unified with Full Spec (pending commit)
+Major refactor to bring AWS to feature parity with Azure:
+
+**New Structure:**
+- Separated data into `src/data/weeks.js`
+- Created reusable components: `ProgressBar.jsx`, `WeekCard.jsx`, `WeekDetail.jsx`
+
+**New Fields Added to All 18 Weeks:**
+- `cert` - Certification mapping (CLF-C02, SAA-C03, etc.)
+- `color` - Week accent color
+- `infused` - Topics infused into this week
+- `topics` - Topic tags array
+- Resources now have `type` field ("doc" or "video")
+
+**New Constants:**
+- `PHASES` - 6 phases with colors and icons
+- `CERTS` - 6 certifications with codes and weeks
+- `CERT_COLORS` - Color per certification
+- `GAP_INFUSIONS` - 14 gaps with severity levels
+- `RESOURCES` - Global resources list
+- `TUTOR_PROMPTS` - Claude tutor prompt suggestions
+
+**New Views:**
+- 📅 Dashboard - Phase-grouped weeks with filter chips
+- 🚀 Projects - All projects in one view
+- 📚 Resources - Global resources + tutor prompts
+- 🔥 Gaps - Gap infusion map by severity
+- 🏅 Certs - Certification roadmap
+
+**New Features:**
+- Filter by certification (CLF-C02, SAA-C03, etc.)
+- Filter by infused topics
+- Week detail with tabs (Overview, Prompts, Labs, Project, Resources)
+- Infused banner in weeks
+- Topics display
+- Progress tracking by lab/project ID
+- Week navigation buttons
+- Reset progress button
+
+---
+
 ### Azure Weeks 15-17 Detailed Labs (a7c8c98)
 Expanded remaining Azure weeks with full step-by-step instructions:
 
