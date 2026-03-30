@@ -2,6 +2,33 @@
 
 ## 2026-03-30
 
+### Azure Weeks 15-17 Detailed Labs (a7c8c98)
+Expanded remaining Azure weeks with full step-by-step instructions:
+
+**Week 15 - Architecture & DR:**
+- Lab 1: Complete architecture design with draw.io, cost calculator, WAF review
+- Lab 2: Site Recovery deployment with test failover (55 min)
+- Lab 3: Azure Migrate assessment workflow
+
+**Week 16 - Serverless Advanced:**
+- Lab 1: All Function trigger types (Timer, Blob, Queue, HTTP) with App Insights
+- Lab 2: Service Bus queues and topics with Python SDK
+- Lab 3: Event Grid custom events and system events
+- Lab 4: Logic Apps conditional workflows and scheduled reports
+
+**Week 17 - Capstone & Career:**
+- Lab 1: 70+ certification practice questions with study plan
+- Lab 2: GitHub portfolio creation with README templates
+- Lab 3: Interview preparation with mock scenarios
+- Lab 4: Full capstone project execution guide
+
+---
+
+### Azure Weeks 14 Labs Expansion (88ae743)
+Expanded Week 14 labs with detailed step-by-step instructions for Sentinel SIEM, custom Azure Policy, and Blueprints.
+
+---
+
 ### AWS Plan Upgrade (230092c)
 Brought AWS plan to feature parity with Azure:
 
