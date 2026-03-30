@@ -103,6 +103,37 @@ export default function WeekCard({
       {/* Expanded Content */}
       {isOpen && (
         <div style={{ padding: "0 12px 12px" }}>
+          {/* Gap Badges */}
+          {w.gapBadges && w.gapBadges.length > 0 && (
+            <div style={{ marginBottom: "10px", display: "flex", alignItems: "center", gap: "6px", flexWrap: "wrap" }}>
+              <span style={{ fontSize: "9px", fontWeight: 700, color: "#f59e0b" }}>⚠️ SKILL PREREQS:</span>
+              {w.gapBadges.map((badge, i) => (
+                <span key={i} style={{
+                  fontSize: "9px", padding: "2px 8px", borderRadius: "10px",
+                  background: "#f59e0b20", color: "#f59e0b", fontWeight: 700,
+                  border: "1px solid #f59e0b40"
+                }}>
+                  {badge}
+                </span>
+              ))}
+            </div>
+          )}
+
+          {/* Objectives */}
+          {w.objectives && w.objectives.length > 0 && (
+            <div style={{ marginBottom: "12px", padding: "10px", background: "#10b98108", borderRadius: "8px", border: "1px solid #10b98120" }}>
+              <div style={{ fontSize: "9px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "1px", color: "#10b981", marginBottom: "6px" }}>
+                🎯 Learning Objectives
+              </div>
+              {w.objectives.map((obj, i) => (
+                <div key={i} style={{ display: "flex", gap: "6px", marginBottom: "3px", fontSize: "11px", lineHeight: 1.4 }}>
+                  <span style={{ color: "#10b981", flexShrink: 0 }}>✓</span>
+                  <span>{obj}</span>
+                </div>
+              ))}
+            </div>
+          )}
+
           {/* Infused banner */}
           {hasInfused && (
             <div

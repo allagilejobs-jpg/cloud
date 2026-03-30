@@ -5,6 +5,14 @@ export const WEEKS = [
     title: "Cloud Foundations, Azure Setup & Cost Awareness",
     cert: "AZ-900",
     color: "#0078D4",
+    gapBadges: [],
+    objectives: [
+      "Understand cloud computing models (IaaS, PaaS, SaaS)",
+      "Navigate the Azure Portal and use Cloud Shell",
+      "Create and manage resource groups with proper tagging",
+      "Set up cost budgets and billing alerts from Day 1",
+      "Install and configure Azure CLI locally"
+    ],
     services: ["Azure Portal", "Azure CLI", "Resource Groups", "Cost Management", "Tags", "Subscriptions"],
     infused: ["Resource tagging from Day 1", "Budget alerts & cost basics", "Cost Management introduction"],
     topics: [
@@ -79,6 +87,14 @@ export const WEEKS = [
     title: "Entra ID, RBAC & Azure Policy Fundamentals",
     cert: "AZ-104 / AZ-500",
     color: "#5C2D91",
+    gapBadges: [],
+    objectives: [
+      "Create and manage users and groups in Entra ID",
+      "Implement RBAC with built-in and custom roles",
+      "Create and assign Azure Policies for governance",
+      "Understand Management Groups hierarchy",
+      "Set up Service Principals and Managed Identities"
+    ],
     services: ["Entra ID", "RBAC", "Azure Policy", "Management Groups", "PIM", "Managed Identity"],
     infused: ["Azure Policy basics (allowed locations, require tags)", "Management Groups hierarchy", "Conditional Access introduction"],
     topics: [
@@ -169,6 +185,14 @@ export const WEEKS = [
     title: "Virtual Networks, Subnets, NSGs & DNS",
     cert: "AZ-104",
     color: "#0078D4",
+    gapBadges: ["NETWORKING"],
+    objectives: [
+      "Design VNets with proper CIDR addressing",
+      "Create subnets for multi-tier architectures",
+      "Configure NSG rules and understand rule evaluation",
+      "Deploy Azure Bastion for secure VM access",
+      "Set up Azure DNS zones (public and private)"
+    ],
     services: ["VNet", "Subnets", "NSG", "ASG", "Azure DNS", "Bastion", "Public IP"],
     infused: [],
     topics: [
@@ -240,6 +264,14 @@ export const WEEKS = [
     title: "Load Balancing, VPN Gateway & Peering",
     cert: "AZ-104 / AZ-305",
     color: "#00A4EF",
+    gapBadges: [],
+    objectives: [
+      "Deploy Azure Load Balancer (Layer 4) with health probes",
+      "Configure VNet Peering for hub-spoke topology",
+      "Understand Application Gateway vs Load Balancer",
+      "Set up VPN Gateway for hybrid connectivity",
+      "Design multi-region traffic routing"
+    ],
     services: ["Load Balancer", "Application Gateway", "Traffic Manager", "Front Door", "VNet Peering", "VPN Gateway"],
     infused: [],
     topics: [
@@ -313,6 +345,14 @@ export const WEEKS = [
     title: "VMs, App Service & Serverless Compute Intro",
     cert: "AZ-104 / AZ-204",
     color: "#F25022",
+    gapBadges: ["LINUX"],
+    objectives: [
+      "Deploy and manage Windows and Linux VMs",
+      "Configure VM Scale Sets with autoscaling",
+      "Deploy web apps to Azure App Service with slots",
+      "Create your first Azure Function (HTTP trigger)",
+      "Deploy Static Web Apps with GitHub integration"
+    ],
     services: ["VMs", "VMSS", "App Service", "Azure Functions", "Static Web Apps", "Availability Sets/Zones"],
     infused: ["Azure Functions basics (HTTP trigger)", "Static Web Apps introduction", "Serverless as a compute model"],
     topics: [
@@ -427,6 +467,14 @@ export const WEEKS = [
     title: "Storage, Key Vault & SQL Database Fundamentals",
     cert: "AZ-104 / AZ-204",
     color: "#7FBA00",
+    gapBadges: ["SQL"],
+    objectives: [
+      "Create storage accounts with proper redundancy",
+      "Manage blob lifecycle policies and access tiers",
+      "Store and retrieve secrets from Key Vault",
+      "Create and query Azure SQL Database",
+      "Implement SAS tokens for secure access"
+    ],
     services: ["Storage Account", "Blob", "Files", "Key Vault", "Azure SQL", "SAS Tokens"],
     infused: ["Azure SQL Database basics (create, connect, query)", "Database firewall rules & basic security"],
     topics: [
@@ -516,6 +564,14 @@ export const WEEKS = [
     title: "Cosmos DB, PostgreSQL & Database Security",
     cert: "AZ-204 / AZ-305",
     color: "#E8A400",
+    gapBadges: ["NOSQL"],
+    objectives: [
+      "Secure Azure SQL with TDE, auditing, and private endpoints",
+      "Deploy PostgreSQL Flexible Server with VNet integration",
+      "Create Cosmos DB with proper partitioning strategy",
+      "Understand Cosmos DB consistency levels",
+      "Choose the right database for different workloads"
+    ],
     services: ["Cosmos DB", "PostgreSQL Flexible Server", "MySQL", "Private Endpoints", "Database Migration Service"],
     infused: [],
     topics: [
@@ -609,6 +665,14 @@ export const WEEKS = [
     title: "Docker, ACR & Azure Container Instances",
     cert: "AZ-204",
     color: "#0078D4",
+    gapBadges: ["DOCKER"],
+    objectives: [
+      "Write production-ready Dockerfiles",
+      "Build and push images to Azure Container Registry",
+      "Deploy containers to Azure Container Instances",
+      "Configure multi-container groups with sidecars",
+      "Understand container networking and volumes"
+    ],
     services: ["Docker", "ACR", "ACI", "Container Groups"],
     infused: [],
     topics: [
@@ -679,6 +743,14 @@ export const WEEKS = [
     title: "AKS, Kubernetes & API Management",
     cert: "AZ-204 / AZ-400",
     color: "#326CE5",
+    gapBadges: ["KUBERNETES"],
+    objectives: [
+      "Create and manage AKS clusters",
+      "Deploy applications with kubectl and YAML manifests",
+      "Configure services, ingress, and HPA",
+      "Set up Azure API Management as gateway",
+      "Implement APIM policies (rate limiting, caching)"
+    ],
     services: ["AKS", "Kubernetes", "kubectl", "Helm", "APIM", "Ingress"],
     infused: ["API Management basics (gateway, policies)", "Exposing AKS services via APIM"],
     topics: [
@@ -770,6 +842,14 @@ export const WEEKS = [
     title: "Azure DevOps & CI/CD Pipelines",
     cert: "AZ-400",
     color: "#F25022",
+    gapBadges: ["GIT", "YAML"],
+    objectives: [
+      "Set up Azure DevOps organization and projects",
+      "Create YAML-based CI/CD pipelines",
+      "Configure build triggers and deployment stages",
+      "Implement approval gates and environments",
+      "Use service connections securely"
+    ],
     services: ["Azure DevOps", "Pipelines", "Repos", "Boards", "Artifacts", "Service Connections"],
     infused: [],
     topics: [
@@ -837,6 +917,14 @@ export const WEEKS = [
     title: "IaC: Bicep, Terraform & GitHub Actions",
     cert: "AZ-400",
     color: "#FF7139",
+    gapBadges: ["TERRAFORM", "BICEP"],
+    objectives: [
+      "Write Bicep templates for Azure resources",
+      "Use Terraform for infrastructure provisioning",
+      "Create GitHub Actions workflows for CI/CD",
+      "Manage Terraform state in Azure Storage",
+      "Compare IaC tools and choose the right one"
+    ],
     services: ["ARM Templates", "Bicep", "Terraform", "GitHub Actions", "GitOps"],
     infused: [],
     topics: [
@@ -921,6 +1009,14 @@ export const WEEKS = [
     title: "Monitoring, Observability & Cost Management Deep Dive",
     cert: "AZ-104 / AZ-305",
     color: "#FFB900",
+    gapBadges: ["KQL"],
+    objectives: [
+      "Configure Azure Monitor and Log Analytics",
+      "Write KQL queries for logs and metrics",
+      "Set up Application Insights for web apps",
+      "Create alerts and action groups",
+      "Analyze costs and implement FinOps practices"
+    ],
     services: ["Azure Monitor", "Log Analytics", "Application Insights", "Alerts", "Cost Management", "Advisor"],
     infused: ["Cost Management deep dive", "Azure Advisor recommendations", "FinOps principles"],
     topics: [
@@ -1008,6 +1104,14 @@ export const WEEKS = [
     title: "Zero Trust, Firewall, Private Endpoints & Defender",
     cert: "AZ-500",
     color: "#D83B01",
+    gapBadges: ["SECURITY"],
+    objectives: [
+      "Implement Zero Trust architecture in Azure",
+      "Deploy and configure Azure Firewall",
+      "Secure PaaS services with Private Endpoints",
+      "Create Conditional Access policies",
+      "Achieve 80%+ Defender for Cloud Secure Score"
+    ],
     services: ["Azure Firewall", "Private Endpoints", "DDoS Protection", "Conditional Access", "Defender for Cloud"],
     infused: [],
     topics: [
@@ -1109,6 +1213,14 @@ export const WEEKS = [
     title: "Sentinel SIEM, Advanced Policy & Governance at Scale",
     cert: "AZ-500 / AZ-305",
     color: "#008575",
+    gapBadges: ["SIEM"],
+    objectives: [
+      "Deploy Microsoft Sentinel and connect data sources",
+      "Create analytics rules and incident playbooks",
+      "Write custom Azure Policy definitions",
+      "Design Azure Blueprints for repeatable environments",
+      "Manage hybrid resources with Azure Arc"
+    ],
     services: ["Microsoft Sentinel", "Azure Policy", "Blueprints", "Management Groups", "Azure Arc"],
     infused: ["Microsoft Sentinel deep dive", "Advanced custom policies", "Azure Blueprints"],
     topics: [
@@ -1211,6 +1323,14 @@ export const WEEKS = [
     title: "Solutions Architecture, DR & Migration (AZ-305)",
     cert: "AZ-305",
     color: "#0078D4",
+    gapBadges: ["ARCHITECTURE"],
+    objectives: [
+      "Apply the Well-Architected Framework 5 pillars",
+      "Design high availability and disaster recovery",
+      "Set up Azure Site Recovery for DR",
+      "Plan migrations using Azure Migrate",
+      "Create architecture diagrams and cost estimates"
+    ],
     services: ["Well-Architected Framework", "Site Recovery", "Azure Migrate", "Traffic Manager", "Front Door"],
     infused: [],
     topics: [
@@ -1285,6 +1405,14 @@ export const WEEKS = [
     title: "Functions Deep Dive, Logic Apps, Event Grid & Service Bus",
     cert: "AZ-204",
     color: "#5C2D91",
+    gapBadges: ["SERVERLESS", "EVENT-DRIVEN"],
+    objectives: [
+      "Create Functions with multiple trigger types",
+      "Build stateful workflows with Durable Functions",
+      "Use Service Bus for reliable messaging",
+      "React to events with Event Grid",
+      "Automate workflows with Logic Apps"
+    ],
     services: ["Azure Functions", "Durable Functions", "Logic Apps", "Event Grid", "Service Bus", "CDN"],
     infused: [],
     topics: [
@@ -1387,6 +1515,14 @@ export const WEEKS = [
     title: "Capstone Project, Cert Prep & Career Readiness",
     cert: "ALL CERTS",
     color: "#107C10",
+    gapBadges: [],
+    objectives: [
+      "Build a complete enterprise Azure environment",
+      "Pass certification practice exams",
+      "Create a portfolio on GitHub",
+      "Prepare for technical interviews",
+      "Document your capstone project"
+    ],
     services: ["Everything from Weeks 1-16"],
     infused: [],
     topics: [
