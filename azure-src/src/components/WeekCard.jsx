@@ -1,6 +1,6 @@
 import { PHASES, CERT_COLORS } from "../data/weeks";
 
-export default function WeekCard({ week, progress = {}, onSelect }) {
+export default function WeekCard({ week, progress, onSelect }) {
   const phase = PHASES.find(p => p.num === week.phase);
   
   // Calculate completion
@@ -35,13 +35,13 @@ export default function WeekCard({ week, progress = {}, onSelect }) {
       )}
       
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 6 }}>
-        <div>
-          <div style={{ display: "flex", alignItems: "center", gap: 4, flexWrap: "wrap" }}>
+        <div style={{ flex: 1, minWidth: 0, paddingRight: 10 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 4, flexWrap: "wrap", marginBottom: 4 }}>
             <span style={{ 
               fontSize: 10, 
               fontWeight: 700, 
               color: phase?.color || week.color, 
-              fontFamily: "monospace" 
+              fontFamily: "'JetBrains Mono', monospace" 
             }}>
               WK {week.week}
             </span>
@@ -58,16 +58,13 @@ export default function WeekCard({ week, progress = {}, onSelect }) {
             {(week.gapBadges || []).map(g => (
               <span 
                 key={g} 
-                style={{
-                  fontSize: 8, padding: "1px 6px", borderRadius: "8px",
-                  background: "#f59e0b20", color: "#f59e0b", fontWeight: 600
-                }}
+                className="gb"
               >
                 {g}
               </span>
             ))}
           </div>
-          <div style={{ fontSize: 13, fontWeight: 700, color: "var(--text)", marginTop: 3, lineHeight: 1.3 }}>
+          <div style={{ fontSize: 13, fontWeight: 700, color: "var(--text)", lineHeight: 1.3 }}>
             {week.title}
           </div>
         </div>
@@ -92,7 +89,7 @@ export default function WeekCard({ week, progress = {}, onSelect }) {
             display: "flex", alignItems: "center", justifyContent: "center",
             fontSize: 9, fontWeight: 700, 
             color: pct === 100 ? "#22c55e" : "var(--text-muted)",
-            fontFamily: "monospace"
+            fontFamily: "'JetBrains Mono', monospace"
           }}>
             {pct}%
           </span>
@@ -101,17 +98,17 @@ export default function WeekCard({ week, progress = {}, onSelect }) {
       
       <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
         {week.labs.length > 0 && (
-          <span style={{ fontSize: 10, padding: "2px 8px", borderRadius: 10, background: "var(--card-bg-alt)", color: "var(--text-muted)" }}>
+          <span className="tg" style={{ background: "var(--card-bg-alt)", color: "var(--text-muted)", border: "1px solid var(--border)" }}>
             📝 {week.labs.length}
           </span>
         )}
         {week.project && (
-          <span style={{ fontSize: 10, padding: "2px 8px", borderRadius: 10, background: "var(--card-bg-alt)", color: "var(--text-muted)" }}>
+          <span className="tg" style={{ background: "var(--card-bg-alt)", color: "var(--text-muted)", border: "1px solid var(--border)" }}>
             🚀 Proj
           </span>
         )}
         {week.prompts?.length > 0 && (
-          <span style={{ fontSize: 10, padding: "2px 8px", borderRadius: 10, background: "var(--card-bg-alt)", color: "var(--text-muted)" }}>
+          <span className="tg" style={{ background: "var(--card-bg-alt)", color: "var(--text-muted)", border: "1px solid var(--border)" }}>
             💬 {week.prompts.length}
           </span>
         )}

@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { CERT_COLORS } from "../data/weeks";
+import { PHASES, CERT_COLORS } from "../data/weeks";
 
-export default function WeekDetail({ week: w, progress, onToggle, onBack, onNavigate, totalWeeks, copiedId, onCopy }) {
-  const [tab, setTab] = useState("overview");
+export default function WeekDetail({ week, progress, onToggle, onBack, onNavigate, totalWeeks, copiedId, onCopy }) {
+  const [activeTab, setActiveTab] = useState("overview");
+  const [expandedLab, setExpandedLab] = useState(null);
   const [notes, setNotes] = useState(() => {
     try {
-      const saved = localStorage.getItem(`azure-notes-${w.week}`);
+      const saved = localStorage.getItem(`azure-notes-${week.week}`);
       return saved ? JSON.parse(saved) : {};
     } catch { return {}; }
   });
@@ -13,280 +14,387 @@ export default function WeekDetail({ week: w, progress, onToggle, onBack, onNavi
   const saveNote = (id, text) => {
     const updated = { ...notes, [id]: text };
     setNotes(updated);
-    try { localStorage.setItem(`azure-notes-${w.week}`, JSON.stringify(updated)); } catch {}
+    try { localStorage.setItem(`azure-notes-${week.week}`, JSON.stringify(updated)); } catch {}
   };
-
-  const labsDone = w.labs.filter(l => progress[l.id]).length;
-  const projDone = w.project && progress[w.project?.id] ? 1 : 0;
-  const totalItems = w.labs.length + (w.project ? 1 : 0);
-  const doneItems = labsDone + projDone;
-
-  const totalMins = w.labs.reduce((sum, l) => {
-    const m = l.duration?.match(/(\d+)/);
-    return sum + (m ? parseInt(m[1]) : 30);
-  }, 0) + (w.project ? 60 : 0);
-
-  const isCmd = (s) => /^(az |kubectl|terraform|docker|npm|curl |git |code |Run:|Deploy:)/.test(s);
-
-  const tabs = [
-    { id: "overview", label: "Overview", icon: "📋" },
-    { id: "prompts", label: "Prompts", icon: "💬", count: w.prompts?.length },
-    { id: "labs", label: "Labs", icon: "🧪", count: w.labs.length },
-    { id: "project", label: "Project", icon: "🚀", hide: !w.project },
-    { id: "resources", label: "Resources", icon: "📚", count: w.resources?.length }
-  ].filter(t => !t.hide);
-
+  
+  const phase = PHASES.find(p => p.num === week.phase);
+  const hasInfused = week.infused && week.infused.length > 0;
+  
   return (
-    <div style={{ animation: "slideIn .3s ease" }}>
-      {/* Back + Nav */}
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
-        <button onClick={onBack} style={{ background: "#1e293b", border: "1px solid #334155", borderRadius: 8, padding: "6px 12px", color: "#94a3b8", fontSize: 12, fontWeight: 600, cursor: "pointer", display: "flex", alignItems: "center", gap: 6 }}>
-          ← All Weeks
-        </button>
-        <div style={{ display: "flex", gap: 6 }}>
-          <button disabled={w.week <= 1} onClick={() => onNavigate(w.week - 2)} style={{ background: "#1e293b", border: "1px solid #334155", borderRadius: 8, padding: "6px 12px", color: w.week <= 1 ? "#475569" : "#94a3b8", fontSize: 12, fontWeight: 600, cursor: w.week <= 1 ? "not-allowed" : "pointer" }}>
-            ← Prev
-          </button>
-          <button disabled={w.week >= totalWeeks} onClick={() => onNavigate(w.week)} style={{ background: "#1e293b", border: "1px solid #334155", borderRadius: 8, padding: "6px 12px", color: w.week >= totalWeeks ? "#475569" : "#94a3b8", fontSize: 12, fontWeight: 600, cursor: w.week >= totalWeeks ? "not-allowed" : "pointer" }}>
-            Next →
-          </button>
+    <div style={{ animation: "fadeUp .3s ease" }}>
+      {/* Back button */}
+      <button 
+        className="bt" 
+        onClick={onBack}
+        style={{ padding: "6px 12px", background: "var(--card-bg-alt)", color: "var(--text-muted)", fontSize: 12, marginBottom: 12, border: "1px solid var(--border)" }}
+      >
+        ← Back
+      </button>
+      
+      {/* Header */}
+      <div className="cd" style={{ padding: 18, marginBottom: 14, borderLeft: `4px solid ${phase?.color || week.color}` }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 6, flexWrap: "wrap" }}>
+          <span className="tg" style={{ background: (phase?.color || week.color) + "22", color: phase?.color || week.color }}>
+            PHASE {phase?.num || week.phase}
+          </span>
+          <span className="tg" style={{ background: "var(--card-bg-alt)", color: "var(--text-muted)" }}>
+            WEEK {week.week}
+          </span>
+          {week.cert && (
+            <span className="tg" style={{ 
+              background: (CERT_COLORS[week.cert] || week.color) + "15", 
+              color: CERT_COLORS[week.cert] || week.color 
+            }}>
+              {week.cert}
+            </span>
+          )}
+          {(week.gapBadges || []).map(g => (
+            <span key={g} className="gb">
+              {g}
+            </span>
+          ))}
         </div>
-      </div>
-
-      {/* Header Card */}
-      <div style={{ background: "linear-gradient(135deg, #111827 0%, #1e293b 100%)", border: "1px solid #334155", borderRadius: 12, padding: 16, marginBottom: 12, borderLeft: `4px solid ${w.color}` }}>
-        <div style={{ display: "flex", gap: 6, marginBottom: 6, flexWrap: "wrap" }}>
-          <span style={{ fontSize: 10, padding: "2px 8px", borderRadius: 10, background: w.color + "20", color: w.color, fontWeight: 700 }}>WEEK {w.week}</span>
-          <span style={{ fontSize: 10, padding: "2px 8px", borderRadius: 10, background: "#1e293b", color: "#94a3b8", fontWeight: 600 }}>Phase {w.phase}</span>
-          <span style={{ fontSize: 10, padding: "2px 8px", borderRadius: 10, background: (CERT_COLORS[w.cert] || w.color) + "15", color: CERT_COLORS[w.cert] || w.color, fontWeight: 600 }}>{w.cert}</span>
-          <span style={{ fontSize: 10, padding: "2px 8px", borderRadius: 10, background: "#0ea5e915", color: "#0ea5e9", fontWeight: 600 }}>⏱️ ~{Math.round(totalMins / 60)}h</span>
-        </div>
-        <h2 style={{ fontSize: 18, fontWeight: 700, color: "#fff", margin: "0 0 8px" }}>{w.title}</h2>
+        <h1 style={{ fontSize: 20, fontWeight: 700, color: "var(--text)", marginBottom: 8 }}>{week.title}</h1>
         
-        {/* Progress bar */}
-        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <div style={{ flex: 1, height: 6, background: "#1e293b", borderRadius: 3, overflow: "hidden" }}>
-            <div style={{ width: `${totalItems > 0 ? (doneItems / totalItems) * 100 : 0}%`, height: "100%", background: doneItems === totalItems ? "#10b981" : w.color, transition: "width .3s" }} />
-          </div>
-          <span style={{ fontSize: 11, color: "#94a3b8", fontWeight: 600 }}>{doneItems}/{totalItems}</span>
+        {/* Services */}
+        <div style={{ display: "flex", gap: 5, flexWrap: "wrap", marginBottom: hasInfused ? 10 : 0 }}>
+          {week.services?.map(s => (
+            <span key={s} className="tg" style={{ background: "#0078D410", color: "#0078D4", border: "1px solid #0078D428" }}>
+              {s}
+            </span>
+          ))}
         </div>
-
+        
         {/* Infused banner */}
-        {w.infused?.length > 0 && (
-          <div style={{ marginTop: 10, padding: "8px 10px", background: "#00857510", border: "1px solid #00857530", borderRadius: 6, fontSize: 11 }}>
-            <strong style={{ color: "#008575" }}>✦ Infused:</strong> <span style={{ color: "#94a3b8" }}>{w.infused.join(" • ")}</span>
+        {hasInfused && (
+          <div style={{
+            marginTop: 10, padding: "8px 10px",
+            borderRadius: "6px", background: "#00857508",
+            border: "1px solid #00857520",
+            fontSize: "11px", lineHeight: 1.5
+          }}>
+            <strong style={{ color: "#008575" }}>✦ Infused:</strong>{" "}
+            <span style={{ color: "var(--text-secondary)" }}>{week.infused.join(" • ")}</span>
           </div>
         )}
       </div>
-
+      
       {/* Tabs */}
-      <div style={{ display: "flex", gap: 4, marginBottom: 12, background: "#111827", borderRadius: 8, padding: 4, overflowX: "auto" }}>
-        {tabs.map(t => (
-          <button key={t.id} onClick={() => setTab(t.id)} style={{
-            flex: 1, minWidth: 70, padding: "8px 10px", borderRadius: 6, border: "none", cursor: "pointer",
-            background: tab === t.id ? w.color : "transparent",
-            color: tab === t.id ? "#fff" : "#64748b",
-            fontSize: 11, fontWeight: 600, whiteSpace: "nowrap",
-            display: "flex", alignItems: "center", justifyContent: "center", gap: 4
-          }}>
-            <span>{t.icon}</span> {t.label}
-            {t.count > 0 && <span style={{ background: tab === t.id ? "rgba(255,255,255,0.2)" : "#1e293b", padding: "1px 5px", borderRadius: 8, fontSize: 9 }}>{t.count}</span>}
+      <div style={{ display: "flex", gap: 5, marginBottom: 14, flexWrap: "wrap" }}>
+        {["overview", "prompts", "labs", ...(week.project ? ["project"] : []), "resources"].map(t => (
+          <button 
+            key={t} 
+            className="bt"
+            onClick={() => setActiveTab(t)}
+            style={{
+              padding: "8px 14px", fontSize: 12,
+              background: activeTab === t ? "#0078D4" : "var(--card-bg)",
+              color: activeTab === t ? "#fff" : "var(--text-muted)",
+              border: activeTab === t ? "none" : "1px solid var(--border)"
+            }}
+          >
+            {t === "overview" ? "📋 Overview" :
+             t === "prompts" ? `💬 Prompts (${week.prompts?.length || 0})` :
+             t === "labs" ? `🔬 Labs (${week.labs.length})` :
+             t === "project" ? "🚀 Project" : "📚 Resources"}
           </button>
         ))}
       </div>
-
-      {/* Tab Content */}
-      <div style={{ background: "#111827", border: "1px solid #1e293b", borderRadius: 12, padding: 16 }}>
-        
-        {/* Overview */}
-        {tab === "overview" && (
-          <div>
-            {w.objectives?.length > 0 && (
-              <div style={{ marginBottom: 16 }}>
-                <h3 style={{ fontSize: 12, fontWeight: 700, color: "#10b981", marginBottom: 8, display: "flex", alignItems: "center", gap: 6 }}>🎯 Learning Objectives</h3>
-                {w.objectives.map((o, i) => (
-                  <div key={i} style={{ display: "flex", gap: 8, marginBottom: 4, fontSize: 12, color: "#e2e8f0" }}>
-                    <span style={{ color: "#10b981" }}>✓</span> {o}
-                  </div>
+      
+      {/* Overview Tab */}
+      {activeTab === "overview" && (
+        <div className="cd" style={{ padding: 16 }}>
+          <h3 style={{ fontSize: 14, fontWeight: 700, color: "var(--text)", marginBottom: 10 }}>Learning Objectives</h3>
+          {week.objectives?.map((o, i) => (
+            <div key={i} style={{ display: "flex", gap: 8, padding: "5px 0", borderBottom: i < week.objectives.length - 1 ? "1px solid var(--border)" : "none" }}>
+              <span style={{ color: "#22c55e", fontSize: 12, flexShrink: 0 }}>✓</span>
+              <span style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.5 }}>{o}</span>
+            </div>
+          ))}
+          
+          {/* Topics */}
+          {week.topics && week.topics.length > 0 && (
+            <div style={{ marginTop: 16 }}>
+              <h3 style={{ fontSize: 14, fontWeight: 700, color: "var(--text)", marginBottom: 8 }}>Topics</h3>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
+                {week.topics.map((t, i) => (
+                  <span key={i} style={{ 
+                    fontSize: 11, padding: "3px 8px", borderRadius: "4px",
+                    background: "var(--card-bg-alt)", border: "1px solid var(--border)", color: "var(--text)"
+                  }}>
+                    {t}
+                  </span>
                 ))}
               </div>
-            )}
-            {w.services?.length > 0 && (
-              <div style={{ marginBottom: 16 }}>
-                <h3 style={{ fontSize: 12, fontWeight: 700, color: w.color, marginBottom: 8 }}>☁️ Services</h3>
-                <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-                  {w.services.map((s, i) => (
-                    <span key={i} style={{ fontSize: 11, padding: "3px 10px", borderRadius: 12, background: w.color + "15", color: w.color, fontWeight: 500 }}>{s}</span>
-                  ))}
-                </div>
-              </div>
-            )}
-            {w.topics?.length > 0 && (
-              <div>
-                <h3 style={{ fontSize: 12, fontWeight: 700, color: "#94a3b8", marginBottom: 8 }}>📝 Topics</h3>
-                <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
-                  {w.topics.map((t, i) => (
-                    <span key={i} style={{ fontSize: 10, padding: "3px 8px", borderRadius: 4, background: "#1e293b", border: "1px solid #334155", color: "#cbd5e1" }}>{t}</span>
-                  ))}
-                </div>
-              </div>
-            )}
+            </div>
+          )}
+        </div>
+      )}
+      
+      {/* Prompts Tab */}
+      {activeTab === "prompts" && (
+        <div style={{ display: "grid", gap: 10 }}>
+          <div style={{ padding: 10, background: "#0078D410", border: "1px solid #0078D428", borderRadius: 10, fontSize: 12, color: "#0078D4" }}>
+            💡 Copy these prompts and paste into a new Claude chat.
           </div>
-        )}
-
-        {/* Prompts */}
-        {tab === "prompts" && (
-          <div>
-            {w.prompts?.length > 0 ? w.prompts.map((p, i) => (
-              <div key={i} onClick={() => onCopy(p.prompt, `prompt-${w.week}-${i}`)} style={{
-                background: "#0f172a", border: "1px solid #1e293b", borderRadius: 8, padding: 12, marginBottom: 8, cursor: "pointer",
-                transition: "all .15s"
-              }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
-                  <span style={{ fontSize: 13, fontWeight: 600, color: "#fff" }}>{p.title}</span>
-                  <span style={{ fontSize: 10, color: copiedId === `prompt-${w.week}-${i}` ? "#10b981" : "#64748b", fontWeight: 600 }}>
-                    {copiedId === `prompt-${w.week}-${i}` ? "✓ Copied!" : "Click to copy"}
-                  </span>
+          {(week.prompts || []).map((p, i) => {
+            const pid = `p-${week.week}-${i}`;
+            return (
+              <div key={i} className="cd" style={{ padding: 16, animation: `slideIn .3s ease ${i * .03}s both` }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
+                  <h4 style={{ fontSize: 13, fontWeight: 700, color: "var(--text)" }}>{p.title}</h4>
+                  <button 
+                    className="bt" 
+                    onClick={() => onCopy(p.prompt, pid)}
+                    style={{ padding: "4px 10px", background: copiedId === pid ? "#22c55e" : "#0078D4", color: "#fff", fontSize: 11 }}
+                  >
+                    {copiedId === pid ? "✓ Copied" : "Copy"}
+                  </button>
                 </div>
-                <div style={{ fontSize: 11, color: "#94a3b8", lineHeight: 1.5, fontFamily: "monospace", whiteSpace: "pre-wrap" }}>
-                  {p.prompt?.substring(0, 200)}{p.prompt?.length > 200 ? "..." : ""}
-                </div>
+                <pre style={{ 
+                  background: "var(--card-bg-alt)", borderRadius: 8, padding: 10, fontSize: 11, 
+                  color: "var(--text-muted)", lineHeight: 1.6, whiteSpace: "pre-wrap", wordBreak: "break-word",
+                  fontFamily: "'JetBrains Mono', monospace", border: "1px solid var(--border)",
+                  maxHeight: 160, overflow: "auto"
+                }}>
+                  {p.prompt}
+                </pre>
               </div>
-            )) : <div style={{ color: "#64748b", fontSize: 12 }}>No prompts for this week.</div>}
-          </div>
-        )}
-
-        {/* Labs */}
-        {tab === "labs" && (
-          <div>
-            {w.labs.map((lab, li) => {
-              const done = progress[lab.id];
-              return (
-                <div key={li} style={{ background: "#0f172a", border: "1px solid #1e293b", borderRadius: 8, padding: 12, marginBottom: 8 }}>
-                  <div style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
-                    <div onClick={() => onToggle(lab.id)} style={{
-                      width: 22, height: 22, borderRadius: 6, flexShrink: 0, cursor: "pointer",
-                      border: done ? "none" : "2px solid #334155",
-                      background: done ? "#10b981" : "transparent",
+            );
+          })}
+        </div>
+      )}
+      
+      {/* Labs Tab */}
+      {activeTab === "labs" && (
+        <div style={{ display: "grid", gap: 10 }}>
+          {week.labs.length === 0 && (
+            <div className="cd" style={{ padding: 24, textAlign: "center", color: "var(--text-muted)" }}>
+              This week focuses on projects and certification prep.
+            </div>
+          )}
+          {week.labs.map((lab, i) => {
+            const done = !!progress[lab.id];
+            const open = expandedLab === lab.id;
+            return (
+              <div key={lab.id} className="cd" style={{ overflow: "hidden", animation: `slideIn .3s ease ${i * .03}s both` }}>
+                <div 
+                  style={{ padding: 14, display: "flex", alignItems: "center", gap: 10, cursor: "pointer" }}
+                  onClick={() => setExpandedLab(open ? null : lab.id)}
+                >
+                  <div 
+                    style={{
+                      width: 22, height: 22, borderRadius: 6, cursor: "pointer", flexShrink: 0,
+                      background: done ? "#22c55e" : "transparent",
+                      border: done ? "none" : "2px solid var(--border)",
                       display: "flex", alignItems: "center", justifyContent: "center"
-                    }}>
-                      {done && <span style={{ color: "#fff", fontSize: 12, fontWeight: 700 }}>✓</span>}
+                    }}
+                    onClick={e => { e.stopPropagation(); onToggle(lab.id); }}
+                  >
+                    {done && <span style={{ color: "#fff", fontSize: 11, fontWeight: 700 }}>✓</span>}
+                  </div>
+                  <div style={{ flex: 1 }}>
+                    <div style={{ fontSize: 13, fontWeight: 700, color: done ? "#22c55e" : "var(--text)" }}>
+                      {lab.title || lab.name}
                     </div>
-                    <div style={{ flex: 1 }}>
-                      <div style={{ fontSize: 13, fontWeight: 600, color: done ? "#10b981" : "#fff", textDecoration: done ? "line-through" : "none" }}>
-                        {lab.title || lab.name}
+                    <div style={{ display: "flex", gap: 5, marginTop: 3 }}>
+                      <span className="tg" style={{ background: "var(--card-bg-alt)", color: "var(--text-muted)" }}>⏱ {lab.duration}</span>
+                      <span className="tg" style={{ 
+                        background: lab.difficulty === "Beginner" ? "#22c55e16" : lab.difficulty === "Intermediate" ? "#f59e0b16" : "#ef444416",
+                        color: lab.difficulty === "Beginner" ? "#22c55e" : lab.difficulty === "Intermediate" ? "#f59e0b" : "#ef4444"
+                      }}>
+                        {lab.difficulty}
+                      </span>
+                    </div>
+                  </div>
+                  <span style={{ color: "var(--text-muted)", fontSize: 14, transition: "transform .2s", transform: open ? "rotate(180deg)" : "rotate(0)" }}>▾</span>
+                </div>
+                
+                {open && (
+                  <div style={{ padding: "0 14px 14px", animation: "fadeUp .2s ease" }}>
+                    <div style={{ background: "var(--card-bg-alt)", borderRadius: 10, padding: 12, border: "1px solid var(--border)" }}>
+                      <div style={{ fontSize: 10, fontWeight: 700, color: "#0078D4", textTransform: "uppercase", letterSpacing: 1, marginBottom: 8 }}>
+                        Step-by-Step
                       </div>
-                      <div style={{ display: "flex", gap: 8, marginTop: 4 }}>
-                        {lab.duration && <span style={{ fontSize: 10, color: "#64748b" }}>⏱️ {lab.duration}</span>}
-                        {lab.difficulty && (
-                          <span style={{
-                            fontSize: 9, padding: "1px 6px", borderRadius: 8,
-                            background: lab.difficulty === "Beginner" ? "#10b98120" : lab.difficulty === "Intermediate" ? "#f59e0b20" : "#ef444420",
-                            color: lab.difficulty === "Beginner" ? "#10b981" : lab.difficulty === "Intermediate" ? "#f59e0b" : "#ef4444",
-                            fontWeight: 600
-                          }}>{lab.difficulty}</span>
-                        )}
-                      </div>
-                      {lab.steps?.length > 0 && (
-                        <div style={{ marginTop: 10, paddingTop: 10, borderTop: "1px solid #1e293b" }}>
-                          {lab.steps.map((s, si) => (
-                            <div key={si} style={{ display: "flex", gap: 8, marginBottom: 4, fontSize: 11, lineHeight: 1.5 }}>
-                              <span style={{ width: 18, height: 18, borderRadius: "50%", background: w.color + "20", color: w.color, fontSize: 9, fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>{si + 1}</span>
-                              <span style={{ color: "#cbd5e1", fontFamily: isCmd(s) ? "monospace" : "inherit", fontSize: isCmd(s) ? 10 : 11 }}>{s}</span>
-                            </div>
-                          ))}
+                      {lab.steps?.map((s, si) => (
+                        <div key={si} style={{ display: "flex", gap: 8, alignItems: "flex-start", marginBottom: si < lab.steps.length - 1 ? 6 : 0 }}>
+                          <div style={{ 
+                            width: 24, height: 24, borderRadius: "50%", 
+                            background: "#0078D416", color: "#0078D4",
+                            display: "flex", alignItems: "center", justifyContent: "center",
+                            fontSize: 11, fontWeight: 700, flexShrink: 0,
+                            fontFamily: "'JetBrains Mono', monospace", marginTop: 1
+                          }}>
+                            {si + 1}
+                          </div>
+                          <div style={{ fontSize: 12, color: "var(--text-secondary)", lineHeight: 1.5, paddingTop: 2 }}>{s}</div>
                         </div>
-                      )}
+                      ))}
                       {lab.verify && (
-                        <div style={{ marginTop: 8, padding: "6px 10px", background: "#10b98110", border: "1px solid #10b98130", borderRadius: 6, fontSize: 11 }}>
-                          <span style={{ color: "#10b981", fontWeight: 600 }}>✓ Verify:</span> <span style={{ color: "#cbd5e1" }}>{lab.verify}</span>
+                        <div style={{ marginTop: 10, padding: "7px 10px", background: "#22c55e0a", border: "1px solid #22c55e28", borderRadius: 8, fontSize: 12, color: "#22c55e" }}>
+                          ✓ <strong>Verify:</strong> {lab.verify}
                         </div>
                       )}
                       {/* Notes */}
-                      <div style={{ marginTop: 8 }}>
+                      <div style={{ marginTop: 10 }}>
                         <textarea
-                          placeholder="Add notes..."
+                          placeholder="Add your notes..."
                           value={notes[lab.id] || ""}
                           onChange={(e) => saveNote(lab.id, e.target.value)}
                           onClick={(e) => e.stopPropagation()}
                           style={{
-                            width: "100%", minHeight: 40, padding: 8, fontSize: 11,
-                            background: "#0a0e1a", border: "1px solid #1e293b", borderRadius: 6,
-                            color: "#cbd5e1", resize: "vertical", fontFamily: "inherit"
+                            width: "100%", minHeight: 50, padding: 8, fontSize: 11,
+                            background: "var(--bg)", border: "1px solid var(--border)", borderRadius: 6,
+                            color: "var(--text-secondary)", resize: "vertical", fontFamily: "inherit"
                           }}
                         />
                       </div>
                     </div>
                   </div>
-                </div>
-              );
-            })}
-          </div>
-        )}
-
-        {/* Project */}
-        {tab === "project" && w.project && (
-          <div style={{ background: `${w.color}08`, border: `1px solid ${w.color}30`, borderRadius: 8, padding: 14 }}>
-            <div style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
-              <div onClick={() => onToggle(w.project.id)} style={{
-                width: 22, height: 22, borderRadius: 6, flexShrink: 0, cursor: "pointer",
-                border: progress[w.project.id] ? "none" : "2px solid #334155",
-                background: progress[w.project.id] ? "#10b981" : "transparent",
-                display: "flex", alignItems: "center", justifyContent: "center"
-              }}>
-                {progress[w.project.id] && <span style={{ color: "#fff", fontSize: 12, fontWeight: 700 }}>✓</span>}
-              </div>
-              <div style={{ flex: 1 }}>
-                <div style={{ fontSize: 15, fontWeight: 700, color: progress[w.project.id] ? "#10b981" : "#fff", textDecoration: progress[w.project.id] ? "line-through" : "none", marginBottom: 4 }}>
-                  {w.project.name || w.project.title}
-                </div>
-                <div style={{ fontSize: 12, color: "#94a3b8", lineHeight: 1.5, marginBottom: 10 }}>{w.project.description}</div>
-                {w.project.dummyData && (
-                  <div style={{ fontSize: 11, padding: "8px 10px", background: "#0f172a", border: "1px solid #1e293b", borderRadius: 6, marginBottom: 10, lineHeight: 1.5 }}>
-                    <strong style={{ color: "#059669" }}>Scenario:</strong> <span style={{ color: "#cbd5e1" }}>{w.project.dummyData}</span>
-                  </div>
                 )}
-                {w.project.steps?.map((s, i) => (
-                  <div key={i} style={{ display: "flex", gap: 6, marginBottom: 4, fontSize: 11, color: "#cbd5e1" }}>
-                    <span style={{ color: w.color, fontWeight: 700 }}>{i + 1}.</span> {s}
-                  </div>
-                ))}
-                {/* Project notes */}
-                <div style={{ marginTop: 10 }}>
-                  <textarea
-                    placeholder="Add project notes..."
-                    value={notes[w.project.id] || ""}
-                    onChange={(e) => saveNote(w.project.id, e.target.value)}
-                    style={{
-                      width: "100%", minHeight: 60, padding: 8, fontSize: 11,
-                      background: "#0a0e1a", border: "1px solid #1e293b", borderRadius: 6,
-                      color: "#cbd5e1", resize: "vertical", fontFamily: "inherit"
-                    }}
-                  />
-                </div>
               </div>
+            );
+          })}
+        </div>
+      )}
+      
+      {/* Project Tab */}
+      {activeTab === "project" && week.project && (
+        <div className="cd" style={{ overflow: "hidden" }}>
+          <div style={{ padding: 16, borderBottom: "1px solid var(--border)", display: "flex", alignItems: "center", gap: 10 }}>
+            <div 
+              style={{
+                width: 22, height: 22, borderRadius: 6, cursor: "pointer", flexShrink: 0,
+                background: progress[week.project?.id] ? "#22c55e" : "transparent",
+                border: progress[week.project?.id] ? "none" : "2px solid var(--border)",
+                display: "flex", alignItems: "center", justifyContent: "center"
+              }}
+              onClick={() => onToggle(week.project?.id)}
+            >
+              {progress[week.project?.id] && <span style={{ color: "#fff", fontSize: 11, fontWeight: 700 }}>✓</span>}
+            </div>
+            <div style={{ flex: 1 }}>
+              <h3 style={{ fontSize: 14, fontWeight: 700, color: "var(--text)" }}>{week.project.title || week.project.name}</h3>
+              <p style={{ fontSize: 12, color: "var(--text-muted)", marginTop: 2 }}>{week.project.description}</p>
             </div>
           </div>
-        )}
-
-        {/* Resources */}
-        {tab === "resources" && (
-          <div>
-            {w.resources?.length > 0 ? w.resources.map((r, i) => (
-              <a key={i} href={r.url} target="_blank" rel="noopener noreferrer" style={{
-                display: "flex", alignItems: "center", gap: 10, padding: "10px 12px", marginBottom: 6,
-                background: "#0f172a", border: "1px solid #1e293b", borderRadius: 8,
-                textDecoration: "none", color: "#e2e8f0", fontSize: 12
-              }}>
-                <span style={{ color: r.type === "video" ? "#ef4444" : "#0078D4", fontSize: 14 }}>
-                  {r.type === "video" ? "▶" : "📄"}
-                </span>
-                <span style={{ fontWeight: 500 }}>{r.name}</span>
-                <span style={{ marginLeft: "auto", color: "#64748b", fontSize: 10 }}>↗</span>
-              </a>
-            )) : <div style={{ color: "#64748b", fontSize: 12 }}>No resources for this week.</div>}
+          <div style={{ padding: 16 }}>
+            {/* Project steps if available */}
+            {week.project.steps && week.project.steps.length > 0 && (
+              <div style={{ marginBottom: 16 }}>
+                <div style={{ fontSize: 10, fontWeight: 700, color: "#22c55e", textTransform: "uppercase", letterSpacing: 1, marginBottom: 8 }}>
+                  Project Steps
+                </div>
+                {week.project.steps.map((s, i) => (
+                  <div key={i} style={{ display: "flex", gap: 6, marginBottom: 4, fontSize: 12, lineHeight: 1.5, color: "var(--text-secondary)" }}>
+                    <span style={{ color: phase?.color || week.color, fontWeight: 700, flexShrink: 0 }}>{i + 1}.</span>
+                    <span>{s}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+            
+            {/* Dummy data */}
+            {week.project.dummyData && (
+              <div style={{ marginTop: 12 }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
+                  <span style={{ fontSize: 10, fontWeight: 700, color: "#0078D4", textTransform: "uppercase", letterSpacing: 1 }}>
+                    Scenario / Dummy Data
+                  </span>
+                  <button 
+                    className="bt" 
+                    onClick={() => onCopy(week.project.dummyData, "d-" + week.project?.id)}
+                    style={{ padding: "4px 10px", background: copiedId === "d-" + week.project?.id ? "#22c55e" : "#0078D4", color: "#fff", fontSize: 11 }}
+                  >
+                    {copiedId === "d-" + week.project?.id ? "✓" : "Copy"}
+                  </button>
+                </div>
+                <pre style={{ 
+                  background: "var(--card-bg-alt)", borderRadius: 8, padding: 10, fontSize: 10,
+                  color: "var(--text-muted)", lineHeight: 1.5, whiteSpace: "pre-wrap",
+                  fontFamily: "'JetBrains Mono', monospace", border: "1px solid var(--border)",
+                  maxHeight: 120, overflow: "auto"
+                }}>
+                  {week.project.dummyData}
+                </pre>
+              </div>
+            )}
+            
+            {/* Project Notes */}
+            <div style={{ marginTop: 12 }}>
+              <div style={{ fontSize: 10, fontWeight: 700, color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: 1, marginBottom: 6 }}>
+                Your Notes
+              </div>
+              <textarea
+                placeholder="Add your project notes..."
+                value={notes[week.project?.id] || ""}
+                onChange={(e) => saveNote(week.project?.id, e.target.value)}
+                style={{
+                  width: "100%", minHeight: 80, padding: 10, fontSize: 12,
+                  background: "var(--bg)", border: "1px solid var(--border)", borderRadius: 8,
+                  color: "var(--text-secondary)", resize: "vertical", fontFamily: "inherit"
+                }}
+              />
+            </div>
           </div>
-        )}
+        </div>
+      )}
+      
+      {/* Resources Tab */}
+      {activeTab === "resources" && (
+        <div style={{ display: "grid", gap: 8 }}>
+          {(week.resources || []).length === 0 && (
+            <div className="cd" style={{ padding: 24, textAlign: "center", color: "var(--text-muted)" }}>
+              No resources for this week.
+            </div>
+          )}
+          {(week.resources || []).map((r, i) => (
+            <a 
+              key={i} 
+              href={r.url} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="cd" 
+              style={{ padding: 12, display: "flex", alignItems: "center", gap: 10, textDecoration: "none", color: "inherit" }}
+            >
+              <div style={{ 
+                width: 34, height: 34, borderRadius: 8, 
+                background: r.type === "video" ? "#DC262610" : "#0078D410",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                fontSize: 14, flexShrink: 0
+              }}>
+                {r.type === "video" ? "▶️" : "📄"}
+              </div>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ fontSize: 13, fontWeight: 600, color: "var(--text)" }}>{r.name}</div>
+                <div style={{ fontSize: 11, color: "var(--text-muted)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{r.url}</div>
+              </div>
+              <span style={{ color: "#0078D4" }}>→</span>
+            </a>
+          ))}
+        </div>
+      )}
+      
+      {/* Navigation */}
+      <div style={{ display: "flex", justifyContent: "space-between", marginTop: 18 }}>
+        {week.week > 1 ? (
+          <button 
+            className="bt" 
+            onClick={() => onNavigate(week.week - 2)}
+            style={{ padding: "7px 14px", background: "var(--card-bg)", color: "var(--text-muted)", fontSize: 12, border: "1px solid var(--border)" }}
+          >
+            ← Wk {week.week - 1}
+          </button>
+        ) : <div />}
+        {week.week < totalWeeks ? (
+          <button 
+            className="bt" 
+            onClick={() => onNavigate(week.week)}
+            style={{ padding: "7px 14px", background: "#0078D4", color: "#fff", fontSize: 12 }}
+          >
+            Wk {week.week + 1} →
+          </button>
+        ) : <div />}
       </div>
     </div>
   );
