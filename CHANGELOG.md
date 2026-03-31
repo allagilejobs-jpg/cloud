@@ -2,7 +2,7 @@
 
 ## 2026-03-30
 
-### Network Security Added to Cloud Hub + Detailed Labs (pending commit)
+### Network Security Added to Cloud Hub + Detailed Labs (4644f4a)
 Added Network Security track to Cloud Mastery Hub and expanded labs with step-by-step instructions.
 
 **Cloud Hub Updates:**
