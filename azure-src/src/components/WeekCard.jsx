@@ -55,14 +55,6 @@ export default function WeekCard({ week, progress, onSelect }) {
                 {week.cert}
               </span>
             )}
-            {(week.gapBadges || []).map(g => (
-              <span 
-                key={g} 
-                className="gb"
-              >
-                {g}
-              </span>
-            ))}
           </div>
           <div style={{ fontSize: 13, fontWeight: 700, color: "var(--text)", lineHeight: 1.3 }}>
             {week.title}
