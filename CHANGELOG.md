@@ -2,6 +2,27 @@
 
 ## 2026-03-30
 
+### NetSec Refactored to Full Parity with Azure/AWS (1d3deaa)
+Brought Network Security roadmap to full architectural parity with Azure Cloud Mastery and AWS Mastery.
+
+**Structural Changes:**
+- Created `data/weeks.js` with exported WEEKS, PHASES, CERTS, GAPS constants
+- Created `components/ProgressBar.jsx` - reusable progress bar component
+- Created `components/WeekCard.jsx` - week card for dashboard grid view
+- Created `components/WeekDetail.jsx` - detailed week view with tabs
+- Added `index.css` with shared CSS variables and utility classes
+- Refactored `App.jsx` to use modular imports (reduced from 120KB monolith)
+
+**Benefits:**
+- Consistent codebase across all three roadmaps
+- Easier maintenance and feature parity
+- Smaller App.jsx focused on state/routing
+- Reusable components for future roadmaps
+
+---
+
+## 2026-03-30
+
 ### Network Security Added to Cloud Hub + Detailed Labs (4644f4a)
 Added Network Security track to Cloud Mastery Hub and expanded labs with step-by-step instructions.
 
