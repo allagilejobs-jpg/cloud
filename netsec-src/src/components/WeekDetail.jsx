@@ -20,7 +20,7 @@ export default function WeekDetail({ week, progress, onToggle, onBack, onNavigat
       <button 
         className="bt" 
         onClick={onBack}
-        style={{ padding: "6px 12px", background: "#1e293b", color: "#94a3b8", fontSize: 12, marginBottom: 12 }}
+        style={{ padding: "6px 12px", background: "var(--card-bg-alt)", color: "var(--text-secondary)", fontSize: 12, marginBottom: 12, border: "1px solid var(--border)" }}
       >
         ← Back
       </button>
@@ -31,14 +31,14 @@ export default function WeekDetail({ week, progress, onToggle, onBack, onNavigat
           <span className="tg" style={{ background: (phase?.color || "#E53935") + "22", color: phase?.color || "#E53935" }}>
             PHASE {phase?.num || week.phase}
           </span>
-          <span className="tg" style={{ background: "#1e293b", color: "#94a3b8" }}>
+          <span className="tg" style={{ background: "var(--card-bg-alt)", color: "var(--text-secondary)" }}>
             WEEK {week.week}
           </span>
           {(week.gapBadges || []).map(g => (
             <span key={g} className={`gb ${getGapClass(g)}`}>GAP FIX: {g}</span>
           ))}
         </div>
-        <h1 style={{ fontSize: 20, fontWeight: 700, color: "#fff", marginBottom: 8 }}>{week.title}</h1>
+        <h1 style={{ fontSize: 20, fontWeight: 700, color: "var(--text)", marginBottom: 8 }}>{week.title}</h1>
         
         {/* Services */}
         <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
@@ -69,11 +69,11 @@ export default function WeekDetail({ week, progress, onToggle, onBack, onNavigat
       {/* Overview Tab */}
       {activeTab === "overview" && (
         <div className="cd" style={{ padding: 16 }}>
-          <h3 style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 10 }}>Learning Objectives</h3>
+          <h3 style={{ fontSize: 14, fontWeight: 700, color: "var(--text)", marginBottom: 10 }}>Learning Objectives</h3>
           {week.objectives.map((o, i) => (
-            <div key={i} style={{ display: "flex", gap: 8, padding: "5px 0", borderBottom: i < week.objectives.length - 1 ? "1px solid #1e293b" : "none" }}>
+            <div key={i} style={{ display: "flex", gap: 8, padding: "5px 0", borderBottom: i < week.objectives.length - 1 ? "1px solid var(--border)" : "none" }}>
               <span style={{ color: "#22c55e", fontSize: 12, flexShrink: 0 }}>✓</span>
-              <span style={{ fontSize: 13, color: "#cbd5e1", lineHeight: 1.5 }}>{o}</span>
+              <span style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.5 }}>{o}</span>
             </div>
           ))}
         </div>
@@ -90,7 +90,7 @@ export default function WeekDetail({ week, progress, onToggle, onBack, onNavigat
             return (
               <div key={i} className="cd" style={{ padding: 16, animation: `slideIn .3s ease ${i * 0.03}s both` }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
-                  <h4 style={{ fontSize: 13, fontWeight: 700, color: "#fff" }}>{p.title}</h4>
+                  <h4 style={{ fontSize: 13, fontWeight: 700, color: "var(--text)" }}>{p.title}</h4>
                   <button 
                     className="bt" 
                     onClick={() => onCopy(p.prompt, pid)} 
@@ -100,9 +100,9 @@ export default function WeekDetail({ week, progress, onToggle, onBack, onNavigat
                   </button>
                 </div>
                 <pre style={{ 
-                  background: "#0a0e17", borderRadius: 8, padding: 10, fontSize: 11, 
-                  color: "#94a3b8", lineHeight: 1.6, whiteSpace: "pre-wrap", wordBreak: "break-word",
-                  fontFamily: "'JetBrains Mono', monospace", border: "1px solid #1e293b",
+                  background: "var(--card-bg-alt)", borderRadius: 8, padding: 10, fontSize: 11, 
+                  color: "var(--text-secondary)", lineHeight: 1.6, whiteSpace: "pre-wrap", wordBreak: "break-word",
+                  fontFamily: "'JetBrains Mono', monospace", border: "1px solid var(--border)",
                   maxHeight: 160, overflow: "auto"
                 }}>
                   {p.prompt}
@@ -132,9 +132,9 @@ export default function WeekDetail({ week, progress, onToggle, onBack, onNavigat
                     {done && <span style={{ color: "#fff", fontSize: 11, fontWeight: 700 }}>✓</span>}
                   </div>
                   <div style={{ flex: 1 }}>
-                    <div style={{ fontSize: 13, fontWeight: 700, color: done ? "#22c55e" : "#fff" }}>{lab.title}</div>
+                    <div style={{ fontSize: 13, fontWeight: 700, color: done ? "#22c55e" : "var(--text)" }}>{lab.title}</div>
                     <div style={{ display: "flex", gap: 5, marginTop: 3 }}>
-                      <span className="tg" style={{ background: "#1e293b", color: "#64748b" }}>⏱ {lab.duration}</span>
+                      <span className="tg" style={{ background: "var(--card-bg-alt)", color: "var(--text-muted)" }}>⏱ {lab.duration}</span>
                       <span className="tg" style={{ 
                         background: lab.difficulty === "Beginner" ? "#22c55e16" : lab.difficulty === "Intermediate" ? "#FF990016" : "#ef444416",
                         color: lab.difficulty === "Beginner" ? "#22c55e" : lab.difficulty === "Intermediate" ? "#FF9900" : "#ef4444"
@@ -143,11 +143,11 @@ export default function WeekDetail({ week, progress, onToggle, onBack, onNavigat
                       </span>
                     </div>
                   </div>
-                  <span style={{ color: "#475569", fontSize: 14, transition: "transform .2s", transform: open ? "rotate(180deg)" : "rotate(0)" }}>▾</span>
+                  <span style={{ color: "var(--text-muted)", fontSize: 14, transition: "transform .2s", transform: open ? "rotate(180deg)" : "rotate(0)" }}>▾</span>
                 </div>
                 {open && (
                   <div style={{ padding: "0 14px 14px", animation: "fadeUp .2s ease" }}>
-                    <div style={{ background: "#0a0e17", borderRadius: 10, padding: 12, border: "1px solid #1e293b" }}>
+                    <div style={{ background: "var(--card-bg-alt)", borderRadius: 10, padding: 12, border: "1px solid var(--border)" }}>
                       <div style={{ fontSize: 10, fontWeight: 700, color: "#E53935", textTransform: "uppercase", letterSpacing: 1, marginBottom: 8 }}>
                         Step-by-Step
                       </div>
@@ -160,7 +160,7 @@ export default function WeekDetail({ week, progress, onToggle, onBack, onNavigat
                           }}>
                             {si + 1}
                           </div>
-                          <div style={{ fontSize: 12, color: "#cbd5e1", lineHeight: 1.5, paddingTop: 2 }}>{s}</div>
+                          <div style={{ fontSize: 12, color: "var(--text-secondary)", lineHeight: 1.5, paddingTop: 2 }}>{s}</div>
                         </div>
                       ))}
                       <div style={{ 
@@ -181,7 +181,7 @@ export default function WeekDetail({ week, progress, onToggle, onBack, onNavigat
       {/* Project Tab */}
       {activeTab === "project" && week.project && (
         <div className="cd" style={{ overflow: "hidden" }}>
-          <div style={{ padding: 16, borderBottom: "1px solid #1e293b", display: "flex", alignItems: "center", gap: 10 }}>
+          <div style={{ padding: 16, borderBottom: "1px solid var(--border)", display: "flex", alignItems: "center", gap: 10 }}>
             <div 
               className={`ck ${progress[week.project.id] ? "dn" : ""}`} 
               onClick={() => onToggle(week.project.id)}
@@ -189,8 +189,8 @@ export default function WeekDetail({ week, progress, onToggle, onBack, onNavigat
               {progress[week.project.id] && <span style={{ color: "#fff", fontSize: 11, fontWeight: 700 }}>✓</span>}
             </div>
             <div style={{ flex: 1 }}>
-              <h3 style={{ fontSize: 14, fontWeight: 700, color: "#fff" }}>{week.project.title}</h3>
-              <p style={{ fontSize: 12, color: "#94a3b8", marginTop: 2 }}>{week.project.description}</p>
+              <h3 style={{ fontSize: 14, fontWeight: 700, color: "var(--text)" }}>{week.project.title}</h3>
+              <p style={{ fontSize: 12, color: "var(--text-secondary)", marginTop: 2 }}>{week.project.description}</p>
             </div>
           </div>
           <div style={{ padding: 16 }}>
@@ -205,9 +205,9 @@ export default function WeekDetail({ week, progress, onToggle, onBack, onNavigat
               </button>
             </div>
             <pre style={{ 
-              background: "#0a0e17", borderRadius: 8, padding: 10, fontSize: 11, 
-              color: "#94a3b8", lineHeight: 1.5, whiteSpace: "pre-wrap", wordBreak: "break-word",
-              fontFamily: "'JetBrains Mono', monospace", border: "1px solid #1e293b",
+              background: "var(--card-bg-alt)", borderRadius: 8, padding: 10, fontSize: 11, 
+              color: "var(--text-secondary)", lineHeight: 1.5, whiteSpace: "pre-wrap", wordBreak: "break-word",
+              fontFamily: "'JetBrains Mono', monospace", border: "1px solid var(--border)",
               maxHeight: 180, overflow: "auto"
             }}>
               {week.project.prompt}
@@ -235,8 +235,8 @@ export default function WeekDetail({ week, progress, onToggle, onBack, onNavigat
                 📄
               </div>
               <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={{ fontSize: 13, fontWeight: 600, color: "#fff" }}>{r.name}</div>
-                <div style={{ fontSize: 11, color: "#64748b", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{r.url}</div>
+                <div style={{ fontSize: 13, fontWeight: 600, color: "var(--text)" }}>{r.name}</div>
+                <div style={{ fontSize: 11, color: "var(--text-muted)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{r.url}</div>
               </div>
               <span style={{ color: "#E53935" }}>→</span>
             </a>
@@ -250,7 +250,7 @@ export default function WeekDetail({ week, progress, onToggle, onBack, onNavigat
           <button 
             className="bt" 
             onClick={() => onNavigate(week.week - 2)}
-            style={{ padding: "7px 14px", background: "#1e293b", color: "#94a3b8", fontSize: 12 }}
+            style={{ padding: "7px 14px", background: "var(--card-bg-alt)", color: "var(--text-secondary)", fontSize: 12, border: "1px solid var(--border)" }}
           >
             ← Wk {week.week - 1}
           </button>

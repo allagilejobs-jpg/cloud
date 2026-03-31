@@ -46,7 +46,7 @@ export default function WeekCard({ week, progress, onSelect }) {
               <span key={g} className={`gb ${getGapClass(g)}`}>{g}</span>
             ))}
           </div>
-          <div style={{ fontSize: 13, fontWeight: 700, color: "#fff", lineHeight: 1.3 }}>
+          <div style={{ fontSize: 13, fontWeight: 700, color: "var(--text)", lineHeight: 1.3 }}>
             {week.title}
           </div>
         </div>
@@ -54,7 +54,7 @@ export default function WeekCard({ week, progress, onSelect }) {
         {/* Progress ring */}
         <div style={{ position: "relative", width: 36, height: 36, flexShrink: 0 }}>
           <svg width="36" height="36" style={{ transform: "rotate(-90deg)" }}>
-            <circle cx="18" cy="18" r="14" fill="none" stroke="#1e293b" strokeWidth="3"/>
+            <circle cx="18" cy="18" r="14" fill="none" stroke="var(--border)" strokeWidth="3"/>
             <circle 
               cx="18" cy="18" r="14" 
               fill="none" 
@@ -80,17 +80,17 @@ export default function WeekCard({ week, progress, onSelect }) {
       
       <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
         {week.labs.length > 0 && (
-          <span className="tg" style={{ background: "#1e293b", color: "#94a3b8" }}>
+          <span className="tg" style={{ background: "var(--card-bg-alt)", color: "var(--text-secondary)" }}>
             📝 {week.labs.length}
           </span>
         )}
         {week.project && (
-          <span className="tg" style={{ background: "#1e293b", color: "#94a3b8" }}>
+          <span className="tg" style={{ background: "var(--card-bg-alt)", color: "var(--text-secondary)" }}>
             🚀 Proj
           </span>
         )}
         {week.prompts?.length > 0 && (
-          <span className="tg" style={{ background: "#1e293b", color: "#94a3b8" }}>
+          <span className="tg" style={{ background: "var(--card-bg-alt)", color: "var(--text-secondary)" }}>
             💬 {week.prompts.length}
           </span>
         )}
