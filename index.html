@@ -119,6 +119,8 @@
         .card-aws:hover { border-color: #ff9900; box-shadow: 0 20px 60px rgba(255, 153, 0, 0.15); }
         .card-azure { border-color: rgba(0, 120, 212, 0.3); }
         .card-azure:hover { border-color: #0078d4; box-shadow: 0 20px 60px rgba(0, 120, 212, 0.15); }
+        .card-netsec { border-color: rgba(229, 57, 53, 0.3); }
+        .card-netsec:hover { border-color: #E53935; box-shadow: 0 20px 60px rgba(229, 57, 53, 0.15); }
         .card-header {
             display: flex;
             align-items: center;
@@ -134,6 +136,7 @@
         }
         .card-aws h2 { color: #ff9900; }
         .card-azure h2 { color: #0078d4; }
+        .card-netsec h2 { color: #E53935; }
         .card-tagline {
             font-size: 0.85rem;
             color: rgba(255,255,255,0.5);
@@ -156,6 +159,7 @@
         }
         .card-aws .card-stat-value { color: #ff9900; }
         .card-azure .card-stat-value { color: #00bcf2; }
+        .card-netsec .card-stat-value { color: #EF9A9A; }
         .card-stat-label {
             font-size: 0.7rem;
             color: rgba(255,255,255,0.5);
@@ -196,6 +200,10 @@
         }
         .card-azure .card-cta {
             background: linear-gradient(135deg, #0078d4, #00bcf2);
+            color: #fff;
+        }
+        .card-netsec .card-cta {
+            background: linear-gradient(135deg, #E53935, #B71C1C);
             color: #fff;
         }
         .card:hover .card-cta { transform: scale(1.02); }
@@ -248,19 +256,19 @@
 
         <div class="total-stats">
             <div class="total-stat">
-                <div class="total-stat-value">35</div>
+                <div class="total-stat-value">51</div>
                 <div class="total-stat-label">Weeks Total</div>
             </div>
             <div class="total-stat">
-                <div class="total-stat-value">12</div>
+                <div class="total-stat-value">17</div>
                 <div class="total-stat-label">Certifications</div>
             </div>
             <div class="total-stat">
-                <div class="total-stat-value">100+</div>
+                <div class="total-stat-value">150+</div>
                 <div class="total-stat-label">Labs</div>
             </div>
             <div class="total-stat">
-                <div class="total-stat-value">26</div>
+                <div class="total-stat-value">34</div>
                 <div class="total-stat-label">Projects</div>
             </div>
         </div>
@@ -346,6 +354,48 @@
                 <p>Fundamentals → Administrator → Developer → Architect → DevOps → Security. Includes Bicep, Terraform, AKS, Sentinel SIEM, and Azure Arc.</p>
                 <span class="card-cta">
                     Start Azure Journey
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </span>
+            </a>
+
+            <a href="netsec/" class="card card-netsec">
+                <div class="card-header">
+                    <div class="card-icon">🛡️</div>
+                    <div class="card-title-block">
+                        <h2>Network Security</h2>
+                        <div class="card-tagline">Palo Alto NGFW</div>
+                    </div>
+                </div>
+                <div class="card-stats">
+                    <div class="card-stat">
+                        <div class="card-stat-value">16</div>
+                        <div class="card-stat-label">Weeks</div>
+                    </div>
+                    <div class="card-stat">
+                        <div class="card-stat-value">5</div>
+                        <div class="card-stat-label">Certs</div>
+                    </div>
+                    <div class="card-stat">
+                        <div class="card-stat-value">40+</div>
+                        <div class="card-stat-label">Labs</div>
+                    </div>
+                    <div class="card-stat">
+                        <div class="card-stat-value">8</div>
+                        <div class="card-stat-label">Projects</div>
+                    </div>
+                </div>
+                <div class="card-certs">
+                    <span class="cert-badge">🌐 Network+</span>
+                    <span class="cert-badge">🔐 Security+</span>
+                    <span class="cert-badge">🛡️ PNSP</span>
+                    <span class="cert-badge">🔥 NGFW Eng</span>
+                    <span class="cert-badge">🐍 Python</span>
+                </div>
+                <p>Networking → Cybersecurity → Palo Alto NGFW → Automation → Career. Includes Linux, Wireshark, VPN, HA, Panorama, and Python automation.</p>
+                <span class="card-cta">
+                    Start Security Journey
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                         <path d="M5 12h14M12 5l7 7-7 7"/>
                     </svg>

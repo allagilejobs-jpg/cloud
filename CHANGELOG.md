@@ -2,6 +2,32 @@
 
 ## 2026-03-30
 
+### Network Security Added to Cloud Hub + Detailed Labs (pending commit)
+Added Network Security track to Cloud Mastery Hub and expanded labs with step-by-step instructions.
+
+**Cloud Hub Updates:**
+- Added Network Security card to index.html
+- Updated total stats: 51 weeks, 17 certs, 150+ labs, 34 projects
+- Added card-netsec styling (red theme)
+
+**Network Security LANDs Expansion (Weeks 1-3):**
+Expanded all labs with detailed step-by-step instructions matching Azure/AWS format:
+
+**Week 1 Labs:**
+- Lab 1-1: Linux Command Line (40 → 60 min) - 42 detailed steps covering VirtualBox setup, Ubuntu install, network commands, nmap, tcpdump, user management
+- Lab 1-2: OSI Model with Real Traffic (30 → 45 min) - 36 steps covering Wireshark install, packet capture, layer identification, stream following
+- Lab 1-3: DNS & DHCP Hands-On (25 → 40 min) - 37 steps covering dig, nslookup, record types, DHCP DORA capture
+
+**Week 2 Labs:**
+- Lab 2-1: Subnetting Speed Drill (30 → 50 min) - 55 steps with binary math examples, subnet calculations, practice exercises
+- Lab 2-2: Routing Table Analysis (25 → 40 min) - 35 steps covering ip route, static routes, longest-prefix-match, traceroute/mtr
+
+**Week 3 Labs:**
+- Lab 3-1: AWS VPC with DMZ Architecture (40 → 60 min) - 60 steps covering full VPC creation, EC2 instances, security groups, NAT gateway
+- Lab 3-2: Wireshark Traffic Analysis (45 → 60 min) - 52 steps covering advanced filters, TLS SNI analysis, file extraction, forensics techniques
+
+---
+
 ### Light/Dark Mode Fix (fa19799, cff7d51)
 Fixed readability issues in light mode for both apps:
 - All text now uses CSS variables (var(--text), var(--text-muted), etc.)
