@@ -125,7 +125,8 @@ function App() {
           --text: #1e293b; --text-muted: #64748b; --text-secondary: #475569;
           --primary: #0078D4; --primary-light: #0078D420;
         }
-        html, body { background: var(--bg); margin: 0; padding: 0; min-height: 100%; }
+        html, body { background: var(--bg); margin: 0; padding: 0; min-height: 100%; width: 100%; overflow-x: hidden; }
+        #root { width: 100%; margin: 0; padding: 0; }
         *{box-sizing:border-box;margin:0;padding:0}
         ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--card-bg)}::-webkit-scrollbar-thumb{background:var(--border-hover);border-radius:3px}
         @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
