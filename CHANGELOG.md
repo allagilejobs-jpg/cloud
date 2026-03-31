@@ -1,5 +1,41 @@
 # Cloud Mastery Hub Changelog
 
+## 2026-03-30 (Evening)
+
+### NetSec Labs Major Expansion - All 22 Labs Fully Detailed
+All labs across weeks 6-16 now have comprehensive, hands-on step-by-step instructions.
+
+**Week 6-7 (Palo Alto Basics):**
+- Lab 6-1: Initial Setup (30→55 min) - Full OOB setup, licensing
+- Lab 6-2: Zones & Interfaces (25→55 min) - Complete L3 config with routing
+- Lab 7-1: Security Policy (35→60 min) - 5 rules with ordering and logging
+- Lab 7-2: NAT Config (30→55 min) - SNAT and DNAT with verification
+
+**Week 8-9 (VPN & Security):**
+- Lab 8-1: IPSec VPN (50→75 min) - Phase 1/Phase 2 with troubleshooting
+- Lab 8-2: GlobalProtect (45→70 min) - Portal, Gateway, split tunnel
+- Lab 9-1: SSL Decryption (45→70 min) - CA generation, no-decrypt rules
+- Lab 9-2: Security Profiles (40→60 min) - All 6 profiles + Profile Group
+
+**Week 10-11 (Enterprise):**
+- Lab 10-1: HA Active/Passive (50→75 min) - Full HA config, failover testing
+- Lab 10-2: Panorama (40→60 min) - Device Groups, Templates
+- Lab 11-1: Packet Capture (35→55 min) - CLI commands, Wireshark
+- Lab 11-2: Log Analysis (40→60 min) - show session, policy-match
+
+**Week 12-14 (Ecosystem & IR):**
+- Lab 12-1/12-2: Product comparison + SIEM correlation rules
+- Lab 13-1/13-2: Python scripts + Ansible playbooks (with code)
+- Lab 14-1/14-2: Threat hunting (4 hunts) + IR playbook
+
+**Week 15-16 (Capstone & Career):**
+- Lab 15-1: Enterprise build (240 min) - 11-phase deployment
+- Lab 16-1/16-2: Whiteboard practice + interview portfolio
+
+**Total:** 22 labs expanded, content doubled (~150KB → 310KB)
+
+---
+
 ## 2026-03-30
 
 ### NetSec Refactored to Full Parity with Azure/AWS (1d3deaa)
