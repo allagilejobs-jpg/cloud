@@ -131,6 +131,8 @@ function App() {
         @keyframes slideIn{from{opacity:0;transform:translateX(-16px)}to{opacity:1;transform:translateX(0)}}
         .cd{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;transition:all .2s}.cd:hover{border-color:var(--border-hover)}
         .bt{border:none;cursor:pointer;border-radius:8px;font-family:inherit;font-weight:600;transition:all .15s}.bt:active{transform:scale(.97)}
+        .tg{display:inline-block;padding:3px 8px;border-radius:8px;font-size:10px;font-weight:600}
+        .gb{font-size:9px;padding:2px 6px;border-radius:8px;font-weight:700;background:#f59e0b20;color:#f59e0b}
         .chip{padding:3px 10px;border-radius:16px;font-size:10px;font-weight:600;border:1px solid;cursor:pointer}
         input,textarea{font-family:inherit}
         a{color:var(--primary)}
