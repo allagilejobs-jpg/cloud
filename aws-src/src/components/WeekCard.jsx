@@ -35,8 +35,8 @@ export default function WeekCard({ week, progress, onSelect }) {
       )}
       
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 6 }}>
-        <div>
-          <div style={{ display: "flex", alignItems: "center", gap: 4, flexWrap: "wrap" }}>
+        <div style={{ flex: 1, minWidth: 0, paddingRight: 10 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 4, flexWrap: "wrap", marginBottom: 4 }}>
             <span style={{ 
               fontSize: 10, 
               fontWeight: 700, 
@@ -58,16 +58,13 @@ export default function WeekCard({ week, progress, onSelect }) {
             {(week.gapBadges || []).map(g => (
               <span 
                 key={g} 
-                className={`gb ${
-                  ["LINUX", "BASH", "PYTHON", "TERRAFORM", "AI/ML", "BEDROCK", "SAGEMAKER"].includes(g) ? "gc" :
-                  ["STEP FUNCTIONS", "EVENTBRIDGE", "SECRETS MANAGER", "SSM", "X-RAY", "MULTI-ACCOUNT", "ORGANIZATIONS"].includes(g) ? "gi" : "ge"
-                }`}
+                className="gb"
               >
                 {g}
               </span>
             ))}
           </div>
-          <div style={{ fontSize: 13, fontWeight: 700, color: "#fff", marginTop: 3, lineHeight: 1.3 }}>
+          <div style={{ fontSize: 13, fontWeight: 700, color: "var(--text)", marginTop: 3, lineHeight: 1.3 }}>
             {week.title}
           </div>
         </div>
@@ -75,7 +72,7 @@ export default function WeekCard({ week, progress, onSelect }) {
         {/* Progress ring */}
         <div style={{ position: "relative", width: 36, height: 36, flexShrink: 0 }}>
           <svg width="36" height="36" style={{ transform: "rotate(-90deg)" }}>
-            <circle cx="18" cy="18" r="14" fill="none" stroke="#1e293b" strokeWidth="3"/>
+            <circle cx="18" cy="18" r="14" fill="none" stroke="var(--border)" strokeWidth="3"/>
             <circle 
               cx="18" cy="18" r="14" 
               fill="none" 
@@ -91,7 +88,7 @@ export default function WeekCard({ week, progress, onSelect }) {
             position: "absolute", inset: 0, 
             display: "flex", alignItems: "center", justifyContent: "center",
             fontSize: 9, fontWeight: 700, 
-            color: pct === 100 ? "#22c55e" : "#94a3b8",
+            color: pct === 100 ? "#22c55e" : "var(--text-muted)",
             fontFamily: "'JetBrains Mono', monospace"
           }}>
             {pct}%
@@ -101,18 +98,20 @@ export default function WeekCard({ week, progress, onSelect }) {
       
       <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
         {week.labs.length > 0 && (
-          <span className="tg" style={{ background: "#1e293b", color: "#94a3b8" }}>
+          <span className="tg" style={{ background: "var(--card-bg-alt)", color: "var(--text-muted)", border: "1px solid var(--border)" }}>
             📝 {week.labs.length}
           </span>
         )}
         {week.project && (
-          <span className="tg" style={{ background: "#1e293b", color: "#94a3b8" }}>
+          <span className="tg" style={{ background: "var(--card-bg-alt)", color: "var(--text-muted)", border: "1px solid var(--border)" }}>
             🚀 Proj
           </span>
         )}
-        <span className="tg" style={{ background: "#1e293b", color: "#94a3b8" }}>
-          💬 {week.prompts.length}
-        </span>
+        {week.prompts?.length > 0 && (
+          <span className="tg" style={{ background: "var(--card-bg-alt)", color: "var(--text-muted)", border: "1px solid var(--border)" }}>
+            💬 {week.prompts.length}
+          </span>
+        )}
       </div>
     </div>
   );
