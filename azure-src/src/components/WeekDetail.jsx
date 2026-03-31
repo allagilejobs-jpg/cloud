@@ -4,18 +4,6 @@ import { PHASES, CERT_COLORS } from "../data/weeks";
 export default function WeekDetail({ week, progress, onToggle, onBack, onNavigate, totalWeeks, copiedId, onCopy }) {
   const [activeTab, setActiveTab] = useState("overview");
   const [expandedLab, setExpandedLab] = useState(null);
-  const [notes, setNotes] = useState(() => {
-    try {
-      const saved = localStorage.getItem(`azure-notes-${week.week}`);
-      return saved ? JSON.parse(saved) : {};
-    } catch { return {}; }
-  });
-
-  const saveNote = (id, text) => {
-    const updated = { ...notes, [id]: text };
-    setNotes(updated);
-    try { localStorage.setItem(`azure-notes-${week.week}`, JSON.stringify(updated)); } catch {}
-  };
   
   const phase = PHASES.find(p => p.num === week.phase);
   const hasInfused = week.infused && week.infused.length > 0;
@@ -235,20 +223,6 @@ export default function WeekDetail({ week, progress, onToggle, onBack, onNavigat
                           ✓ <strong>Verify:</strong> {lab.verify}
                         </div>
                       )}
-                      {/* Notes */}
-                      <div style={{ marginTop: 10 }}>
-                        <textarea
-                          placeholder="Add your notes..."
-                          value={notes[lab.id] || ""}
-                          onChange={(e) => saveNote(lab.id, e.target.value)}
-                          onClick={(e) => e.stopPropagation()}
-                          style={{
-                            width: "100%", minHeight: 50, padding: 8, fontSize: 11,
-                            background: "var(--bg)", border: "1px solid var(--border)", borderRadius: 6,
-                            color: "var(--text-secondary)", resize: "vertical", fontFamily: "inherit"
-                          }}
-                        />
-                      </div>
                     </div>
                   </div>
                 )}
@@ -319,23 +293,6 @@ export default function WeekDetail({ week, progress, onToggle, onBack, onNavigat
                 </pre>
               </div>
             )}
-            
-            {/* Project Notes */}
-            <div style={{ marginTop: 12 }}>
-              <div style={{ fontSize: 10, fontWeight: 700, color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: 1, marginBottom: 6 }}>
-                Your Notes
-              </div>
-              <textarea
-                placeholder="Add your project notes..."
-                value={notes[week.project?.id] || ""}
-                onChange={(e) => saveNote(week.project?.id, e.target.value)}
-                style={{
-                  width: "100%", minHeight: 80, padding: 10, fontSize: 12,
-                  background: "var(--bg)", border: "1px solid var(--border)", borderRadius: 8,
-                  color: "var(--text-secondary)", resize: "vertical", fontFamily: "inherit"
-                }}
-              />
-            </div>
           </div>
         </div>
       )}
