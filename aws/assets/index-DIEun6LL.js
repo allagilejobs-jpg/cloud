@@ -231,6 +231,7 @@ Format as a comprehensive study document.`}}];function _p({current:e,total:t,col
           --text: #1e293b; --text-muted: #64748b; --text-secondary: #475569;
           --primary: #FF9900; --primary-light: #FF990020;
         }
+        html, body { background: var(--bg); margin: 0; padding: 0; min-height: 100%; }
         *{box-sizing:border-box;margin:0;padding:0}
         ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--card-bg)}::-webkit-scrollbar-thumb{background:var(--border-hover);border-radius:3px}
         @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
