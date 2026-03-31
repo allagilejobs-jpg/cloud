@@ -2,7 +2,16 @@
 
 ## 2026-03-30
 
-### Major UI Unification + New Features (pending commit)
+### Light/Dark Mode Fix (fa19799, cff7d51)
+Fixed readability issues in light mode for both apps:
+- All text now uses CSS variables (var(--text), var(--text-muted), etc.)
+- Card titles, objectives, prompts, lab steps all readable in both themes
+- Progress rings use var(--border) for proper contrast
+- Tags and badges use CSS variables for backgrounds and colors
+
+---
+
+### Major UI Unification + New Features (775a440)
 Both AWS and Azure now have identical feature sets:
 
 **New Features (Both Apps):**
