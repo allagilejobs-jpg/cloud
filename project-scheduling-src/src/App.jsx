@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { WEEKS, PHASES, CERTS, CERT_COLORS, GAP_INFUSIONS, RESOURCES, TUTOR_PROMPTS } from "./data/weeks";
+import { WEEKS, PHASES, CERTS, CERT_COLORS, GAP_INFUSIONS, RESOURCES, TUTOR_PROMPTS, FEATURED_LEARNING } from "./data/weeks";
 import ProgressBar from "./components/ProgressBar";
 import WeekCard from "./components/WeekCard";
 import WeekDetail from "./components/WeekDetail";
@@ -147,7 +147,7 @@ function App() {
             <div style={{ width: 38, height: 38, background: "linear-gradient(135deg,#14B8A6,#0F766E)", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, fontWeight: 700, color: "#042f2e" }}>📅</div>
             <div>
               <div style={{ fontSize: 16, fontWeight: 700, color: "#fff" }}>Project Scheduling Mastery</div>
-              <div style={{ fontSize: 11, color: "var(--text-muted)" }}>{totalHours}h · 12 Weeks · 4 Phases · PM Ready</div>
+              <div style={{ fontSize: 11, color: "var(--text-muted)" }}>{totalHours}h · 12 Weeks · 4 Phases · Scheduler Ready</div>
             </div>
           </div>
           <div className="no-print" style={{ display: "flex", gap: 5, flexWrap: "wrap", alignItems: "center" }}>
@@ -200,6 +200,30 @@ function App() {
                   )}
                 </div>
               ))}
+            </div>
+
+            <div className="cd" style={{ padding: 16, marginBottom: 16, borderLeft: "3px solid #B7791F" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10, flexWrap: "wrap" }}>
+                <span style={{ fontSize: 10, fontWeight: 700, color: "#B7791F", letterSpacing: 1, textTransform: "uppercase", fontFamily: "'JetBrains Mono', monospace" }}>
+                  What You Will Learn
+                </span>
+                <span style={{ fontSize: 12, color: "var(--text-muted)" }}>
+                  Project scheduler and project controls focus
+                </span>
+              </div>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 10 }}>
+                {FEATURED_LEARNING.map((item, i) => (
+                  <div key={i} style={{ padding: 12, borderRadius: 8, background: "var(--card-bg-alt)", border: "1px solid var(--border)" }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", gap: 8, alignItems: "flex-start", marginBottom: 6 }}>
+                      <div style={{ fontSize: 13, fontWeight: 700, color: "var(--text)" }}>{item.title}</div>
+                      <span style={{ fontSize: 9, padding: "2px 6px", borderRadius: 8, color: "#B7791F", background: "#B7791F18", fontWeight: 700, whiteSpace: "nowrap" }}>
+                        {item.week}
+                      </span>
+                    </div>
+                    <div style={{ fontSize: 11, color: "var(--text-secondary)", lineHeight: 1.5 }}>{item.detail}</div>
+                  </div>
+                ))}
+              </div>
             </div>
 
             {/* Search */}
@@ -295,7 +319,7 @@ function App() {
           <div style={{ animation: "fadeUp .4s ease" }}>
             <h2 style={{ fontSize: 18, fontWeight: 700, color: "#fff", marginBottom: 4 }}>All Projects</h2>
             <p style={{ fontSize: 12, color: "var(--text-muted)", marginBottom: 18 }}>
-              {tProj} hands-on projects across 18 weeks
+              {tProj} hands-on projects across 12 weeks
             </p>
             <div style={{ display: "grid", gap: 12 }}>
               {WEEKS.filter(w => w.project).map(w => {
@@ -409,7 +433,7 @@ function App() {
         {/* Certs View */}
         {view === "certs" && (
           <div style={{ animation: "fadeUp .4s ease" }}>
-            <h2 style={{ fontSize: 18, fontWeight: 700, marginBottom: 16 }}>6 Skill Tracks</h2>
+            <h2 style={{ fontSize: 18, fontWeight: 700, marginBottom: 16 }}>{CERTS.length} Skill Tracks</h2>
             <div style={{ display: "grid", gap: 10 }}>
               {CERTS.map((c, i) => (
                 <div key={i} className="cd" style={{ padding: 16, display: "flex", alignItems: "center", gap: 14 }}>
@@ -434,7 +458,7 @@ function App() {
 
         {/* Footer */}
         <div style={{ textAlign: "center", marginTop: 40, fontSize: 10, color: "var(--text-muted)" }}>
-          Project Scheduling Mastery - 12 Weeks • 4 Phases • 6 Skill Tracks • {tLabs} Labs • {tProj} Projects
+          Project Scheduling Mastery - 12 Weeks • 4 Phases • {CERTS.length} Skill Tracks • {tLabs} Labs • {tProj} Projects
           <br /><span style={{ fontSize: 9 }}>Keyboard: j/k navigate weeks, Esc close</span>
         </div>
       </div>

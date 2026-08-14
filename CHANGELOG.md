@@ -2,6 +2,35 @@
 
 ## 2026-08-14
 
+### Project Scheduling Mastery P6/DCMA Focus Update
+Updated Project Scheduling Mastery to factor in the flyer-style "What You Will Learn" outcomes for project scheduler training.
+
+**Commit:** pending until commit creation in this change set
+
+**Curriculum Updates:**
+- Added a visible "What You Will Learn" section to the dashboard.
+- Added Primavera P6 as a seventh skill track.
+- Strengthened P6 coverage across setup, WBS/activity structure, data date/status updates, baselines, and portfolio evidence.
+- Expanded WBS development into P6-ready WBS codes and activity mapping.
+- Strengthened CPM scheduling and logic language for scheduler interviews.
+- Expanded Week 5 into a practical DCMA 14-point schedule health check.
+- Renamed Week 6 around Primavera P6 status updates, baselines, variance, and forecasting.
+- Added interview preparation emphasis for project scheduler and project controls roles.
+
+**Files Affected:**
+- `project-scheduling-src/src/data/weeks.js`
+- `project-scheduling-src/src/App.jsx`
+- `project-scheduling-src/dist/`
+- `project-scheduling/`
+- `CHANGELOG.md`
+
+**Verification:**
+- `npm run build` passed for `project-scheduling-src`.
+- Local `/cloud/project-scheduling/` Vite route screenshot checked at desktop and mobile sizes.
+- Static `project-scheduling/` route and new JS asset returned HTTP 200 locally.
+
+---
+
 ### Project Scheduling Mastery Added
 Added a fourth Cloud Mastery Hub track for project scheduling and PM delivery planning.
 
