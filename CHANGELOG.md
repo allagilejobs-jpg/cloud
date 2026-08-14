@@ -5,7 +5,7 @@
 ### Project Scheduling Mastery P6/DCMA Focus Update
 Updated Project Scheduling Mastery to factor in the flyer-style "What You Will Learn" outcomes for project scheduler training.
 
-**Commit:** pending until commit creation in this change set
+**Commit:** `1e2c250`
 
 **Curriculum Updates:**
 - Added a visible "What You Will Learn" section to the dashboard.
