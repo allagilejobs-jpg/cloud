@@ -121,6 +121,8 @@
         .card-azure:hover { border-color: #0078d4; box-shadow: 0 20px 60px rgba(0, 120, 212, 0.15); }
         .card-netsec { border-color: rgba(229, 57, 53, 0.3); }
         .card-netsec:hover { border-color: #E53935; box-shadow: 0 20px 60px rgba(229, 57, 53, 0.15); }
+        .card-project { border-color: rgba(20, 184, 166, 0.3); }
+        .card-project:hover { border-color: #14B8A6; box-shadow: 0 20px 60px rgba(20, 184, 166, 0.15); }
         .card-header {
             display: flex;
             align-items: center;
@@ -137,6 +139,7 @@
         .card-aws h2 { color: #ff9900; }
         .card-azure h2 { color: #0078d4; }
         .card-netsec h2 { color: #E53935; }
+        .card-project h2 { color: #14B8A6; }
         .card-tagline {
             font-size: 0.85rem;
             color: rgba(255,255,255,0.5);
@@ -160,6 +163,7 @@
         .card-aws .card-stat-value { color: #ff9900; }
         .card-azure .card-stat-value { color: #00bcf2; }
         .card-netsec .card-stat-value { color: #EF9A9A; }
+        .card-project .card-stat-value { color: #14B8A6; }
         .card-stat-label {
             font-size: 0.7rem;
             color: rgba(255,255,255,0.5);
@@ -206,6 +210,10 @@
             background: linear-gradient(135deg, #E53935, #B71C1C);
             color: #fff;
         }
+        .card-project .card-cta {
+            background: linear-gradient(135deg, #14B8A6, #0F766E);
+            color: #042f2e;
+        }
         .card:hover .card-cta { transform: scale(1.02); }
         .card-cta svg { transition: transform 0.3s ease; }
         .card:hover .card-cta svg { transform: translateX(4px); }
@@ -251,24 +259,24 @@
         <header class="hero">
             <div class="hero-icon">☁️</div>
             <h1>Cloud Mastery Hub</h1>
-            <p class="subtitle">Comprehensive certification programs for AWS and Azure. From beginner to expert in 17-18 weeks with hands-on labs, real-world projects, and career prep.</p>
+            <p class="subtitle">Comprehensive mastery programs for cloud, security, and project delivery. Learn through hands-on labs, real-world projects, AI coaching prompts, and career-ready portfolio artifacts.</p>
         </header>
 
         <div class="total-stats">
             <div class="total-stat">
-                <div class="total-stat-value">51</div>
+                <div class="total-stat-value">63</div>
                 <div class="total-stat-label">Weeks Total</div>
             </div>
             <div class="total-stat">
-                <div class="total-stat-value">17</div>
-                <div class="total-stat-label">Certifications</div>
+                <div class="total-stat-value">23</div>
+                <div class="total-stat-label">Certs / Tracks</div>
             </div>
             <div class="total-stat">
-                <div class="total-stat-value">150+</div>
+                <div class="total-stat-value">175+</div>
                 <div class="total-stat-label">Labs</div>
             </div>
             <div class="total-stat">
-                <div class="total-stat-value">34</div>
+                <div class="total-stat-value">41</div>
                 <div class="total-stat-label">Projects</div>
             </div>
         </div>
@@ -401,6 +409,49 @@
                     </svg>
                 </span>
             </a>
+
+            <a href="project-scheduling/" class="card card-project">
+                <div class="card-header">
+                    <div class="card-icon">📅</div>
+                    <div class="card-title-block">
+                        <h2>Project Scheduling</h2>
+                        <div class="card-tagline">PMO & Delivery Planning</div>
+                    </div>
+                </div>
+                <div class="card-stats">
+                    <div class="card-stat">
+                        <div class="card-stat-value">12</div>
+                        <div class="card-stat-label">Weeks</div>
+                    </div>
+                    <div class="card-stat">
+                        <div class="card-stat-value">6</div>
+                        <div class="card-stat-label">Tracks</div>
+                    </div>
+                    <div class="card-stat">
+                        <div class="card-stat-value">24</div>
+                        <div class="card-stat-label">Labs</div>
+                    </div>
+                    <div class="card-stat">
+                        <div class="card-stat-value">7</div>
+                        <div class="card-stat-label">Projects</div>
+                    </div>
+                </div>
+                <div class="card-certs">
+                    <span class="cert-badge">📋 Baseline</span>
+                    <span class="cert-badge">🔗 CPM</span>
+                    <span class="cert-badge">👥 Resources</span>
+                    <span class="cert-badge">⚠️ Risk</span>
+                    <span class="cert-badge">🔁 Hybrid</span>
+                    <span class="cert-badge">📊 Exec</span>
+                </div>
+                <p>WBS → dependencies → critical path → resource loading → risk buffers → recovery plans → executive dashboards. Built for PM, Scrum Master, and TPM interview readiness.</p>
+                <span class="card-cta">
+                    Start Scheduling Journey
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </span>
+            </a>
         </div>
 
         <div class="features">
@@ -422,7 +473,7 @@
             <div class="feature">
                 <div class="feature-icon">🎯</div>
                 <div class="feature-title">Cert-Mapped</div>
-                <div class="feature-desc">Each week maps to specific certification exams</div>
+                <div class="feature-desc">Each week maps to specific exams, skills, or delivery outcomes</div>
             </div>
         </div>
 

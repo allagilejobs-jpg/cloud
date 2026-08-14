@@ -1,5 +1,31 @@
 # Cloud Mastery Hub Changelog
 
+## 2026-08-14
+
+### Project Scheduling Mastery Added
+Added a fourth Cloud Mastery Hub track for project scheduling and PM delivery planning.
+
+**New App:**
+- Added `project-scheduling-src/` Vite/React source app using the same structure as the AWS and Azure mastery plans.
+- Added `project-scheduling/` static deployment output for GitHub Pages at `/cloud/project-scheduling/`.
+- Added Project Scheduling card to the main hub.
+- Updated hub totals to 63 weeks, 23 certs/tracks, 175+ labs, and 41 projects.
+
+**Curriculum:**
+- 12-week project scheduling roadmap.
+- 4 phases: schedule foundations, network logic/control, resource/risk/hybrid planning, executive readiness.
+- 6 skill tracks: BASE, CPM, RES, RISK, HYBRID, EXEC.
+- 24 hands-on labs and 7 portfolio projects.
+- Covers WBS, estimation, dependencies, critical path, schedule quality checks, baselines, variance, resource loading, buffers, agile/hybrid release planning, recovery, dashboards, RAID, and interview prep.
+
+**Verification:**
+- `npm run build` passed for `project-scheduling-src`.
+- Local GitHub Pages-style route verified at `/cloud/project-scheduling/`.
+- Desktop and mobile Playwright screenshots captured.
+- Interaction smoke test passed for week detail, labs tab, and project tab.
+
+---
+
 ## 2026-03-30 (Evening)
 
 ### NetSec Labs Major Expansion - All 22 Labs Fully Detailed
