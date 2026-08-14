@@ -147,7 +147,7 @@ function App() {
               <div style={{ width: 38, height: 38, background: "linear-gradient(135deg,#B7791F,#92400E)", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, fontWeight: 700, color: "#fff7ed" }}>🏗️</div>
             <div>
               <div style={{ fontSize: 16, fontWeight: 700, color: "#fff" }}>P6 Construction Scheduler</div>
-              <div style={{ fontSize: 11, color: "var(--text-muted)" }}>{totalHours}h · 12 Weeks · 4 Phases · Construction Ready</div>
+              <div style={{ fontSize: 11, color: "var(--text-muted)" }}>{totalHours}h · 24 Weeks · 4 Phases · Construction Ready</div>
             </div>
           </div>
           <div className="no-print" style={{ display: "flex", gap: 5, flexWrap: "wrap", alignItems: "center" }}>
@@ -319,7 +319,7 @@ function App() {
           <div style={{ animation: "fadeUp .4s ease" }}>
             <h2 style={{ fontSize: 18, fontWeight: 700, color: "#fff", marginBottom: 4 }}>All Projects</h2>
             <p style={{ fontSize: 12, color: "var(--text-muted)", marginBottom: 18 }}>
-              {tProj} hands-on construction scheduler projects across 12 weeks
+              {tProj} hands-on construction scheduler projects across 24 weeks
             </p>
             <div style={{ display: "grid", gap: 12 }}>
               {WEEKS.filter(w => w.project).map(w => {
@@ -370,7 +370,7 @@ function App() {
             <h2 style={{ fontSize: 18, fontWeight: 700, marginBottom: 16 }}>Resources & Tools</h2>
             
             <div className="cd" style={{ padding: 16, marginBottom: 16 }}>
-              <div style={{ fontSize: 14, fontWeight: 700, marginBottom: 10 }}>🎯 Core Resources for All 12 Weeks</div>
+              <div style={{ fontSize: 14, fontWeight: 700, marginBottom: 10 }}>🎯 Core Resources for All 24 Weeks</div>
               <div style={{ display: "grid", gap: 8 }}>
                 {RESOURCES.map((r, i) => (
                   <a 
@@ -458,7 +458,7 @@ function App() {
 
         {/* Footer */}
         <div style={{ textAlign: "center", marginTop: 40, fontSize: 10, color: "var(--text-muted)" }}>
-          P6 Construction Scheduler - 12 Weeks • 4 Phases • {CERTS.length} Skill Tracks • {tLabs} Labs • {tProj} Projects
+          P6 Construction Scheduler - 24 Weeks • 4 Phases • {CERTS.length} Skill Tracks • {tLabs} Labs • {tProj} Projects
           <br /><span style={{ fontSize: 9 }}>Keyboard: j/k navigate weeks, Esc close</span>
         </div>
       </div>

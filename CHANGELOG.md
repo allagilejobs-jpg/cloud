@@ -2,6 +2,32 @@
 
 ## 2026-08-14
 
+### P6 Construction Scheduler Expanded to 6 Months
+Expanded the dedicated P6 Construction Scheduler roadmap from 12 weeks to a full 6-month plan.
+
+**Curriculum Updates:**
+- Expanded from 12 weeks to 24 weeks.
+- Expanded from 24 labs to 48 labs.
+- Expanded from 8 portfolio projects to 16 portfolio projects.
+- Reworked the phase map into 4 six-week phases: P6/construction foundations, field updates/controls/reporting, advanced controls/delay readiness, and recovery/portfolio/job readiness.
+- Added deeper coverage for baseline change control, percent complete, remaining duration, resource/cost loading, S-curves, weekly scheduler rhythm, MEP coordination, commissioning, delay documentation, weather days, time impact analysis, acceleration tradeoffs, multi-project rollups, resume/LinkedIn positioning, interview whiteboarding, and a final apply sprint.
+- Updated the Cloud hub P6 card and total site stats.
+
+**Files Affected:**
+- `index.html`
+- `p6-construction-src/src/data/weeks.js`
+- `p6-construction-src/src/App.jsx`
+- `p6-construction-src/index.html`
+- `p6-construction-src/dist/`
+- `p6-construction/`
+- `CHANGELOG.md`
+
+**Verification:**
+- Data import check passed with 24 weeks, 48 labs, 16 projects, 4 phases, and 7 tracks.
+- `npm run build` passed for `p6-construction-src`.
+
+---
+
 ### P6 Construction Scheduler Added
 Added a dedicated Primavera P6 construction scheduler track separate from the general Project Scheduling Mastery roadmap.
 
