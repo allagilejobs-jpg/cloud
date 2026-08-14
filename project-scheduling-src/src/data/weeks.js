@@ -10,7 +10,7 @@ export const PHASES = [
 export const CERTS = [
   { name: "Schedule Foundations", code: "BASE", weeks: "1-3", icon: "📋" },
   { name: "Critical Path", code: "CPM", weeks: "4-5", icon: "🔗" },
-  { name: "Primavera P6 Practice", code: "P6", weeks: "1, 5-6, 12", icon: "🏗️" },
+  { name: "Scheduling Tools", code: "TOOLS", weeks: "1, 5-6, 12", icon: "🧰" },
   { name: "Resource Planning", code: "RES", weeks: "7", icon: "👥" },
   { name: "Risk & Recovery", code: "RISK", weeks: "8-10", icon: "⚠️" },
   { name: "Agile Hybrid", code: "HYBRID", weeks: "9-10", icon: "🔁" },
@@ -20,7 +20,7 @@ export const CERTS = [
 export const CERT_COLORS = {
   BASE: "#14B8A6",
   CPM: "#2563EB",
-  P6: "#B7791F",
+  TOOLS: "#B7791F",
   RES: "#7C3AED",
   RISK: "#EF4444",
   HYBRID: "#06B6D4",
@@ -29,9 +29,9 @@ export const CERT_COLORS = {
 
 export const FEATURED_LEARNING = [
   {
-    title: "Primavera P6",
+    title: "Scheduling Tool Fluency",
     week: "Weeks 1, 5-6, 12",
-    detail: "Build a starter P6-style EPS/WBS/activity structure, update status, manage baselines, and export portfolio evidence."
+    detail: "Practice the same scheduling workflow in Microsoft Project, Smartsheet, Excel, and optional Primavera P6 so the skill transfers across roles."
   },
   {
     title: "WBS Development",
@@ -49,23 +49,23 @@ export const FEATURED_LEARNING = [
     detail: "Save baselines, update actuals and remaining durations, compare variance, and produce forecast narratives."
   },
   {
-    title: "DCMA 14-Point Check",
+    title: "Schedule Health Checks",
     week: "Week 5",
-    detail: "Run a practical DCMA-style audit covering logic, leads/lags, constraints, float, high duration, invalid dates, and baseline execution."
+    detail: "Run practical quality checks covering missing logic, constraints, long tasks, negative float, invalid dates, owners, and baseline readiness."
   },
   {
     title: "Interview Preparation",
     week: "Weeks 10, 12",
-    detail: "Practice scheduler and project controls scenarios with portfolio artifacts, STAR stories, recovery plans, and critical path explanations."
+    detail: "Practice scheduler scenarios with portfolio artifacts, STAR stories, recovery plans, stakeholder tradeoffs, and critical path explanations."
   }
 ];
 
 export const GAP_INFUSIONS = [
-  { gap: "Primavera P6 Workflow", where: "Weeks 1, 5-6, 12", why: "Many scheduler roles expect P6 vocabulary, WBS/activity coding, baselines, and update discipline", severity: "critical" },
+  { gap: "Scheduling Tool Workflow", where: "Weeks 1, 5-6, 12", why: "Scheduler roles expect comfort with schedule tables, Gantt views, baselines, updates, filters, and exports across common tools", severity: "critical" },
   { gap: "Realistic Estimation", where: "Week 2", why: "Bad duration assumptions break every schedule that follows", severity: "critical" },
   { gap: "Dependency Logic", where: "Week 3", why: "Finish-to-start is not enough for real projects", severity: "critical" },
   { gap: "Critical Path Method", where: "Week 4", why: "You need float, constraints, and baseline logic before status reporting", severity: "critical" },
-  { gap: "DCMA 14-Point Schedule Assessment", where: "Week 5", why: "DCMA-style checks catch weak schedules before leaders see them", severity: "critical" },
+  { gap: "Schedule Quality Review", where: "Week 5", why: "Quality checks catch weak logic, unclear ownership, and baseline problems before leaders see them", severity: "critical" },
   { gap: "Schedule Updating & Baseline Variance", where: "Week 6", why: "Scheduler credibility depends on clean actuals, remaining duration, variance, and forecast control", severity: "critical" },
   { gap: "Resource Loading", where: "Week 7", why: "A plan without capacity is wishful thinking", severity: "critical" },
   { gap: "Risk Buffers", where: "Week 8", why: "Contingency needs visible logic, not vague padding", severity: "important" },
@@ -78,20 +78,20 @@ export const GAP_INFUSIONS = [
 export const RESOURCES = [
   { icon: "📘", text: "PMI Practice Standard for Scheduling", url: "https://www.pmi.org/" },
   { icon: "📗", text: "PMBOK Guide scheduling topics", url: "https://www.pmi.org/pmbok-guide-standards" },
-  { icon: "🏗️", text: "Oracle Primavera P6 project scheduling resources", url: "https://www.oracle.com/industries/construction-engineering/primavera-p6/" },
   { icon: "🧮", text: "Microsoft Project training", url: "https://support.microsoft.com/office/project-training" },
   { icon: "📊", text: "Smartsheet project schedule templates", url: "https://www.smartsheet.com/project-management" },
-  { icon: "🧱", text: "DCMA 14-point schedule assessment overview", url: "https://www.dcma.mil/" },
+  { icon: "📈", text: "ProjectManager schedule management guides", url: "https://www.projectmanager.com/guides/project-scheduling" },
+  { icon: "🧰", text: "Optional Primavera P6 reference for advanced scheduler roles", url: "https://www.oracle.com/industries/construction-engineering/primavera-p6/" },
   { icon: "🔁", text: "Scrum Guide", url: "https://scrumguides.org/" },
   { icon: "🤖", text: "Claude - schedule critique, scenario drills, and reporting assistant", url: "https://claude.ai" }
 ];
 
 export const TUTOR_PROMPTS = [
-  '"Teach me Primavera P6 scheduling vocabulary: EPS, OBS, WBS, activities, relationships, calendars, activity codes, baselines, status date, data date, and layouts."',
+  '"Teach me project scheduling tool vocabulary across MS Project, Smartsheet, Excel, and optional Primavera P6: tasks, milestones, WBS, relationships, calendars, baselines, status date, data date, filters, and layouts."',
   '"Turn this project scope into a WBS, activity list, and milestone schedule."',
   '"Review my schedule for missing dependencies, constraints, and unrealistic sequencing."',
   '"Calculate the critical path and explain total float using this activity table."',
-  '"Audit this schedule using the DCMA 14-point check and explain every failed check in plain English."',
+  '"Audit this schedule for quality issues and explain every failed check in plain English."',
   '"Create a recovery plan for a project that is 3 weeks behind with no budget increase."',
   '"Convert this waterfall timeline into an agile/hybrid release plan."',
   '"Write an executive schedule status update with risks, decisions needed, and next milestones."'
@@ -108,21 +108,21 @@ export const WEEKS = [
     gapBadges: ["BASELINE", "CALENDAR"],
     objectives: [
       "Understand what a schedule controls: scope, time, resources, risk, and decisions",
-      "Understand where Primavera P6 fits in project controls and scheduler roles",
+      "Understand how different scheduling tools support the same core workflow",
       "Set up working calendars, holidays, milestones, and project constraints",
       "Separate tasks, deliverables, milestones, deadlines, and dependencies",
       "Create a simple baseline and explain why baseline control matters"
     ],
-    services: ["Primavera P6", "MS Project", "Smartsheet", "Excel", "Baseline", "Milestones"],
-    infused: ["P6 scheduling vocabulary", "PM language for interviews", "Baseline discipline", "Calendar assumptions"],
-    topics: ["Primavera P6", "EPS", "WBS", "schedule model", "milestones", "constraints", "working calendar", "baseline", "status date"],
+    services: ["MS Project", "Smartsheet", "Excel", "Primavera P6 optional", "Baseline", "Milestones"],
+    infused: ["Scheduling tool vocabulary", "PM language for interviews", "Baseline discipline", "Calendar assumptions"],
+    topics: ["schedule model", "WBS", "tasks", "milestones", "constraints", "working calendar", "baseline", "status date"],
     resources: [
       { type: "doc", name: "Microsoft Project basic tasks", url: "https://support.microsoft.com/office/project-training" },
       { type: "doc", name: "PMI standards hub", url: "https://www.pmi.org/pmbok-guide-standards" }
     ],
     prompts: [
       { title: "Scheduling Concepts Tutor", prompt: "Teach me project scheduling like I am a project manager moving from task tracking to real schedule control. Explain tasks, deliverables, milestones, baselines, status dates, deadlines, constraints, dependencies, float, and critical path. Give a simple example project and show how each concept appears in the schedule." },
-      { title: "Primavera P6 Vocabulary Tutor", prompt: "Teach me Primavera P6 vocabulary for project scheduler roles. Explain EPS, OBS, WBS, activities, relationships, calendars, activity codes, baselines, data date, status date, layouts, filters, and schedule logs. Compare each P6 term to the closest Microsoft Project or spreadsheet concept." },
+      { title: "Scheduling Tool Vocabulary Tutor", prompt: "Teach me scheduling vocabulary for project scheduler roles. Explain WBS, activities, task mode, predecessors, successors, relationships, calendars, baselines, status date, data date, layouts, filters, and schedule logs. Compare how the same idea appears in Microsoft Project, Smartsheet, Excel, and Primavera P6." },
       { title: "Baseline Explanation", prompt: "Explain how to defend a project schedule baseline in a leadership meeting. Include what changes should trigger re-baselining, what should only be tracked as variance, and how to avoid making the baseline meaningless." }
     ],
     labs: [
@@ -134,7 +134,7 @@ export const WEEKS = [
         steps: [
           "Pick a sample project: launch a client onboarding portal in 10 weeks.",
           "Create a new schedule in MS Project, Smartsheet, or Excel.",
-          "If you have Primavera P6, create the same starter structure with an EPS node, project, WBS levels, and activities.",
+          "If you have Primavera P6, optionally create the same starter structure with a project, WBS levels, and activities.",
           "Set the project start date and define a Monday-Friday working calendar.",
           "Add 8-10 high-level milestones: kickoff, discovery complete, design approved, build complete, UAT start, UAT complete, go-live, hypercare complete.",
           "Add 20-25 tasks under those milestones.",
@@ -143,7 +143,7 @@ export const WEEKS = [
           "Add an assumptions note for holidays, working hours, and approval turnaround.",
           "Save a baseline version before adding progress."
         ],
-        verify: "Schedule has a start date, calendar, milestone list, task list, owners, assumptions, and a baseline copy. P6 users also have EPS, project, WBS, activities, and a saved baseline."
+        verify: "Schedule has a start date, calendar, milestone list, task list, owners, assumptions, and a baseline copy. Optional P6 users can mirror the same structure in P6."
       },
       {
         id: "ps-lab-1-2",
@@ -171,7 +171,7 @@ export const WEEKS = [
         "Document assumptions.",
         "Save baseline version 1."
       ],
-      prompt: "Act as a senior project controls manager. Review my starter project schedule for a client onboarding portal. Find vague tasks, missing milestones, weak assumptions, and baseline risks. Return a cleaner schedule structure and explain what changed."
+      prompt: "Act as a senior PMO scheduler. Review my starter project schedule for a client onboarding portal. Find vague tasks, missing milestones, weak assumptions, and baseline risks. Return a cleaner schedule structure and explain what changed."
     }
   },
   {
@@ -184,14 +184,14 @@ export const WEEKS = [
     gapBadges: ["WBS", "ESTIMATION"],
     objectives: [
       "Turn a project charter into a work breakdown structure",
-      "Develop WBS levels that can be translated into Primavera P6 activity codes and layouts",
+      "Develop WBS levels that can translate into any scheduling tool",
       "Estimate durations using analogous, parametric, three-point, and expert judgment methods",
       "Identify hidden work that makes schedules slip",
       "Document estimate basis and confidence level"
     ],
-    services: ["WBS", "Primavera P6 WBS", "Estimation", "PERT", "Scope Control"],
+    services: ["WBS", "Schedule Structure", "Estimation", "PERT", "Scope Control"],
     infused: ["Realistic estimation", "Hidden work discovery", "Assumption documentation"],
-    topics: ["WBS", "P6 WBS", "activity decomposition", "three-point estimates", "estimate basis", "scope creep"],
+    topics: ["WBS", "schedule structure", "activity decomposition", "three-point estimates", "estimate basis", "scope creep"],
     resources: [
       { type: "doc", name: "PMI Work Breakdown Structure guidance", url: "https://www.pmi.org/" }
     ],
@@ -212,11 +212,11 @@ export const WEEKS = [
           "Break each deliverable into smaller work packages.",
           "Convert each work package into schedule activities.",
           "Add a simple WBS code format, such as 1.0 Discovery, 2.0 Design, 3.0 Build, 4.0 Test, 5.0 Launch.",
-          "If using Primavera P6, mirror the WBS levels inside the project before entering activities.",
+          "Mirror the WBS levels inside your chosen scheduling tool before entering activities.",
           "Mark dependencies you already know.",
           "Flag unknown scope as assumptions or questions."
         ],
-        verify: "WBS has at least 3 levels, each work package maps to one or more schedule activities, and the structure can be recreated in P6."
+        verify: "WBS has at least 3 levels, each work package maps to one or more schedule activities, and the structure can be recreated in a scheduling tool."
       },
       {
         id: "ps-lab-2-2",
@@ -374,24 +374,24 @@ export const WEEKS = [
     gapBadges: ["QUALITY", "BASELINE"],
     objectives: [
       "Audit a schedule before sharing it with leadership",
-      "Run practical DCMA 14-point checks, including logic, leads/lags, constraints, float, high duration, invalid dates, resources, missed tasks, critical path test, critical path length index, and baseline execution",
+      "Run practical schedule quality checks, including logic, leads/lags, constraints, float, high duration, invalid dates, resources, missed tasks, critical path behavior, and baseline execution",
       "Create a baseline approval checklist",
       "Explain schedule quality without overcomplicating it"
     ],
-    services: ["Primavera P6", "Schedule Audit", "DCMA 14-Point Check", "Baseline Review", "Quality Gate"],
-    infused: ["DCMA 14-point checks", "P6 schedule log review", "Executive readiness", "Schedule defensibility"],
-    topics: ["DCMA 14-point", "missing logic", "leads", "lags", "negative float", "high duration", "invalid dates", "baseline approval"],
+    services: ["Schedule Audit", "Quality Gate", "Baseline Review", "PMO Review", "Project Controls"],
+    infused: ["Schedule quality checks", "Schedule log review", "Executive readiness", "Schedule defensibility"],
+    topics: ["quality review", "missing logic", "leads", "lags", "negative float", "high duration", "invalid dates", "baseline approval"],
     resources: [
-      { type: "doc", name: "DCMA official site", url: "https://www.dcma.mil/" }
+      { type: "doc", name: "Microsoft Project critical path training", url: "https://support.microsoft.com/office/show-the-critical-path-of-your-project" }
     ],
     prompts: [
       { title: "Schedule Quality Audit", prompt: "Act as a PMO schedule reviewer. Audit this schedule against practical schedule quality checks: missing predecessors, missing successors, hard constraints, negative float, high-duration tasks, unclear task names, missing owners, and missing baseline notes." },
-      { title: "DCMA 14-Point Coach", prompt: "Teach me the DCMA 14-point schedule assessment in project scheduler language. For each check, explain what it means, why it matters, what a failure looks like, how to find it in Primavera P6 or MS Project, and how to fix it without damaging the schedule." }
+      { title: "Quality Check Coach", prompt: "Teach me a practical schedule quality review in project scheduler language. Explain missing logic, excessive leads/lags, hard constraints, negative float, high-duration tasks, unclear task names, invalid dates, missing owners, and baseline issues. For each, explain why it matters and how to fix it without damaging the schedule." }
     ],
     labs: [
       {
         id: "ps-lab-5-1",
-        title: "Run a DCMA-Style Schedule Health Check",
+        title: "Run a Schedule Health Check",
         duration: "60 min",
         difficulty: "Intermediate",
         steps: [
@@ -407,7 +407,7 @@ export const WEEKS = [
           "Check baseline execution by comparing baseline dates to current forecast dates.",
           "Create a schedule health summary with counts and fixes."
         ],
-        verify: "Schedule health summary lists DCMA-style defects, fixes, and remaining accepted risks."
+        verify: "Schedule health summary lists quality defects, fixes, and remaining accepted risks."
       },
       {
         id: "ps-lab-5-2",
@@ -440,36 +440,36 @@ export const WEEKS = [
     week: 6,
     phase: 2,
     phaseTitle: "NETWORK LOGIC & CONTROL",
-    title: "Primavera P6 Status Updates, Baselines & Forecasting",
-    cert: "P6",
+    title: "Status Updates, Baselines & Forecasting",
+    cert: "TOOLS",
     color: "#2563EB",
     gapBadges: ["STATUS", "FORECAST"],
     objectives: [
-      "Apply the scheduler update cycle used in Primavera P6: set the data date, enter actuals, update remaining duration, and recalculate",
+      "Apply the scheduler update cycle: set the status/data date, enter actuals, update remaining duration, and recalculate",
       "Update a schedule using actual start, actual finish, remaining duration, and percent complete",
       "Separate progress from forecast changes",
       "Explain variance to baseline",
       "Create weekly schedule status rhythm"
     ],
-    services: ["Primavera P6", "Data Date", "Status Date", "Variance", "Forecast", "Lookahead"],
-    infused: ["P6 update cycle", "Schedule updating", "Baseline variance", "Progress discipline", "Forecast language", "Weekly control cadence"],
-    topics: ["Primavera P6", "data date", "actuals", "remaining duration", "baseline variance", "forecast finish", "lookahead"],
+    services: ["MS Project", "Smartsheet", "Excel", "Data Date", "Status Date", "Variance", "Forecast", "Lookahead"],
+    infused: ["Schedule updating", "Baseline variance", "Progress discipline", "Forecast language", "Weekly control cadence", "Optional P6 practice"],
+    topics: ["data date", "status date", "actuals", "remaining duration", "baseline variance", "forecast finish", "lookahead"],
     resources: [
       { type: "doc", name: "Project progress tracking", url: "https://support.microsoft.com/office/track-progress-in-project" }
     ],
     prompts: [
-      { title: "P6 Update Cycle Tutor", prompt: "Teach me the Primavera P6 weekly update cycle for a project scheduler. Explain data date, status date, actual start, actual finish, remaining duration, percent complete types, schedule recalculation, baseline variance, and what to review before publishing the updated schedule." },
+      { title: "Update Cycle Tutor", prompt: "Teach me the weekly schedule update cycle for a project scheduler. Explain status date, data date, actual start, actual finish, remaining duration, percent complete, schedule recalculation, baseline variance, and what to review before publishing the updated schedule." },
       { title: "Variance Story", prompt: "Turn this schedule status data into a clear variance narrative. Explain what changed, why it changed, whether the critical path moved, and what decision or support is needed." }
     ],
     labs: [
       {
         id: "ps-lab-6-1",
-        title: "Weekly P6-Style Status Update Drill",
+        title: "Weekly Status Update Drill",
         duration: "50 min",
         difficulty: "Intermediate",
         steps: [
           "Set a status date one week after project start.",
-          "If using Primavera P6, set the data date to the same update date.",
+          "If using Primavera P6, set the data date to the same update date. In other tools, use the status date or reporting date field.",
           "Mark 5 tasks complete.",
           "Set 3 in-progress tasks with remaining duration.",
           "Delay one critical task by 3 days.",

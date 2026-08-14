@@ -208,7 +208,7 @@ function App() {
                   What You Will Learn
                 </span>
                 <span style={{ fontSize: 12, color: "var(--text-muted)" }}>
-                  Project scheduler and project controls focus
+                  Generalist project scheduler focus
                 </span>
               </div>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 10 }}>
