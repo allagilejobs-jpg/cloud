@@ -1,3 +1,4 @@
 *.zip
 netsec-src/node_modules/
 project-scheduling-src/node_modules/
+p6-construction-src/node_modules/

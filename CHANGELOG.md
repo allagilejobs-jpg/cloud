@@ -2,6 +2,35 @@
 
 ## 2026-08-14
 
+### P6 Construction Scheduler Added
+Added a dedicated Primavera P6 construction scheduler track separate from the general Project Scheduling Mastery roadmap.
+
+**New App:**
+- Added `p6-construction-src/` Vite/React source app.
+- Added `p6-construction/` static deployment output for GitHub Pages at `/cloud/p6-construction/`.
+- Added P6 Construction Scheduler card to the main hub.
+- Updated hub totals to 75 weeks, 30 tracks, 199+ labs, and 49 projects.
+
+**Curriculum:**
+- 12-week P6 construction scheduling roadmap.
+- 4 phases: P6 and construction foundations, CPM logic/baselines/quality, updates/field control/claims readiness, reporting/recovery/job readiness.
+- 7 skill tracks: P6, WBS, CPM, QUAL, UPD, REC, JOB.
+- 24 hands-on labs and 8 portfolio projects.
+- Covers Primavera P6, EPS/OBS/WBS, activity codes, construction WBS, procurement and submittals, RFIs, CPM logic, calendars, critical path, float, baseline control, DCMA 14-point checks, data-date updates, lookahead schedules, constraint logs, delay fragnets, recovery schedules, dashboards, resume language, and interview prep.
+
+**Files Affected:**
+- `index.html`
+- `.gitignore`
+- `p6-construction-src/`
+- `p6-construction/`
+- `CHANGELOG.md`
+
+**Verification:**
+- `npm run build` passed for `p6-construction-src`.
+- Static `p6-construction/` output generated with `/cloud/p6-construction/` asset paths.
+
+---
+
 ### Project Scheduling Mastery P6/DCMA Focus Update
 Updated Project Scheduling Mastery to factor in the flyer-style "What You Will Learn" outcomes for project scheduler training.
 
