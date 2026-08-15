@@ -2,6 +2,28 @@
 
 ## 2026-08-14
 
+### P6 Construction Scheduler Flyer Outcome Infusion
+Moved the Chronopoint-style flyer outcomes into the dedicated P6 Construction Scheduler page instead of the general Project Scheduling page.
+
+**Curriculum Updates:**
+- Added a dashboard "Academy Flyer Outcomes" section with the six document outcomes: Primavera P6, WBS Development, CPM Scheduling & Logic, Schedule Updating & Baselines, DCMA 14-Point Check, and Interview Preparation.
+- Mapped each outcome to the exact weeks where it is practiced across the 24-week construction scheduler plan.
+- Added portfolio-proof artifacts for each outcome, including P6 schedule packages, WBS dictionaries, CPM narratives, baseline/update reports, DCMA audit tables, and interview kits.
+- Strengthened the Primavera P6 learning copy to explicitly include activity codes.
+
+**Files Affected:**
+- `p6-construction-src/src/data/weeks.js`
+- `p6-construction-src/src/App.jsx`
+- `p6-construction-src/dist/`
+- `p6-construction/`
+- `CHANGELOG.md`
+
+**Verification:**
+- Data import check passed with 24 weeks, 48 labs, 16 projects, 6 academy outcomes, and 6 featured learning outcomes.
+- `npm run build` passed for `p6-construction-src`.
+
+---
+
 ### P6 Construction Scheduler Expanded to 6 Months
 Expanded the dedicated P6 Construction Scheduler roadmap from 12 weeks to a full 6-month plan.
 

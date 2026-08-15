@@ -31,7 +31,7 @@ export const FEATURED_LEARNING = [
   {
     title: "Primavera P6",
     week: "Weeks 1-6, 13-16, 24",
-    detail: "Create EPS/OBS/WBS structures, activities, relationships, calendars, baselines, layouts, filters, updates, reports, imports, exports, and professional schedule packages."
+    detail: "Create EPS/OBS/WBS structures, activities, relationships, calendars, activity codes, baselines, layouts, filters, updates, reports, imports, exports, and professional schedule packages."
   },
   {
     title: "WBS Development",
@@ -58,6 +58,45 @@ export const FEATURED_LEARNING = [
     week: "Weeks 22-24",
     detail: "Practice construction scheduler scenarios with portfolio exports, STAR stories, delay narratives, recovery plans, P6 terminology, and recruiter-ready positioning."
   },
+];
+
+export const ACADEMY_OUTCOMES = [
+  {
+    outcome: "Primavera P6",
+    weeks: "Weeks 1-6, 7, 13-16, 24",
+    focus: "P6 project setup, EPS/OBS/WBS, calendars, activity codes, layouts, filters, baselines, data dates, updates, exports, and schedule packages.",
+    artifact: "P6-style project shell, baseline schedule, update package, layouts, and final portfolio binder."
+  },
+  {
+    outcome: "WBS Development",
+    weeks: "Weeks 2-7",
+    focus: "Construction WBS levels, CSI-style scope buckets, work packages, procurement, submittals, RFIs, inspections, commissioning, turnover, and closeout.",
+    artifact: "WBS dictionary, activity code plan, procurement/submittal log, and scope-to-schedule mapping."
+  },
+  {
+    outcome: "CPM Scheduling & Logic",
+    weeks: "Weeks 4-6, 8-11, 17-21, 23",
+    focus: "Finish-to-start, start-to-start, finish-to-finish, leads, lags, constraints, calendars, total float, free float, near-critical paths, and logic clean-up.",
+    artifact: "CPM network, logic narrative, critical path report, float review, and whiteboard interview drill."
+  },
+  {
+    outcome: "Schedule Updating & Baselines",
+    weeks: "Weeks 6-10, 13-16",
+    focus: "Baseline creation, change rules, data date movement, actual starts/finishes, remaining duration, percent complete, variance, and forecast finish.",
+    artifact: "Baseline defense memo, monthly update narrative, variance report, lookahead, and progress dashboard."
+  },
+  {
+    outcome: "DCMA 14-Point Check",
+    weeks: "Weeks 6, 13, 22, 24",
+    focus: "Missing logic, leads/lags, constraints, high float, negative float, high duration, invalid dates, baseline execution, and schedule credibility.",
+    artifact: "DCMA-style audit table with pass/fail results, schedule risks, corrective actions, and owner assignments."
+  },
+  {
+    outcome: "Interview Preparation",
+    weeks: "Weeks 12, 22-24",
+    focus: "P6 terminology, scheduler scenarios, baseline defense, update explanations, delay narratives, recovery tradeoffs, resume bullets, and portfolio defense.",
+    artifact: "Resume language, LinkedIn positioning, STAR stories, mock interview answers, and recruiter-ready portfolio summary."
+  }
 ];
 
 export const GAP_INFUSIONS = [
