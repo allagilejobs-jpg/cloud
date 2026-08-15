@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { WEEKS, PHASES, CERTS, CERT_COLORS, GAP_INFUSIONS, RESOURCES, TUTOR_PROMPTS, FEATURED_LEARNING, ACADEMY_OUTCOMES } from "./data/weeks";
+import { WEEKS, PHASES, CERTS, CERT_COLORS, GAP_INFUSIONS, RESOURCES, TUTOR_PROMPTS, FEATURED_LEARNING, ACADEMY_OUTCOMES, DOCUMENT_TOC_MAP } from "./data/weeks";
 import ProgressBar from "./components/ProgressBar";
 import WeekCard from "./components/WeekCard";
 import WeekDetail from "./components/WeekDetail";
@@ -248,6 +248,26 @@ function App() {
                       </span>
                     </div>
                     <div style={{ fontSize: 11, color: "var(--text-secondary)", lineHeight: 1.5 }}>{item.detail}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="cd" style={{ padding: 16, marginBottom: 16, borderLeft: "3px solid #2563EB" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10, flexWrap: "wrap" }}>
+                <span style={{ fontSize: 10, fontWeight: 700, color: "#2563EB", letterSpacing: 1, textTransform: "uppercase", fontFamily: "'JetBrains Mono', monospace" }}>
+                  PDF Table of Contents Map
+                </span>
+                <span style={{ fontSize: 12, color: "var(--text-muted)" }}>
+                  ChronoPoint Academy Notes topics placed into the 24-week plan
+                </span>
+              </div>
+              <div style={{ display: "grid", gap: 8 }}>
+                {DOCUMENT_TOC_MAP.map((item, i) => (
+                  <div key={i} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 10, alignItems: "start", padding: "9px 10px", borderRadius: 8, background: "var(--card-bg-alt)", border: "1px solid var(--border)" }}>
+                    <div style={{ fontSize: 12, fontWeight: 800, color: "var(--text)" }}>{item.item}</div>
+                    <div style={{ fontSize: 10, color: "#2563EB", fontWeight: 800 }}>{item.weeks}</div>
+                    <div style={{ fontSize: 11, color: "var(--text-secondary)", lineHeight: 1.5 }}>{item.placement}</div>
                   </div>
                 ))}
               </div>

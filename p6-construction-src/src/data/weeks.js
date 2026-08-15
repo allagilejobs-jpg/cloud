@@ -99,6 +99,54 @@ export const ACADEMY_OUTCOMES = [
   }
 ];
 
+export const DOCUMENT_TOC_MAP = [
+  {
+    item: "Project Management Triangle",
+    weeks: "Week 1",
+    placement: "Introduced as the construction scheduler lens for scope, time, cost, quality, risk, and tradeoff conversations."
+  },
+  {
+    item: "Project Team Scheduler Work",
+    weeks: "Weeks 1, 3, 8, 11",
+    placement: "Practiced through superintendent coordination, PM inputs, subcontractor progress collection, and leadership reporting."
+  },
+  {
+    item: "Scheduler Roles with Client, GC, and Trade Partner",
+    weeks: "Weeks 1, 3, 8, 12, 23",
+    placement: "Mapped into stakeholder roles, update inputs, delay discussions, interview stories, and field coordination scenarios."
+  },
+  {
+    item: "Planner and Scheduler Role",
+    weeks: "Weeks 1, 5, 7, 12",
+    placement: "Separated planning, sequencing, baseline creation, schedule control, progress updates, forecasting, and portfolio language."
+  },
+  {
+    item: "FEL and FEED",
+    weeks: "Weeks 1, 4, 5, 13",
+    placement: "Added as early planning context before baseline development, scope maturity, constructability, and change control."
+  },
+  {
+    item: "Core Scheduling Terms",
+    weeks: "Weeks 1, 4-7, 12, 23",
+    placement: "Covered through P6 vocabulary, CPM relationships, float, data date, baseline, variance, constraints, leads, lags, and interview drills."
+  },
+  {
+    item: "Getting Started with Primavera P6",
+    weeks: "Weeks 1-2, 6-7, 24",
+    placement: "Tied to project setup, WBS entry, activity codes, baselines, updates, layouts, exports, and final portfolio evidence."
+  },
+  {
+    item: "Work Breakdown Structure Phases with Practical Examples",
+    weeks: "Weeks 2-5, 24",
+    placement: "Built through construction WBS levels, work packages, procurement/submittal logic, phase sequencing, and final portfolio artifacts."
+  },
+  {
+    item: "Excel Spreadsheet",
+    weeks: "Weeks 2-3, 7, 11, 24",
+    placement: "Used for WBS dictionaries, activity lists, procurement/submittal logs, update trackers, dashboards, and job-search trackers."
+  }
+];
+
 export const GAP_INFUSIONS = [
   { gap: "P6 EPS/OBS/WBS Setup", where: "Weeks 1-2", why: "Construction scheduler roles expect you to know where projects live and how schedule structures are organized", severity: "critical" },
   { gap: "Construction WBS and CSI-style Scope", where: "Weeks 2-4", why: "A scheduler must understand real construction work, not just generic tasks", severity: "critical" },
@@ -118,11 +166,15 @@ export const RESOURCES = [
   { icon: "✅", text: "DCMA schedule assessment public resources", url: "https://www.dcma.mil/" },
   { icon: "📗", text: "AACE International recommended practices", url: "https://web.aacei.org/resources/recommended-practices" },
   { icon: "🧱", text: "CSI MasterFormat overview", url: "https://www.csiresources.org/standards/masterformat" },
+  { icon: "📄", text: "Excel schedule support workbook practice", url: "https://templates.office.com/" },
   { icon: "📊", text: "Microsoft Project training for backup practice", url: "https://support.microsoft.com/office/project-training" },
   { icon: "🤖", text: "Claude - schedule critique, P6 vocabulary, and interview drills", url: "https://claude.ai" }
 ];
 
 export const TUTOR_PROMPTS = [
+  '"Teach me the Project Management Triangle for construction scheduling. Show how scope, time, cost, quality, and risk tradeoffs affect baseline, recovery, and client conversations."',
+  '"Explain how a construction scheduler works with the client, general contractor, superintendent, project manager, trade partners, and vendors during planning and monthly updates."',
+  '"Explain FEL and FEED in plain English and show how early planning maturity affects a construction baseline schedule."',
   '"Teach me Primavera P6 for construction scheduling. Explain EPS, OBS, WBS, activities, relationships, calendars, constraints, activity codes, baselines, data date, layouts, filters, and schedule logs."',
   '"Turn this construction scope into a WBS, procurement log, submittal log, activity list, and milestone schedule."',
   '"Review my construction schedule for missing logic, open ends, bad lags, hard constraints, high float, negative float, and unrealistic sequencing."',
@@ -144,19 +196,23 @@ export const WEEKS = [
     gapBadges: ["P6", "ROLE"],
     objectives: [
       "Understand what construction schedulers control across planning, execution, and closeout",
+      "Use the Project Management Triangle to explain schedule tradeoffs across scope, time, cost, quality, and risk",
+      "Separate planner responsibilities from scheduler responsibilities across early planning, baseline creation, and control",
       "Learn Primavera P6 vocabulary: EPS, OBS, WBS, activities, calendars, layouts, baselines, and data date",
+      "Understand FEL and FEED as early planning inputs that shape schedule maturity before construction execution",
       "Set up a realistic construction project shell and professional naming conventions",
       "Separate design, procurement, construction, commissioning, punch, and closeout milestones"
     ],
-    services: ["Primavera P6", "EPS", "OBS", "WBS", "Calendars", "Milestones"],
-    infused: ["P6 vocabulary", "Construction lifecycle", "Scheduler interview language"],
-    topics: ["Primavera P6", "construction lifecycle", "EPS", "OBS", "WBS", "data date", "baseline", "milestones"],
+    services: ["Primavera P6", "Project Triangle", "FEL/FEED", "EPS", "OBS", "WBS", "Calendars", "Milestones"],
+    infused: ["P6 vocabulary", "Project management triangle", "Planner vs scheduler role", "FEL and FEED", "Construction lifecycle", "Scheduler interview language"],
+    topics: ["Primavera P6", "project management triangle", "planner role", "scheduler role", "FEL", "FEED", "construction lifecycle", "EPS", "OBS", "WBS", "data date", "baseline", "milestones"],
     resources: [
       { type: "doc", name: "Oracle Primavera P6", url: "https://www.oracle.com/industries/construction-engineering/primavera-p6/" }
     ],
     prompts: [
       { title: "P6 Vocabulary Tutor", prompt: "Teach me P6 construction scheduling vocabulary with examples for EPS, OBS, WBS, activities, relationships, calendars, constraints, baselines, data date, layouts, filters, and schedule logs." },
-      { title: "Construction Scheduler Role", prompt: "Explain what a construction project scheduler does each week on an active jobsite. Include meetings, update cycles, superintendent coordination, subcontractor inputs, reporting, and delay tracking." }
+      { title: "Construction Scheduler Role", prompt: "Explain what a construction project scheduler does each week on an active jobsite. Include client, GC, superintendent, project manager, trade partner, vendor, update cycle, reporting, and delay tracking responsibilities." },
+      { title: "Triangle, FEL and FEED Tutor", prompt: "Teach me the Project Management Triangle, FEL, and FEED for a beginner construction scheduler. Explain how each one affects schedule planning, baseline confidence, and change control." }
     ],
     labs: [
       {
@@ -169,22 +225,26 @@ export const WEEKS = [
           "Create an EPS path such as Portfolio > Healthcare > Medical Office.",
           "Create the project name, project ID, planned start date, and responsible manager.",
           "Define at least two calendars: standard 5-day workweek and weekend shutdown calendar.",
+          "Write the project triangle assumptions: scope, time, cost, quality, and top risk tradeoff.",
+          "Identify whether the project is in FEL, FEED, baseline planning, execution, or closeout.",
           "Create milestone placeholders for NTP, mobilization, permits, long-lead procurement, dry-in, MEP rough-in, finishes, inspections, substantial completion, and closeout."
         ],
-        verify: "You can explain the project shell, calendar assumptions, milestone list, and where the project lives in a P6 environment."
+        verify: "You can explain the project shell, triangle assumptions, FEL/FEED maturity, calendar assumptions, milestone list, and where the project lives in a P6 environment."
       },
       {
         id: "p6-lab-1-2",
-        title: "Construction Lifecycle Map",
+        title: "Construction Lifecycle and Stakeholder Map",
         duration: "35 min",
         difficulty: "Beginner",
         steps: [
           "Map the project lifecycle into preconstruction, mobilization, procurement, sitework, structure, enclosure, MEP, interiors, commissioning, punch, and closeout.",
+          "Mark where the planner is shaping scope and strategy versus where the scheduler is controlling the live schedule.",
+          "Add client, GC, project manager, superintendent, trade partner, and vendor inputs for each stage.",
           "Add 2-3 risks or coordination needs under each stage.",
           "Mark which stages involve owner decisions, AHJ inspections, subcontractors, or vendors.",
           "Turn the map into a one-page scheduler reference."
         ],
-        verify: "Lifecycle map shows construction phases, major stakeholders, risks, and milestone dependencies."
+        verify: "Lifecycle map shows construction phases, planner/scheduler responsibilities, major stakeholders, risks, and milestone dependencies."
       }
     ],
     project: {
@@ -193,8 +253,9 @@ export const WEEKS = [
       description: "Create a polished starter package for a medical office construction schedule.",
       steps: [
         "Document EPS/OBS/WBS setup assumptions.",
+        "Document project triangle, FEL/FEED, and planner/scheduler assumptions.",
         "Create calendars and milestone list.",
-        "Write a scheduler role summary for this project.",
+        "Write a scheduler role summary for client, GC, project manager, superintendent, trade partner, and vendor coordination.",
         "Export screenshots or tables as portfolio evidence."
       ],
       prompt: "Act as a senior construction scheduler. Review my P6-style project setup for a 40,000 sq ft medical office build-out and tell me what is missing before I build the full baseline schedule."
@@ -212,16 +273,18 @@ export const WEEKS = [
       "Build a construction WBS that can support P6 layouts and reporting",
       "Translate scope into activities without losing procurement, submittals, inspections, or closeout",
       "Use activity codes for area, discipline, subcontractor, phase, and responsibility",
-      "Create a coding structure that supports filtering and dashboard reporting"
+      "Create a coding structure that supports filtering and dashboard reporting",
+      "Create an Excel-based WBS and activity dictionary before loading or mirroring the structure in P6"
     ],
-    services: ["P6 WBS", "Activity Codes", "CSI Divisions", "Scope Breakdown"],
-    infused: ["WBS development", "Construction scope", "Activity coding"],
-    topics: ["WBS", "activity codes", "CSI", "work packages", "subcontractors", "areas", "disciplines"],
+    services: ["P6 WBS", "Excel WBS Dictionary", "Activity Codes", "CSI Divisions", "Scope Breakdown"],
+    infused: ["WBS development", "Excel spreadsheet support", "Construction scope", "Activity coding"],
+    topics: ["WBS", "Excel", "activity codes", "CSI", "work packages", "subcontractors", "areas", "disciplines"],
     resources: [
       { type: "doc", name: "CSI MasterFormat", url: "https://www.csiresources.org/standards/masterformat" }
     ],
     prompts: [
       { title: "WBS Builder", prompt: "Turn this medical office build-out scope into a 3-level construction WBS and activity code plan for area, discipline, phase, subcontractor, and responsible party." },
+      { title: "Excel WBS Workbook", prompt: "Create an Excel workbook structure for a construction WBS and activity dictionary. Include columns for WBS code, activity ID, activity name, area, discipline, subcontractor, duration, predecessor, successor, and notes." },
       { title: "Missing Scope Finder", prompt: "Review this construction WBS for missing procurement, submittals, inspections, testing, commissioning, punch list, turnover, and closeout activities." }
     ],
     labs: [
@@ -234,9 +297,10 @@ export const WEEKS = [
           "Create level 1 WBS buckets for preconstruction, procurement, sitework, structure, enclosure, MEP, interiors, commissioning, and closeout.",
           "Create level 2 areas such as first floor, second floor, roof, exterior, and site.",
           "Create level 3 work packages such as framing, rough-in, drywall, ceiling grid, flooring, fixtures, testing, and inspections.",
+          "Create matching Excel columns for WBS code, activity ID, activity name, discipline, area, subcontractor, duration, and notes.",
           "Add deliverables and acceptance criteria to each major work package."
         ],
-        verify: "WBS has at least 3 levels and covers construction, procurement, inspections, commissioning, punch, and closeout."
+        verify: "WBS has at least 3 levels, an Excel-ready activity dictionary, and coverage for construction, procurement, inspections, commissioning, punch, and closeout."
       },
       {
         id: "p6-lab-2-2",

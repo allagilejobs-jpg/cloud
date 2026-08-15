@@ -7,9 +7,12 @@ Moved the Chronopoint-style flyer outcomes into the dedicated P6 Construction Sc
 
 **Curriculum Updates:**
 - Added a dashboard "Academy Flyer Outcomes" section with the six document outcomes: Primavera P6, WBS Development, CPM Scheduling & Logic, Schedule Updating & Baselines, DCMA 14-Point Check, and Interview Preparation.
+- Added a dashboard "PDF Table of Contents Map" section from the ChronoPoint Academy Notes preview: Project Management Triangle, Project Team Scheduler Work, Scheduler Roles with Client/GC/Trade Partner, Planner and Scheduler Role, FEL and FEED, Core Scheduling Terms, Getting Started with Primavera P6, Work Breakdown Structure phases with practical examples, and Excel Spreadsheet.
 - Mapped each outcome to the exact weeks where it is practiced across the 24-week construction scheduler plan.
 - Added portfolio-proof artifacts for each outcome, including P6 schedule packages, WBS dictionaries, CPM narratives, baseline/update reports, DCMA audit tables, and interview kits.
-- Strengthened the Primavera P6 learning copy to explicitly include activity codes.
+- Strengthened Week 1 with the project management triangle, planner versus scheduler role, FEL/FEED, and client/GC/trade coordination.
+- Strengthened Week 2 with an Excel-ready WBS and activity dictionary workflow.
+- Strengthened Primavera P6 learning copy to explicitly include activity codes.
 
 **Files Affected:**
 - `p6-construction-src/src/data/weeks.js`
@@ -19,7 +22,7 @@ Moved the Chronopoint-style flyer outcomes into the dedicated P6 Construction Sc
 - `CHANGELOG.md`
 
 **Verification:**
-- Data import check passed with 24 weeks, 48 labs, 16 projects, 6 academy outcomes, and 6 featured learning outcomes.
+- Data import check passed with 24 weeks, 48 labs, 16 projects, 6 academy outcomes, 9 PDF table-of-contents topics, and 6 featured learning outcomes.
 - `npm run build` passed for `p6-construction-src`.
 
 ---
