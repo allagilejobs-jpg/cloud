@@ -1,5 +1,42 @@
 # Cloud Mastery Hub Changelog
 
+## 2026-08-15
+
+### P6 Construction Scheduler 64-Slide Deck Integration
+Integrated the full `Planning and Scheduling Fundamentals` PowerPoint deck into the dedicated P6 Construction Scheduler page.
+
+**Source Document Reviewed:**
+- `Planning_and_Scheduling_Fundamentals.pptx`
+- 64 slides reviewed in full
+- Speaker notes checked; notes only contained slide numbers
+
+**Curriculum Updates:**
+- Added a visible dashboard "64-Slide Deck Coverage" section mapping all deck sections into the 24-week roadmap.
+- Covered slide ranges for project triangle/lifecycle, scheduler teams, client/GC/trade roles, planner versus scheduler, FEL/FEED, core terms, P6 setup, nine WBS phases, and milestone discipline.
+- Strengthened Week 1 with EPC and design-build award context.
+- Strengthened Week 2 with the nine deck WBS phases: milestones, design and engineering, procurement, permit, preconstruction, construction, automation, testing and commissioning, and handover.
+- Strengthened Week 3 with planning-phase technical document inputs such as P&IDs, drawing indexes, GA drawings, SLDs, isometrics, BOQs, and specifications.
+- Strengthened Week 4 with activity IDs, predecessors, successors, leads/lags, and all four relationship types.
+- Strengthened Week 7 with EVMS, planned value, earned value, and SPI.
+- Strengthened Week 8 with risk-team language, Monte Carlo, P20, and P80 schedule confidence dates.
+- Strengthened Week 17 with CQV and operational readiness handoffs.
+- Strengthened Week 18 with extension-of-time support and evidence.
+- Strengthened Week 21 with integrated master schedule and discipline schedule integration.
+- Strengthened Week 24 with milestone defense and schedule evidence.
+
+**Files Affected:**
+- `p6-construction-src/src/data/weeks.js`
+- `p6-construction-src/src/App.jsx`
+- `p6-construction-src/dist/`
+- `p6-construction/`
+- `CHANGELOG.md`
+
+**Verification:**
+- Data import check passed with 24 weeks, 48 labs, 16 projects, 9 deck coverage sections, and 9 document table-of-contents topics.
+- `npm run build` passed for `p6-construction-src`.
+
+---
+
 ## 2026-08-14
 
 ### P6 Construction Scheduler Flyer Outcome Infusion

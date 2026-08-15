@@ -147,6 +147,63 @@ export const DOCUMENT_TOC_MAP = [
   }
 ];
 
+export const COURSE_DECK_MAP = [
+  {
+    section: "Slides 1-17",
+    title: "Project Management Triangle and Lifecycle",
+    coverage: "Scope, time, cost, quality balance; initiate, planning, execute, monitor/control, and closing; EPC/design-build awards; technical planning documents; EOT, final payment, and closeout evidence.",
+    weeks: "Weeks 1, 3, 6-7, 11, 18, 24"
+  },
+  {
+    section: "Slides 18-21",
+    title: "Teams a Scheduler Works With",
+    coverage: "Project manager, superintendent, foremen, design/engineering, procurement/contracts, cost controls, risk team, Monte Carlo thinking, and P20/P80 confidence dates.",
+    weeks: "Weeks 1, 7-8, 11, 15, 21, 23"
+  },
+  {
+    section: "Slides 22-26",
+    title: "Client, GC, and Trade Partner Scheduler Roles",
+    coverage: "Owner's rep schedule validation, GC baseline/lookahead/update duties, trade-level 2-6 week lookaheads, manpower planning, material tracking, CQV, long-lead equipment, and role handoffs.",
+    weeks: "Weeks 1, 3, 7-8, 11, 17, 23"
+  },
+  {
+    section: "Slides 27-29",
+    title: "Planner Versus Scheduler",
+    coverage: "Planner defines scope, sequence, resources, BOQ, procurement strategy, and work packages; scheduler converts that plan into time, logic, baselines, updates, and analysis.",
+    weeks: "Weeks 1-3, 7, 12, 22-24"
+  },
+  {
+    section: "Slides 30-38",
+    title: "FEL, FEED, and Stage-Gate Planning",
+    coverage: "FEL-1 conceptual milestones, FEL-2 ROM/risk/what-if schedules, FEL-3 control-level schedules, FEED execution schedules, long-lead identification, scope freeze, baseline lock, and IMS readiness.",
+    weeks: "Weeks 1, 3, 6, 13, 19, 21"
+  },
+  {
+    section: "Slides 39-47",
+    title: "Core Scheduling Terms",
+    coverage: "Activities, activity IDs, WBS, EPS, OBS, calendars, data date, duration, remaining duration, starts/finishes, Gantt chart, predecessors/successors, logic, leads/lags, FS/SS/FF/SF, critical path, float, baseline, actuals, percent complete, EV/PV/SPI, resource leveling, compression, and schedule health checks.",
+    weeks: "Weeks 1, 4-7, 12-16, 20, 23"
+  },
+  {
+    section: "Slides 48-51",
+    title: "Getting Started with Primavera P6",
+    coverage: "P6 purpose, industries using P6, standalone versus database login, EPS, project creation, WBS, task dependent and LOE activities, milestones, relationships, calendars, layouts, resources, baselines, XER, and Excel import/export.",
+    weeks: "Weeks 1-7, 13-16, 24"
+  },
+  {
+    section: "Slides 52-63",
+    title: "Nine P6 WBS Phases",
+    coverage: "Milestones, design and engineering, procurement, permits, preconstruction, construction, automation, testing and commissioning, and handover with practical examples and P6 scheduling purpose for each phase.",
+    weeks: "Weeks 2-3, 5-8, 17, 24"
+  },
+  {
+    section: "Slide 64",
+    title: "Milestone Discipline",
+    coverage: "Reinforces the professional scheduler mindset: protect milestone dates, escalate early, and use the schedule as the evidence base for decisions.",
+    weeks: "Weeks 5-7, 11, 18, 22-24"
+  }
+];
+
 export const GAP_INFUSIONS = [
   { gap: "P6 EPS/OBS/WBS Setup", where: "Weeks 1-2", why: "Construction scheduler roles expect you to know where projects live and how schedule structures are organized", severity: "critical" },
   { gap: "Construction WBS and CSI-style Scope", where: "Weeks 2-4", why: "A scheduler must understand real construction work, not just generic tasks", severity: "critical" },
@@ -200,19 +257,20 @@ export const WEEKS = [
       "Separate planner responsibilities from scheduler responsibilities across early planning, baseline creation, and control",
       "Learn Primavera P6 vocabulary: EPS, OBS, WBS, activities, calendars, layouts, baselines, and data date",
       "Understand FEL and FEED as early planning inputs that shape schedule maturity before construction execution",
+      "Recognize EPC and design-build award models and how they change scheduler handoffs",
       "Set up a realistic construction project shell and professional naming conventions",
       "Separate design, procurement, construction, commissioning, punch, and closeout milestones"
     ],
-    services: ["Primavera P6", "Project Triangle", "FEL/FEED", "EPS", "OBS", "WBS", "Calendars", "Milestones"],
-    infused: ["P6 vocabulary", "Project management triangle", "Planner vs scheduler role", "FEL and FEED", "Construction lifecycle", "Scheduler interview language"],
-    topics: ["Primavera P6", "project management triangle", "planner role", "scheduler role", "FEL", "FEED", "construction lifecycle", "EPS", "OBS", "WBS", "data date", "baseline", "milestones"],
+    services: ["Primavera P6", "Project Triangle", "FEL/FEED", "EPC", "Design-Build", "EPS", "OBS", "WBS", "Calendars", "Milestones"],
+    infused: ["P6 vocabulary", "Project management triangle", "Planner vs scheduler role", "FEL and FEED", "EPC and design-build context", "Construction lifecycle", "Scheduler interview language"],
+    topics: ["Primavera P6", "project management triangle", "planner role", "scheduler role", "EPC", "design-build", "FEL", "FEED", "construction lifecycle", "EPS", "OBS", "WBS", "data date", "baseline", "milestones"],
     resources: [
       { type: "doc", name: "Oracle Primavera P6", url: "https://www.oracle.com/industries/construction-engineering/primavera-p6/" }
     ],
     prompts: [
       { title: "P6 Vocabulary Tutor", prompt: "Teach me P6 construction scheduling vocabulary with examples for EPS, OBS, WBS, activities, relationships, calendars, constraints, baselines, data date, layouts, filters, and schedule logs." },
       { title: "Construction Scheduler Role", prompt: "Explain what a construction project scheduler does each week on an active jobsite. Include client, GC, superintendent, project manager, trade partner, vendor, update cycle, reporting, and delay tracking responsibilities." },
-      { title: "Triangle, FEL and FEED Tutor", prompt: "Teach me the Project Management Triangle, FEL, and FEED for a beginner construction scheduler. Explain how each one affects schedule planning, baseline confidence, and change control." }
+      { title: "Triangle, FEL and FEED Tutor", prompt: "Teach me the Project Management Triangle, EPC, design-build, FEL, and FEED for a beginner construction scheduler. Explain how each one affects schedule planning, baseline confidence, and change control." }
     ],
     labs: [
       {
@@ -227,6 +285,7 @@ export const WEEKS = [
           "Define at least two calendars: standard 5-day workweek and weekend shutdown calendar.",
           "Write the project triangle assumptions: scope, time, cost, quality, and top risk tradeoff.",
           "Identify whether the project is in FEL, FEED, baseline planning, execution, or closeout.",
+          "Note whether the sample job is owner-managed, EPC, design-build, GC-led, or trade-partner scoped.",
           "Create milestone placeholders for NTP, mobilization, permits, long-lead procurement, dry-in, MEP rough-in, finishes, inspections, substantial completion, and closeout."
         ],
         verify: "You can explain the project shell, triangle assumptions, FEL/FEED maturity, calendar assumptions, milestone list, and where the project lives in a P6 environment."
@@ -272,13 +331,14 @@ export const WEEKS = [
     objectives: [
       "Build a construction WBS that can support P6 layouts and reporting",
       "Translate scope into activities without losing procurement, submittals, inspections, or closeout",
+      "Use the nine deck WBS phases: milestones, design, procurement, permit, preconstruction, construction, automation, testing and commissioning, and handover",
       "Use activity codes for area, discipline, subcontractor, phase, and responsibility",
       "Create a coding structure that supports filtering and dashboard reporting",
       "Create an Excel-based WBS and activity dictionary before loading or mirroring the structure in P6"
     ],
-    services: ["P6 WBS", "Excel WBS Dictionary", "Activity Codes", "CSI Divisions", "Scope Breakdown"],
-    infused: ["WBS development", "Excel spreadsheet support", "Construction scope", "Activity coding"],
-    topics: ["WBS", "Excel", "activity codes", "CSI", "work packages", "subcontractors", "areas", "disciplines"],
+    services: ["P6 WBS", "Excel WBS Dictionary", "Activity Codes", "CSI Divisions", "Scope Breakdown", "Nine WBS Phases"],
+    infused: ["WBS development", "Excel spreadsheet support", "Construction scope", "Activity coding", "Deck WBS phases"],
+    topics: ["WBS", "Excel", "activity codes", "CSI", "work packages", "subcontractors", "areas", "disciplines", "milestones", "permit", "preconstruction", "automation", "handover"],
     resources: [
       { type: "doc", name: "CSI MasterFormat", url: "https://www.csiresources.org/standards/masterformat" }
     ],
@@ -294,7 +354,7 @@ export const WEEKS = [
         duration: "55 min",
         difficulty: "Beginner",
         steps: [
-          "Create level 1 WBS buckets for preconstruction, procurement, sitework, structure, enclosure, MEP, interiors, commissioning, and closeout.",
+          "Create level 1 WBS buckets for milestones, design and engineering, procurement, permits, preconstruction, construction, automation, testing and commissioning, and handover.",
           "Create level 2 areas such as first floor, second floor, roof, exterior, and site.",
           "Create level 3 work packages such as framing, rough-in, drywall, ceiling grid, flooring, fixtures, testing, and inspections.",
           "Create matching Excel columns for WBS code, activity ID, activity name, discipline, area, subcontractor, duration, and notes.",
@@ -329,12 +389,13 @@ export const WEEKS = [
     objectives: [
       "Connect procurement, submittals, RFIs, approvals, fabrication, delivery, and installation",
       "Plan long-lead items before field work is blocked",
+      "Connect technical planning documents such as P&IDs, drawing indexes, GA drawings, structural drawings, SLDs, isometrics, equipment layouts, BOQs, and specifications to schedule activities",
       "Build procurement logic into the baseline schedule",
       "Create a submittal and procurement tracker that supports schedule updates"
     ],
-    services: ["Submittal Log", "Procurement Log", "RFI Log", "Long-Lead Items"],
-    infused: ["Procurement logic", "Submittal workflow", "Vendor coordination"],
-    topics: ["submittals", "RFIs", "procurement", "fabrication", "delivery", "long lead", "approvals"],
+    services: ["Submittal Log", "Procurement Log", "RFI Log", "Long-Lead Items", "Technical Document Inputs"],
+    infused: ["Procurement logic", "Submittal workflow", "Vendor coordination", "Planning phase technical documents"],
+    topics: ["submittals", "RFIs", "procurement", "fabrication", "delivery", "long lead", "approvals", "P&ID", "drawing index", "GA drawings", "BOQ", "specifications"],
     resources: [
       { type: "template", name: "Smartsheet construction templates", url: "https://www.smartsheet.com/construction-project-management" }
     ],
@@ -395,11 +456,12 @@ export const WEEKS = [
       "Use FS, SS, FF, and SF relationships correctly in construction schedules",
       "Understand total float, free float, negative float, driving logic, and open ends",
       "Use leads, lags, and constraints only when defensible",
+      "Use activity IDs, predecessors, successors, durations, remaining durations, and calendars as the basic P6 scheduling language",
       "Explain how calendars affect critical path and forecast finish"
     ],
-    services: ["CPM", "Relationships", "Calendars", "Constraints", "Float"],
-    infused: ["CPM logic", "Critical path", "Schedule quality"],
-    topics: ["finish-to-start", "start-to-start", "finish-to-finish", "lag", "constraint", "total float", "free float", "calendar"],
+    services: ["CPM", "Relationships", "Calendars", "Constraints", "Float", "Activity IDs"],
+    infused: ["CPM logic", "Critical path", "Schedule quality", "Core scheduling terms"],
+    topics: ["activity ID", "predecessor", "successor", "finish-to-start", "start-to-start", "finish-to-finish", "start-to-finish", "lag", "lead", "constraint", "total float", "free float", "calendar"],
     resources: [
       { type: "doc", name: "PMI scheduling standards", url: "https://www.pmi.org/" }
     ],
@@ -584,11 +646,12 @@ export const WEEKS = [
       "Run a monthly schedule update cycle",
       "Collect progress from superintendent, subcontractors, procurement, and project manager",
       "Enter actual starts, actual finishes, remaining duration, and percent complete",
+      "Connect schedule updates to EVMS language: planned value, earned value, and SPI",
       "Move the data date and explain variance from baseline"
     ],
-    services: ["Data Date", "Actuals", "Remaining Duration", "Percent Complete", "Variance"],
-    infused: ["Schedule updating", "Progress collection", "Forecast control"],
-    topics: ["data date", "actual start", "actual finish", "remaining duration", "percent complete", "baseline variance", "forecast finish"],
+    services: ["Data Date", "Actuals", "Remaining Duration", "Percent Complete", "EVMS", "SPI", "Variance"],
+    infused: ["Schedule updating", "Progress collection", "Forecast control", "Earned value monitoring"],
+    topics: ["data date", "actual start", "actual finish", "remaining duration", "percent complete", "earned value", "planned value", "SPI", "baseline variance", "forecast finish"],
     resources: [
       { type: "doc", name: "Oracle Primavera P6", url: "https://www.oracle.com/industries/construction-engineering/primavera-p6/" }
     ],
@@ -640,11 +703,12 @@ export const WEEKS = [
       "Create 2-week and 6-week lookahead schedules from the master schedule",
       "Track field constraints before they block crews",
       "Coordinate sequencing with superintendent and trade partners",
+      "Use risk-team language such as Monte Carlo, P20, and P80 when explaining schedule confidence",
       "Connect short-interval plans back to the baseline and monthly update"
     ],
-    services: ["Lookahead", "Constraint Log", "Trade Coordination", "Superintendent Meetings"],
-    infused: ["Field coordination", "Short-interval planning", "Constraint removal"],
-    topics: ["lookahead", "constraints", "trade coordination", "superintendent", "crew flow", "make-ready"],
+    services: ["Lookahead", "Constraint Log", "Trade Coordination", "Superintendent Meetings", "P20/P80 Risk Dates"],
+    infused: ["Field coordination", "Short-interval planning", "Constraint removal", "Risk confidence language"],
+    topics: ["lookahead", "constraints", "trade coordination", "superintendent", "crew flow", "make-ready", "Monte Carlo", "P20", "P80", "risk forecast"],
     resources: [
       { type: "template", name: "Smartsheet construction planning", url: "https://www.smartsheet.com/construction-project-management" }
     ],
@@ -1217,11 +1281,12 @@ export const WEEKS = [
       "Build schedule logic for MEP rough-in, above-ceiling, testing, inspections, and commissioning",
       "Understand coordination risks between mechanical, electrical, plumbing, fire protection, controls, and low voltage",
       "Create inspection and commissioning milestone chains",
+      "Understand CQV and operational readiness handoffs on regulated owner-side schedules",
       "Identify common MEP drivers of late project finish"
     ],
-    services: ["MEP", "Commissioning", "Inspections", "Testing"],
-    infused: ["MEP sequencing", "Commissioning logic", "Inspection readiness"],
-    topics: ["MEP", "commissioning", "testing", "inspection", "above ceiling", "controls", "fire alarm"],
+    services: ["MEP", "Commissioning", "Inspections", "Testing", "CQV"],
+    infused: ["MEP sequencing", "Commissioning logic", "Inspection readiness", "Operational readiness"],
+    topics: ["MEP", "commissioning", "testing", "inspection", "above ceiling", "controls", "fire alarm", "CQV", "IQ", "OQ", "operational readiness"],
     resources: [
       { type: "doc", name: "AACE International", url: "https://web.aacei.org/" }
     ],
@@ -1271,12 +1336,13 @@ export const WEEKS = [
     objectives: [
       "Document delay events contemporaneously",
       "Separate weather, owner decisions, design issues, subcontractor delay, and procurement delay",
+      "Prepare extension-of-time support with photos, reports, weather records, and schedule evidence",
       "Tie delay events to activities and critical path status",
       "Create a neutral narrative without sounding emotional or accusatory"
     ],
-    services: ["Delay Log", "Weather Log", "Decision Log", "Documentation"],
-    infused: ["Delay documentation", "Claims readiness", "Neutral narrative"],
-    topics: ["delay", "weather", "owner decision", "documentation", "critical path", "narrative"],
+    services: ["Delay Log", "Weather Log", "Decision Log", "Documentation", "EOT Support"],
+    infused: ["Delay documentation", "Claims readiness", "Neutral narrative", "Extension-of-time evidence"],
+    topics: ["delay", "weather", "owner decision", "documentation", "critical path", "narrative", "EOT", "extension of time", "photos", "weather records"],
     resources: [
       { type: "doc", name: "AACE recommended practices", url: "https://web.aacei.org/resources/recommended-practices" }
     ],
@@ -1460,10 +1526,11 @@ export const WEEKS = [
       "Understand how P6 supports multiple projects, portfolios, and programs",
       "Roll up milestones across multiple construction projects",
       "Create cross-project dependency and resource risk summaries",
+      "Explain how an integrated master schedule combines discipline schedules into one CPM-controlled view",
       "Prepare for program scheduler and integrated master scheduler language"
     ],
-    services: ["Portfolio", "Program Schedule", "Milestone Rollup", "IMS"],
-    infused: ["Program scheduling", "Portfolio reporting", "Integrated master schedule"],
+    services: ["Portfolio", "Program Schedule", "Milestone Rollup", "IMS", "Discipline Schedules"],
+    infused: ["Program scheduling", "Portfolio reporting", "Integrated master schedule", "Discipline schedule integration"],
     topics: ["program schedule", "portfolio", "milestone rollup", "IMS", "cross-project dependency", "project controls"],
     resources: [
       { type: "doc", name: "Oracle Primavera P6", url: "https://www.oracle.com/industries/construction-engineering/primavera-p6/" }
@@ -1647,12 +1714,13 @@ export const WEEKS = [
     objectives: [
       "Assemble a complete 6-month P6 construction scheduler portfolio",
       "Create final artifacts for baseline, update, DCMA audit, lookahead, delay, recovery, dashboard, and interview evidence",
+      "Show milestone discipline: how you protect key dates, escalate early, and use schedule evidence when dates move",
       "Prepare application package and job-search rhythm",
       "Start applying to realistic scheduler and project controls roles"
     ],
-    services: ["Portfolio", "Apply Sprint", "Capstone", "Job Tracker"],
-    infused: ["Portfolio completion", "Application readiness", "Scheduler credibility"],
-    topics: ["capstone", "portfolio", "job applications", "P6 scheduler", "project controls", "interview prep"],
+    services: ["Portfolio", "Apply Sprint", "Capstone", "Job Tracker", "Milestone Defense"],
+    infused: ["Portfolio completion", "Application readiness", "Scheduler credibility", "Milestone discipline"],
+    topics: ["capstone", "portfolio", "job applications", "P6 scheduler", "project controls", "interview prep", "milestone defense", "schedule evidence"],
     resources: [
       { type: "doc", name: "Oracle Primavera P6", url: "https://www.oracle.com/industries/construction-engineering/primavera-p6/" },
       { type: "doc", name: "AACE International", url: "https://web.aacei.org/" }

@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { WEEKS, PHASES, CERTS, CERT_COLORS, GAP_INFUSIONS, RESOURCES, TUTOR_PROMPTS, FEATURED_LEARNING, ACADEMY_OUTCOMES, DOCUMENT_TOC_MAP } from "./data/weeks";
+import { WEEKS, PHASES, CERTS, CERT_COLORS, GAP_INFUSIONS, RESOURCES, TUTOR_PROMPTS, FEATURED_LEARNING, ACADEMY_OUTCOMES, DOCUMENT_TOC_MAP, COURSE_DECK_MAP } from "./data/weeks";
 import ProgressBar from "./components/ProgressBar";
 import WeekCard from "./components/WeekCard";
 import WeekDetail from "./components/WeekDetail";
@@ -256,10 +256,10 @@ function App() {
             <div className="cd" style={{ padding: 16, marginBottom: 16, borderLeft: "3px solid #2563EB" }}>
               <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10, flexWrap: "wrap" }}>
                 <span style={{ fontSize: 10, fontWeight: 700, color: "#2563EB", letterSpacing: 1, textTransform: "uppercase", fontFamily: "'JetBrains Mono', monospace" }}>
-                  PDF Table of Contents Map
+                  Document Table of Contents Map
                 </span>
                 <span style={{ fontSize: 12, color: "var(--text-muted)" }}>
-                  ChronoPoint Academy Notes topics placed into the 24-week plan
+                  ChronoPoint Academy topics placed into the 24-week plan
                 </span>
               </div>
               <div style={{ display: "grid", gap: 8 }}>
@@ -268,6 +268,33 @@ function App() {
                     <div style={{ fontSize: 12, fontWeight: 800, color: "var(--text)" }}>{item.item}</div>
                     <div style={{ fontSize: 10, color: "#2563EB", fontWeight: 800 }}>{item.weeks}</div>
                     <div style={{ fontSize: 11, color: "var(--text-secondary)", lineHeight: 1.5 }}>{item.placement}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="cd" style={{ padding: 16, marginBottom: 16, borderLeft: "3px solid #7C3AED" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10, flexWrap: "wrap" }}>
+                <span style={{ fontSize: 10, fontWeight: 700, color: "#7C3AED", letterSpacing: 1, textTransform: "uppercase", fontFamily: "'JetBrains Mono', monospace" }}>
+                  64-Slide Deck Coverage
+                </span>
+                <span style={{ fontSize: 12, color: "var(--text-muted)" }}>
+                  Planning and Scheduling Fundamentals mapped into the roadmap
+                </span>
+              </div>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 10 }}>
+                {COURSE_DECK_MAP.map((item, i) => (
+                  <div key={i} style={{ padding: 12, borderRadius: 8, background: "var(--card-bg-alt)", border: "1px solid var(--border)" }}>
+                    <div style={{ display: "flex", gap: 8, alignItems: "flex-start", justifyContent: "space-between", marginBottom: 6 }}>
+                      <div>
+                        <div style={{ fontSize: 10, color: "#7C3AED", fontWeight: 800, marginBottom: 3 }}>{item.section}</div>
+                        <div style={{ fontSize: 13, color: "var(--text)", fontWeight: 800 }}>{item.title}</div>
+                      </div>
+                      <span style={{ fontSize: 9, padding: "2px 6px", borderRadius: 8, color: "#7C3AED", background: "#7C3AED18", fontWeight: 700, whiteSpace: "nowrap" }}>
+                        {item.weeks}
+                      </span>
+                    </div>
+                    <div style={{ fontSize: 11, color: "var(--text-secondary)", lineHeight: 1.5 }}>{item.coverage}</div>
                   </div>
                 ))}
               </div>
